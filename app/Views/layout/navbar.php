@@ -78,6 +78,7 @@
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
 
+
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
@@ -109,6 +110,7 @@
                 </li>
             </ul>
         </li><!-- End Components Nav -->
+
 
         <li class="nav-item">
             <a class="nav-link " href="<?= base_url('auth/profile') ?>">
