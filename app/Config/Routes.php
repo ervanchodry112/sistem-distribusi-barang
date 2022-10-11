@@ -35,8 +35,10 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Gudang::index');
+$routes->get('/admin', 'Gudang::index');
+$routes->get('/', 'LandingPage::index');
 $routes->get('/pesanan', 'PesananMasuk::index');
+
 
 /*
  * --------------------------------------------------------------------
