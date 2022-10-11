@@ -83,13 +83,13 @@
 							</a>
 						</li>
 						<li>
-							<a class="nav-link d-flex align-items-center" href="<?= base_url('gudang/pesanan_masuk') ?>">
+							<a class="nav-link d-flex align-items-center" href="<?= base_url('gudang/dalam_proses') ?>">
 								<ion-icon name="reload" class="me-2" style="font-size: 20px"></ion-icon>
-								Pesanan Keluar
+								Dalam Proses
 							</a>
 						</li>
 						<li>
-							<a class="nav-link d-flex align-items-center" href="<?= base_url('gudang/pesanan_masuk') ?>">
+							<a class="nav-link d-flex align-items-center" href="<?= base_url('gudang/pesanan_selesai') ?>">
 								<ion-icon name="checkbox-outline" class="me-2" style="font-size: 20px"></ion-icon>
 								Pesanan Selesai
 							</a>
