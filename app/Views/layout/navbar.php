@@ -1,137 +1,142 @@
 <?= $this->extend('template') ?>
 
 <?= $this->section('navbar') ?>
-<!-- Navbar -->
-<!-- Left navbar links -->
-<div class="wrapper">
-	<!-- Navbar -->
-	<nav class="main-header navbar navbar-expand navbar-black navbar-dark">
-		<!-- Left navbar links -->
-		<ul class="navbar-nav">
-			<li class="nav-item">
-				<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-			</li>
-		</ul>
-		<!-- Right navbar links -->
-		<ul class="navbar-nav ml-auto">
-			<!-- Messages Dropdown Menu -->
-			<li class="nav-item dropdown-center">
-				<a class="dropdown-toggle nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-					<ion-icon name="person-circle-outline"></ion-icon>
-				</a>
-				<ul class="dropdown-menu dropdown-menu-end">
-					<li><a class="dropdown-item" href="#">Logout</a></li>
-				</ul>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" data-widget="fullscreen" href="#" role="button">
-					<i class="fas fa-expand-arrows-alt"></i>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-					<i class="fas fa-th-large"></i>
-				</a>
-			</li>
-		</ul>
-	</nav>
-	<!-- /.navbar -->
+<header id="header" class="header fixed-top d-flex align-items-center">
 
-	<!-- Main Sidebar Container -->
-	<aside class="main-sidebar sidebar-dark-primary elevation-4">
-		<!-- Brand Logo -->
-		<div class="brand-link elevation-4">
-			<img src="<?= base_url('assets/img/icon.png') ?>" alt="Store Logo" class="brand-image" style="opacity: .8">
-			<span class="brand-text font-weight-light">Guild Store</span>
-		</div>
+    <div class="d-flex align-items-center justify-content-between">
+        <a href="/" class="logo d-flex align-items-center">
+            <img src="/assets/img/icon.png" alt="">
+            <span class="d-none d-lg-block">Guild Store</span>
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
 
-		<!-- Sidebar -->
-		<div class="sidebar">
-			<!-- Sidebar user (optional) -->
-			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
-				<div class="image">
-					<img src="<?= base_url('assets/img/default.png') ?>" class="img-circle elevation-2" alt="User Image">
-				</div>
-				<div class="info">
-					<a href="#" class="d-block">Nama User Disini</a>
-				</div>
-			</div>
+    <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
 
+            <li class="nav-item dropdown pe-3">
 
-			<!-- Sidebar Menu -->
-			<nav class="mt-2">
-				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-					<!-- isi Sidebar -->
-					<li class="nav-item">
-						<a href="<?= base_url('gudang/dashboard') ?>" class="nav-link d-flex align-items-center">
-							<ion-icon name="apps" class="me-2"></ion-icon>
-							<p>Dashboard</p>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="#pesananCollapse" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pesananCollapse" class="nav-link d-flex align-items-center">
-							<ion-icon name="clipboard-outline" class="me-2"></ion-icon>
-							<p>Pesanan</p>
-							<ion-icon name="chevron-down-outline" class="ms-auto"></ion-icon>
-						</a>
-					</li>
-					<ul class="collapse nav nav-item ms-3" id="pesananCollapse">
-						<li class="nav-item">
-							<a class="nav-link d-flex align-items-center" href="<?= base_url('gudang/pesanan_masuk') ?>">
-								<ion-icon name="log-in" class="me-2" style="font-size: 20px"></ion-icon>
-								Pesanan Masuk
-							</a>
-						</li>
-						<li>
-							<a class="nav-link d-flex align-items-center" href="<?= base_url('gudang/dalam_proses') ?>">
-								<ion-icon name="reload" class="me-2" style="font-size: 20px"></ion-icon>
-								Dalam Proses
-							</a>
-						</li>
-						<li>
-							<a class="nav-link d-flex align-items-center" href="<?= base_url('gudang/pesanan_selesai') ?>">
-								<ion-icon name="checkbox-outline" class="me-2" style="font-size: 20px"></ion-icon>
-								Pesanan Selesai
-							</a>
-						</li>
-					</ul>
-					<li class="nav-item">
-						<a href="<?= base_url('gudang/barang') ?>" class="nav-link d-flex align-items-center">
-							<ion-icon name="dice-outline" class="me-2"></ion-icon>
-							<p>Barang</p>
-						</a>
-					</li>
-					<hr class="text-white my-2">
-					<li class="nav-item">
-						<a href="<?= base_url('auth/profile') ?>" class="nav-link d-flex align-items-center">
-							<ion-icon name="person" class="me-2"></ion-icon>
-							<p>Profile</p>
-						</a>
-					</li>
-				</ul>
-			</nav>
-			<!-- /.sidebar-menu -->
-		</div>
-		<!-- /.sidebar -->
-	</aside>
+                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                    <!-- <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
+                    <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                </a><!-- End Profile Iamge Icon -->
 
-	<?= $this->renderSection('content') ?>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                    <li class="dropdown-header">
+                        <h6>Kevin Anderson</h6>
+                        <span>Web Designer</span>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                            <i class="bi bi-person"></i>
+                            <span>My Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                            <i class="bi bi-gear"></i>
+                            <span>Account Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                            <i class="bi bi-question-circle"></i>
+                            <span>Need Help?</span>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Sign Out</span>
+                        </a>
+                    </li>
+
+                </ul><!-- End Profile Dropdown Items -->
+            </li><!-- End Profile Nav -->
+
+        </ul>
+    </nav><!-- End Icons Navigation -->
+
+</header><!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
 
 
-	<footer class="main-footer">
-		<div class="float-right d-none d-sm-block">
-			<b>Version</b> 3.2.0
-		</div>
-		<strong>Copyright &copy; 2022.</strong> All rights reserved.
-	</footer>
+    <ul class="sidebar-nav" id="sidebar-nav">
 
-	<!-- Control Sidebar -->
-	<aside class="control-sidebar control-sidebar-dark">
-		<!-- Control sidebar content goes here -->
-	</aside>
-	<!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+        <li class="nav-item">
+            <a class="nav-link " href="<?= base_url('gudang/dashboard') ?>">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-clipboard"></i><span>Pesanan</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="<?= base_url('gudang/pesanan_masuk') ?>">
+                        <i class="bi bi-box-arrow-in-right"></i><span>Pesanan Masuk</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('gudang/dalam_proses') ?>">
+                        <i class="bi bi-circle"></i><span>Pesanan Diproses</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('gudang/pesanan_selesai') ?>">
+                        <i class="bi bi-circle"></i><span>Pesanan Selesai</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Components Nav -->
 
 
+        <li class="nav-item">
+            <a class="nav-link " href="<?= base_url('auth/profile') ?>">
+                <i class="bi bi-person-fill"></i>
+                <span>Profile</span>
+            </a>
+        </li>
+
+
+    </ul>
+</aside>
+<main id="main" class="main">
+    <?= $this->renderSection('content') ?>
+</main>
+
+<footer id="footer" class="footer">
+    <div class="copyright">
+        &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+</footer>
+<!-- End Sidebar-->
 <?= $this->endSection() ?>
