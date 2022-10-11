@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
     <!-- Stylesheet -->
+    <link rel="icon" href="<?= base_url('assets/img/icon.png') ?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-navbar-fixed">
     <?= $this->renderSection('navbar') ?>
-    <?= $this->renderSection('sidebar') ?>
 
 
 
