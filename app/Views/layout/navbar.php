@@ -80,6 +80,7 @@
 
 
     <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-heading">Gudang</li>
 
         <li class="nav-item">
             <a class="nav-link " href="<?= base_url('gudang/dashboard') ?>">
@@ -89,10 +90,10 @@
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link collapsed" data-bs-target="#gudang-collapse" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-clipboard"></i><span>Pesanan</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="gudang-collapse" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="<?= base_url('gudang/pesanan_masuk') ?>">
                         <i class="bi bi-box-arrow-in-right"></i><span>Pesanan Masuk</span>
@@ -111,6 +112,55 @@
             </ul>
         </li><!-- End Components Nav -->
 
+        <li class="nav-heading">Toko</li>
+
+        <li class="nav-item">
+            <a class="nav-link " href="<?= base_url('toko/dashboard') ?>">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link " href="<?= base_url('toko/pesanan') ?>">
+                <i class="bi bi-grid"></i>
+                <span>Pesanan</span>
+            </a>
+        </li><!-- End Components Nav -->
+
+        <li class="nav-heading">Supir</li>
+
+        <li class="nav-item">
+            <a class="nav-link " href="<?= base_url('supir/dashboard') ?>">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#toko-collapse" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-clipboard"></i><span>Pesanan</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="toko-collapse" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="<?= base_url('supir/pesanan_masuk') ?>">
+                        <i class="bi bi-box-arrow-in-right"></i><span>Pesanan Masuk</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('supir/diantar') ?>">
+                        <i class="bi bi-circle"></i><span>Dalam Pengiriman</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('supir/pesanan_selesai') ?>">
+                        <i class="bi bi-circle"></i><span>Pesanan Selesai</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Components Nav -->
+
+        <li class="nav-heading">Account</li>
 
         <li class="nav-item">
             <a class="nav-link " href="<?= base_url('auth/profile') ?>">
@@ -122,6 +172,7 @@
 
     </ul>
 </aside>
+
 <main id="main" class="main">
     <?= $this->renderSection('content') ?>
 </main>
