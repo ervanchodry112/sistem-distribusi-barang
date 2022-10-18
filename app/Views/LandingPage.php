@@ -14,6 +14,7 @@
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="<?= base_url('landingpage/css/styles.css') ?>" rel="stylesheet" />
 </head>
@@ -22,7 +23,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top">Sistem Informasi Distribusi Barang</a>
+            <a class="navbar-brand" href="#page-top">Guild Store</a>
             <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
@@ -43,7 +44,7 @@
             <!-- Masthead Avatar Image-->
             <img class="masthead-avatar mb-5" src="<?= base_url('assets/img/icon.png') ?>" alt="..." />
             <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Sistem Informasi Distribusi Barang Mini Market</h1>
+            <h1 class="masthead-heading text-uppercase mb-0">Guild Store</h1>
             <!-- Icon Divider-->
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
@@ -54,6 +55,29 @@
             <p class="masthead-subheading font-weight-light mb-0"></p>
         </div>
     </header>
+    <section class="page-section">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/assets/img/img1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="/assets/img/img2.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="/assets/img/img3.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
     <!-- Portfolio Section-->
     <section class="page-section portfolio" id="portfolio">
         <div class="container">
@@ -73,7 +97,7 @@
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                             <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                         </div>
-                        <img class="img-fluid" src="<?= base_url('assets/img/img1.jpg') ?>" alt="..." style="width: 400px; height: 250px"/>
+                        <img class="img-fluid" src="<?= base_url('assets/img/img1.jpg') ?>" alt="..." style="width: 400px; height: 250px" />
                     </div>
                 </div>
                 <!-- Portfolio Item 2-->
@@ -82,7 +106,7 @@
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                             <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                         </div>
-                        <img class="img-fluid" src="<?= base_url('assets/img/img2.jpg') ?>" alt="..." style="width: 400px; height: 250px"/>
+                        <img class="img-fluid" src="<?= base_url('assets/img/img2.jpg') ?>" alt="..." style="width: 400px; height: 250px" />
                     </div>
                 </div>
                 <!-- Portfolio Item 3-->
@@ -91,7 +115,7 @@
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                             <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                         </div>
-                        <img class="img-fluid" src="<?= base_url('assets/img/img3.jpg') ?>" alt="..." style="width: 400px; height: 250px; aspect-ratio: 16/9;"/>
+                        <img class="img-fluid" src="<?= base_url('assets/img/img3.jpg') ?>" alt="..." style="width: 400px; height: 250px; aspect-ratio: 16/9;" />
                     </div>
                 </div>
             </div>
@@ -116,7 +140,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-4">
-                                <img class="rounded-circle shadow-1-strong mb-4" src="<?= base_url('assets/img/default.png') ?>" alt="..." style="width: 150px;" />
+                                    <img class="rounded-circle shadow-1-strong mb-4" src="<?= base_url('assets/img/default.png') ?>" alt="..." style="width: 150px;" />
                                     <h5 class="mb-3">Budi</h5>
                                     <p>Project Manager</p>
                                     <p class="text-muted">
@@ -170,7 +194,7 @@
             <!-- About Section Content-->
             <div class="row">
                 <div class="col-lg-4 ms-auto">
-                    <p class="lead">Sistem informasi distribusi barang adalah sistem yang menangani yang mepermudah 
+                    <p class="lead">Sistem informasi distribusi barang adalah sistem yang menangani yang mepermudah
                     <p class="lead">Toko didtribudi mini market adalah tim profesional yang menangani minimarket baik dalam skala kecil maupun dalam skala besar. Dari yang modal kurang dari Rp 50.000.000 sampai dengan modal lebih dari Rp 7.000.000.000. Kami mendirikan usaha yang bergerak di bidang retail</p>
                 </div>
                 <div class="col-lg-4 me-auto">
@@ -183,38 +207,7 @@
         </div>
     </section>
     <!-- Footer-->
-    <footer class="footer text-center">
-        <div class="container">
-            <div class="row">
-                <!-- Footer Location-->
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h4 class="text-uppercase mb-4">Location</h4>
-                    <p class="lead mb-0">
-                        2215 John Daniel Drive
-                        <br />
-                        Clark, MO 65243
-                    </p>
-                </div>
-                <!-- Footer Social Icons-->
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h4 class="text-uppercase mb-4">Around the Web</h4>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
-                </div>
-                <!-- Footer About Text-->
-                <div class="col-lg-4">
-                    <h4 class="text-uppercase mb-4">About Freelancer</h4>
-                    <p class="lead mb-0">
-                        Freelance is a free to use, MIT licensed Bootstrap theme created by
-                        <a href="http://startbootstrap.com">Start Bootstrap</a>
-                        .
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
+
     <!-- Copyright Section-->
     <div class="copyright py-4 text-center text-white">
         <div class="container"><small>Copyright &copy; Your Website 2022</small></div>
@@ -421,6 +414,7 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 
 </html>
