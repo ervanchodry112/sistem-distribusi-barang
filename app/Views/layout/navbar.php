@@ -96,17 +96,17 @@
             <ul id="gudang-collapse" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="<?= base_url('gudang/pesanan_masuk') ?>">
-                        <i class="bi bi-box-arrow-in-right"></i><span>Pesanan Masuk</span>
+                        <i class="bi bi-box-arrow-in-right" style="font-size: 1.3em;"></i><span>Pesanan Masuk</span>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('gudang/dalam_proses') ?>">
-                        <i class="bi bi-circle"></i><span>Pesanan Diproses</span>
+                        <i class="bi bi-box-seam" style="font-size: 1.3em;"></i><span>Pesanan Diproses</span>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('gudang/pesanan_selesai') ?>">
-                        <i class="bi bi-circle"></i><span>Pesanan Selesai</span>
+                        <i class="bi bi-check-circle" style="font-size: 1.3em;"></i><span>Pesanan Selesai</span>
                     </a>
                 </li>
             </ul>
@@ -144,17 +144,17 @@
             <ul id="toko-collapse" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="<?= base_url('supir/pesanan_masuk') ?>">
-                        <i class="bi bi-box-arrow-in-right"></i><span>Pesanan Masuk</span>
+                        <i class="bi bi-box-arrow-in-right" style="font-size: 1.3em;"></i><span>Pesanan Masuk</span>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('supir/diantar') ?>">
-                        <i class="bi bi-circle"></i><span>Dalam Pengiriman</span>
+                        <i class="bi bi-truck" style="font-size: 1.3em;"></i><span>Dalam Pengiriman</span>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('supir/pesanan_selesai') ?>">
-                        <i class="bi bi-circle"></i><span>Pesanan Selesai</span>
+                        <i class="bi bi-check-circle" style="font-size: 1.3em;"></i><span>Pesanan Selesai</span>
                     </a>
                 </li>
             </ul>

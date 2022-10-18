@@ -34,7 +34,7 @@ echo $this->section('content');
 						<tr>
 							<td scope="row">1</td>
 							<th>
-								<button>
+								<button class="btn btn-primary btn-sm">
 									<ion-icon name="cube-outline"></ion-icon>
 								</button>
 
