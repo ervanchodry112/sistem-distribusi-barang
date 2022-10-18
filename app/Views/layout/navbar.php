@@ -148,7 +148,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('supir/diantar') ?>">
+                    <a href="<?= base_url('supir/dalam_pengiriman') ?>">
                         <i class="bi bi-circle"></i><span>Dalam Pengiriman</span>
                     </a>
                 </li>
