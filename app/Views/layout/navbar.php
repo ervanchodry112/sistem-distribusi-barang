@@ -78,7 +78,6 @@
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
 
-
 	<ul class="sidebar-nav" id="sidebar-nav">
 		<li class="nav-heading">Gudang</li>
 
@@ -178,6 +177,7 @@
 
 
 	</ul>
+
 </aside>
 
 <main id="main" class="main">
