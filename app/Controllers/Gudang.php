@@ -34,12 +34,33 @@ class Gudang extends BaseController
 		];
 		return view('gudang/pesanan/dalam_proses', $data);
 	}
-	
+
 	public function pesanan_selesai()
 	{
 		$data = [
 			'title' => 'Pesanan Selesai'
 		];
 		return view('gudang/pesanan/pesanan_selesai', $data);
+	}
+
+	public function proses_pesanan()
+	{
+		return view('gudang/pesanan/proses_pesanan');
+	}
+
+	public function detail_pesanan()
+	{
+		$data = [
+			'title' => 'Detail Pesanan'
+		];
+		return view('gudang/pesanan/detail_pesanan', $data);
+	}
+
+	public function produk()
+	{
+		$data = [
+			'title' => 'Detail Pesanan'
+		];
+		return view('gudang/produk', $data);
 	}
 }
