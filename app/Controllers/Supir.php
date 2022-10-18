@@ -11,12 +11,12 @@ class Supir extends BaseController
         return redirect()->to('/supir/dashboard');
     }
 
-    public function dashbord()
+    public function dashboard()
     {
         $data = [
             'title' => 'Dashboard'
         ];
-        return view('/supir/dashbord', $data);
+        return view('/supir/dashboard', $data);
     }
 
     public function pesanan_masuk()
@@ -41,5 +41,13 @@ class Supir extends BaseController
             'title' => 'Pesanan Selesai'
         ];
         return view('/supir/pesanan/pesanan_selesai', $data);
+    }
+
+    public function detail_pesanan()
+    {
+        $data = [
+            'title' => 'Detail Pesanan'
+        ];
+        return view('/supir/pesanan/detail_pesanan', $data);
     }
 }
