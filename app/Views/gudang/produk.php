@@ -31,11 +31,10 @@ echo $this->section('content');
 									<ion-icon name="search-outline"></ion-icon>
 								</a>
 							</td>
-							<td>ID4</td>
+							<td>PD1</td>
+							<td>Chitato</td>
 							<td>10</td>
-							<td>Bang Toko</td>
-							<td>Dikemas</td>
-							<td>Kemiling</td>
+							<td>Rp. 10000</td>
 						</tr>
 						<tr>
 							<td scope="row">2</td>
@@ -45,11 +44,10 @@ echo $this->section('content');
 									<ion-icon name="search-outline"></ion-icon>
 								</a>
 							</td>
-							<td>ID2</td>
-							<td>5</td>
-							<td>Mas Toko</td>
-							<td>Dikirim</td>
-							<td>Tengah Trikora</td>
+							<td>PD2</td>
+							<td>Lays</td>
+							<td>12</td>
+							<td>Rp. 12000</td>
 						</tr>
 						<tr>
 							<td scope="row">3</td>
@@ -59,11 +57,10 @@ echo $this->section('content');
 									<ion-icon name="search-outline"></ion-icon>
 								</a>
 							</td>
-							<td>ID3</td>
-							<td>5</td>
-							<td>Mba Toko</td>
-							<td>Diterima</td>
-							<td>Sukasepi</td>
+							<td>PD3</td>
+							<td>Qtela</td>
+							<td>18</td>
+							<td>Rp. 8000</td>
 						</tr>
 					</tbody>
 				</table>
