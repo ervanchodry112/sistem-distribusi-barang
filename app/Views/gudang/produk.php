@@ -3,14 +3,10 @@ echo $this->extend('layout/navbar');
 echo $this->section('content');
 ?>
 
-<!-- Content Wrapper. Contains page content -->
-
-<!-- Content Header (Page header) -->
 <div class="pagetitle">
-	<h1>Pesanan Selesai</h1>
+	<h1>Pesanan Dalam Proses</h1>
 </div>
 
-<!-- Main content -->
 <section class="content p-5">
 	<div class="container-fluid">
 		<div class="row">
@@ -20,12 +16,10 @@ echo $this->section('content');
 						<tr class="table" style="text-align: center;">
 							<th scope="col">No</th>
 							<th scope="col">Action</th>
-							<th scope="col">Id</th>
-							<th scope="col">Jumlah</th>
-							<th scope="col">Total</th>
-							<th scope="col">Nama Toko</th>
-							<th scope="col">Status Pesanan</th>
-							<th scope="col">Nama Kurir</th>
+							<th scope="col">ID Produk</th>
+							<th scope="col">Nama</th>
+							<th scope="col">Stock</th>
+							<th scope="col">Harga</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -37,12 +31,10 @@ echo $this->section('content');
 									<ion-icon name="search-outline"></ion-icon>
 								</a>
 							</td>
-							<td>ID7</td>
+							<td>PD1</td>
+							<td>Chitato</td>
 							<td>10</td>
-							<td>Rp. 100000</td>
-							<td>Bang Toko</td>
-							<td>Selesai</td>
-							<td>Mas Alip</td>
+							<td>Rp. 10000</td>
 						</tr>
 						<tr>
 							<td scope="row">2</td>
@@ -52,12 +44,10 @@ echo $this->section('content');
 									<ion-icon name="search-outline"></ion-icon>
 								</a>
 							</td>
-							<td>ID8</td>
-							<td>5</td>
-							<td>Rp. 50000</td>
-							<td>Mas Toko</td>
-							<td>Selesai</td>
-							<td>Mas Adi</td>
+							<td>PD2</td>
+							<td>Lays</td>
+							<td>12</td>
+							<td>Rp. 12000</td>
 						</tr>
 						<tr>
 							<td scope="row">3</td>
@@ -67,12 +57,10 @@ echo $this->section('content');
 									<ion-icon name="search-outline"></ion-icon>
 								</a>
 							</td>
-							<td>ID9</td>
-							<td>5</td>
-							<td>Rp. 50000</td>
-							<td>Mba Toko</td>
-							<td>Selesai</td>
-							<td>Mas Azka</td>
+							<td>PD3</td>
+							<td>Qtela</td>
+							<td>18</td>
+							<td>Rp. 8000</td>
 						</tr>
 					</tbody>
 				</table>
@@ -80,8 +68,5 @@ echo $this->section('content');
 		</div>
 	</div>
 </section>
-<!-- /.content -->
-
-<!-- /.content-wrapper -->
 
 <?= $this->endSection() ?>
