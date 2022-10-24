@@ -11,7 +11,7 @@ echo $this->section('content');
 			<div class="row mb-2">
 				<div class="col-sm-6">
 					<h1>
-						<!-- Masukkan Judul Halaman disini -->
+						<?= ucwords($title) ?>
 					</h1>
 				</div>
 			</div>
