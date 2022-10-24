@@ -22,11 +22,11 @@ echo $this->section('content');
 						<div class="card p-4">
 							<div class="row d-flex align-items-center">
 								<div class="col-4">
-									<ion-icon class="text-primary" name="log-in" style="font-size: 4rem;"></ion-icon>
+									<i class="bi bi-box-seam text-primary" style="font-size: 3rem;"></i>
 								</div>
 								<div class="col-8 align-end">
-									<div class="text-end text-muted">Pesanan Masuk</div>
-									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong>100</strong></div>
+									<div class="text-end text-muted">Siap Kirim</div>
+									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong>30</strong></div>
 								</div>
 							</div>
 						</div>
@@ -38,11 +38,11 @@ echo $this->section('content');
 						<div class="card p-4">
 							<div class="row d-flex align-items-center">
 								<div class="col-4">
-									<ion-icon class="text-primary" name="refresh" style="font-size: 3rem;"></ion-icon>
+									<i class="bi bi-truck text-primary" style="font-size: 3rem;"></i>
 								</div>
 								<div class="col-8 align-end">
-									<div class="text-end text-muted">Dalam Proses</div>
-									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong>58</strong></div>
+									<div class="text-end text-muted">Dalam Pengiriman</div>
+									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong>23</strong></div>
 								</div>
 							</div>
 						</div>
@@ -69,121 +69,67 @@ echo $this->section('content');
 				<div class="row">
 					<div class="col-12">
 						<div class="card p-4">
-							<h5 class="card-title">Area Chart</h5>
+							<h5 class="card-title">Pesanan</h5>
+							<div class="row">
+								<div class="col-3">
+									<div class="card p-4">
+										<div class="card-title">Pesanan 1</div>
+										<p>Jl. Delima Kemiling Bandarlampung</p>
+									</div>
 
-							<!-- Area Chart -->
-							<div id="areaChart"></div>
+								</div>
+								<div class="col-3">
+									<div class="card p-4">
+										<div class="card-title">Pesanan 2</div>
+										<p>Rejomulyo Lampung Selatan</p>
+									</div>
+								</div>
+								<div class="col-3">
+									<div class="card p-4">
+										<div class="card-title">Pesanan 3</div>
+										<p>Sukarame Bandarlampung</p>
+									</div>
+								</div>
+								<div class="col-3">
+									<div class="card p-4">
+										<div class="card-title">Pesanan 4</div>
+										<p>Natar Lampung Selatan</p>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-3">
+									<div class="card p-4">
+										<div class="card-title">Pesanan 5</div>
+										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat asperiores temporibus fugiat obcaecati a exercitationem nemo ullam sunt, dolores cupiditate ex sequi eius soluta nesciunt repellendus culpa! Doloremque, repellendus unde.</p>
+									</div>
 
-							<script>
-								document.addEventListener("DOMContentLoaded", () => {
-									const series = {
-										"pesananMasuk": {
-											"jumlah": [
-												8,
-												9,
-												5,
-												15,
-												13,
-												2
-											],
-											"dates": [
-												"2021-01-01",
-												"2021-01-02",
-												"2021-01-03",
-												"2021-01-04",
-												"2021-01-05",
-												"2021-01-06"
-											]
-										},
-										"pesananDiproses": {
-											"jumlah": [
-												5,
-												7,
-												1,
-												3,
-												4,
-												2
-											],
-											"dates": [
-												"2021-01-01",
-												"2021-01-02",
-												"2021-01-03",
-												"2021-01-04",
-												"2021-01-05",
-												"2021-01-06"
-											]
-										},
-										"pesananSelesai": {
-											"jumlah": [
-												10,
-												11,
-												15,
-												13,
-												17,
-												18
-
-											],
-											"dates": [
-												"2021-01-01",
-												"2021-01-02",
-												"2021-01-03",
-												"2021-01-04",
-												"2021-01-05",
-												"2021-01-06"
-
-											]
-										}
-									}
-									new ApexCharts(document.querySelector("#areaChart"), {
-										series: [{
-												name: "Pesanan Masuk",
-												data: series.pesananDiproses.jumlah
-											},
-											{
-												name: "Pesanan Diproses",
-												data: series.pesananMasuk.jumlah
-											},
-											{
-												name: "Pesanan Selesai",
-												data: series.pesananSelesai.jumlah
-											}
-										],
-										chart: {
-											type: 'area',
-											height: 350,
-											zoom: {
-												enabled: false
-											}
-										},
-										dataLabels: {
-											enabled: false
-										},
-										stroke: {
-											curve: 'straight'
-										},
-										subtitle: {
-											text: 'Transaksi Pesanan',
-											align: 'left'
-										},
-										labels: series.pesananDiproses.dates,
-										xaxis: {
-											type: 'datetime',
-										},
-										yaxis: {
-											opposite: true
-										},
-										legend: {
-											horizontalAlign: 'left'
-										}
-									}).render();
-								});
-							</script>
-							<!-- End Area Chart -->
+								</div>
+								<div class="col-3">
+									<div class="card p-4">
+										<div class="card-title">Pesanan 6</div>
+										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptatibus atque nemo blanditiis dolorem numquam sapiente, debitis, reprehenderit soluta officia deserunt velit at iure cum! Corporis, possimus illum. Officiis, nostrum!</p>
+									</div>
+								</div>
+								<div class="col-3">
+									<div class="card p-4">
+										<div class="card-title">Pesanan 7</div>
+										<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis architecto assumenda dolore odit doloremque consequuntur velit inventore, molestiae possimus cupiditate quisquam maiores in quod. Velit voluptatibus obcaecati officia ratione doloribus!</p>
+									</div>
+								</div>
+								<div class="col-3">
+									<div class="card p-4">
+										<div class="card-title">Pesanan 8</div>
+										<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur beatae nostrum rerum voluptates id et odio eveniet, ut deleniti blanditiis! Dolores, excepturi beatae adipisci odio tempora nostrum fuga? Molestiae, repudiandae!</p>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </section>
 <!-- /.content -->

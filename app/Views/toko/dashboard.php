@@ -67,7 +67,7 @@ echo $this->section('content');
 				</div>
 
 				<div class="row">
-					<div class="col-12">
+					<div class="col-8">
 						<div class="card p-4">
 							<h5 class="card-title">Area Chart</h5>
 
@@ -179,6 +179,44 @@ echo $this->section('content');
 								});
 							</script>
 							<!-- End Area Chart -->
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="card p-4">
+							<h5 class="card-title">Status Pesanan Terkini</h5>
+							<div class="row">
+								<div class="col-5">
+									<p>1 Januari 2022 13:35</p>
+								</div>
+								<div class="col-1">
+									<p>:</p>
+								</div>
+								<div class="col-6">
+									<p>Pesanan diterima dan siap di kirim</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-5">
+									<p>1 Januari 2022 14:23</p>
+								</div>
+								<div class="col-1">
+									<p>:</p>
+								</div>
+								<div class="col-6">
+									<p>Pesanan diterima hub daerah</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-5">
+									<p>1 Januari 2022 17:03</p>
+								</div>
+								<div class="col-1">
+									<p>:</p>
+								</div>
+								<div class="col-6">
+									<p>Pesanan diterima Pelanggan</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
