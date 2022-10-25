@@ -41,6 +41,7 @@ $routes->get('/detail', 'Gudang::detail_pesanan');
 
 
 
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
