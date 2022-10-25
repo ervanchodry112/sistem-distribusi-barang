@@ -48,9 +48,11 @@ class TabelPesanan extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id_pesanan');
-        $this->forge->addKey('id_toko', false, true);
-        $this->forge->addKey('id_supir', false, true);
-        $this->forge->addKey('id_status', false, true);
+
+        $this->forge->addKey('id_toko');
+        $this->forge->addKey('id_supir');
+        $this->forge->addKey('id_status');
+
         $this->forge->createTable('pesanan');
     }
 

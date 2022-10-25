@@ -15,7 +15,7 @@ class TabelProduk extends Migration
                 'constraint'        => 11,
                 'auto_increment'    => true,
             ],
-            'nama_product'  => [
+            'nama_produk'  => [
                 'type'              => 'VARCHAR',
                 'constraint'        => 255,
             ],
@@ -47,6 +47,7 @@ class TabelProduk extends Migration
                 'null'              => true,
             ],
         ]);
+
         $this->forge->addPrimaryKey('id_produk');
         $this->forge->createTable('produk');
     }
