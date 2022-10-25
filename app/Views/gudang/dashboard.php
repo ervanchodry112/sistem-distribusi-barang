@@ -132,7 +132,27 @@ echo $this->section('content');
 												"2021-01-06"
 
 											]
-										}
+										},
+										"produk": {
+											"jumlah": [
+												14,
+												16,
+												13,
+												12,
+												11,
+												17
+
+											],
+											"dates": [
+												"2021-01-01",
+												"2021-01-02",
+												"2021-01-03",
+												"2021-01-04",
+												"2021-01-05",
+												"2021-01-06"
+
+											]
+										},
 									}
 									new ApexCharts(document.querySelector("#areaChart"), {
 										series: [{
@@ -146,6 +166,10 @@ echo $this->section('content');
 											{
 												name: "Pesanan Selesai",
 												data: series.pesananSelesai.jumlah
+											},
+											{
+												name: "Jumlah Produk",
+												data: series.produk.jumlah
 											}
 										],
 										chart: {
