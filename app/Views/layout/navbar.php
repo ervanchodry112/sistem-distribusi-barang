@@ -174,10 +174,15 @@
 				<span>Profile</span>
 			</a>
 		</li>
+		<li class="nav-item">
+			<a class="nav-link " href="<?= base_url('logout') ?>">
+				<i class="bi bi-box-arrow-right"></i>
+				<span>Logout</span>
+			</a>
+		</li>
 
 
 	</ul>
-
 </aside>
 
 <main id="main" class="main">

@@ -10,6 +10,12 @@ class TabelListPesanan extends Migration
     {
         //Create Tabel List pesanan with id_list_pesanan, id_produk, jumlah_produk, and total_harga
         $this->forge->addField([
+            'id_list_pesanan'   => [
+                'type'              => 'INT',
+                'constraint'        => 11,
+                'unsigned'          => true,
+                'auto_increment'    => true,
+            ],
             'id_pesanan'   => [
                 'type'              => 'INT',
                 'constraint'        => 11,
@@ -41,8 +47,10 @@ class TabelListPesanan extends Migration
                 'null'              => true,
             ],
         ]);
-        $this->forge->addKey('id_produk');
-        $this->forge->addKey('id_pesanan');
+
+        $this->forge->addPrimaryKey('id_list_pesanan');
+        $this->forge->addKey('id_produk', false, true);
+        $this->forge->addKey('id_pesanan', false, true);
         $this->forge->createTable('list_pesanan');
     }
 

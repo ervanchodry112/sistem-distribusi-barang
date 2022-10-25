@@ -7,11 +7,28 @@ echo $this->section('content');
 	<h1>Detail Pesanan</h1>
 </div>
 
-<div class="card">
-	<div class="card-body pt-3">
+<div class="card px-2">
+	<div class="card-body pt-2">
 		<div class="tab-pane fade show active profile-overview" id="profile-overview">
-			<h5 class="card-title">About</h5>
-			<p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
+			<h5 class="card-title">Mas Toko</h5>
+			<div class="bg-info rounded border px-3 pt-2">
+				<table class="table table-borderless w-50 text-white">
+					<tbody>
+						<tr>
+							<td>Id Pesanan</td>
+							<td>: PS1</td>
+						</tr>
+						<tr>
+							<td>Total Tagihan</td>
+							<td>: Rp12000</td>
+						</tr>
+						<tr>
+							<td>Status</td>
+							<td>: Dikirim</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 
 			<h5 class="card-title">Profile Details</h5>
 

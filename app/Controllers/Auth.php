@@ -10,4 +10,12 @@ class Auth extends BaseController
     {
         //
     }
+
+    public function registrasi()
+    {
+        $data = [
+            'title' => 'Registrasi'
+        ];
+        return view('auth/data_toko', $data);
+    }
 }
