@@ -47,9 +47,10 @@ class TabelPesanan extends Migration
                 'null'              => true,
             ],
         ]);
-        $this->forge->addForeignKey('id_toko', 'toko', 'id_toko', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('id_supir', 'supir', 'id_supir', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('id_status', 'status', 'id_status', 'CASCADE', 'CASCADE');
+        $this->forge->addPrimaryKey('id_pesanan');
+        $this->forge->addKey('id_toko');
+        $this->forge->addKey('id_supir');
+        $this->forge->addKey('id_status');
         $this->forge->createTable('pesanan');
     }
 

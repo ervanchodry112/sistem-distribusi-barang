@@ -41,8 +41,8 @@ class TabelListPesanan extends Migration
                 'null'              => true,
             ],
         ]);
-        $this->forge->addForeignKey('id_produk', 'produk', 'id_produk', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('id_pesanan', 'pesanan', 'id_pesanan', 'CASCADE', 'CASCADE');
+        $this->forge->addKey('id_produk');
+        $this->forge->addKey('id_pesanan');
         $this->forge->createTable('list_pesanan');
     }
 
