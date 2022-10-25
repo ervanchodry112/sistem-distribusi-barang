@@ -11,24 +11,27 @@ class TabelProduk extends Migration
         $this->forge->addField([
             'id_produk'    => [
                 'type'              => 'INT',
+                'primary_key'       => true,
                 'constraint'        => 11,
-                'unsigned'          => true,
                 'auto_increment'    => true,
             ],
-            'nama_product'  => [
+            'nama_produk'  => [
                 'type'              => 'VARCHAR',
                 'constraint'        => 255,
             ],
             'harga'         => [
                 'type'              => 'INT',
+                'null'              => false,
                 'constraint'        => 12,
             ],
             'stok'          => [
                 'type'              => 'INT',
+                'null'              => true,
                 'constraint'        => 11,
             ],
             'slug'          => [
                 'type'              => 'VARCHAR',
+                'null'              => false,
                 'constraint'        => 255,
             ],
             'created_at'    => [
@@ -44,7 +47,8 @@ class TabelProduk extends Migration
                 'null'              => true,
             ],
         ]);
-        $this->forge->addKey('id_product', true);
+
+        $this->forge->addPrimaryKey('id_produk');
         $this->forge->createTable('produk');
     }
 
