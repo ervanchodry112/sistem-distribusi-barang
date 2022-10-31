@@ -57,5 +57,30 @@ class AddUsers extends Seeder
             'plat_nomor' => 'B 2562 XX',
             'id_users'   => 4,
         ];
+        $this->db->table('supir')->insert($supir);
+
+        $auth_group = [
+            [
+                'group_id'  => 1,
+                'user_id'   => 1,
+            ],
+            [
+                'group_id'  => 2,
+                'user_id'   => 2,
+            ],
+            [
+                'group_id'  => 3,
+                'user_id'   => 3,
+            ],
+            [
+                'group_id'  => 4,
+                'user_id'   => 4,
+            ],
+            [
+                'group_id'  => 5,
+                'user_id'   => 5,
+            ],
+        ];
+        $this->db->table('auth_groups_user')->insertBatch($auth_group);
     }
 }
