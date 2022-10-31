@@ -32,6 +32,11 @@ class TabelToko extends Migration
                 'type'              => 'VARCHAR',
                 'constraint'        => 255,
             ],
+            'id_users'      => [
+                'type'              => 'INT',
+                'constraint'        => 11,
+                'null'              => false,
+            ],
             'created_at'    => [
                 'type'              => 'DATETIME',
                 'null'              => true,
