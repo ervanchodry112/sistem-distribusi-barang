@@ -84,7 +84,7 @@
 			<li class="nav-heading">Gudang</li>
 
 			<li class="nav-item">
-				<a class="nav-link " href="<?= base_url('gudang/dashboard') ?>">
+				<a class="nav-link" href="<?= base_url('gudang/dashboard') ?>">
 					<i class="bi bi-grid"></i>
 					<span>Dashboard</span>
 				</a>
@@ -182,7 +182,7 @@
 		<li class="nav-heading">Account</li>
 
 		<li class="nav-item">
-			<a class="nav-link " href="<?= base_url('auth/profile') ?>">
+			<a class="nav-link" href="<?= base_url('auth/profile') ?>">
 				<i class="bi bi-person-fill"></i>
 				<span>Profile</span>
 			</a>
@@ -214,5 +214,11 @@
 		Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
 	</div>
 </footer>
+
+<script>
+	$(document).ready(function() {
+		$(".nav-link").removeClass("active");
+	});
+</script>
 <!-- End Sidebar-->
 <?= $this->endSection() ?>
