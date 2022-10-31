@@ -37,6 +37,12 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/admin', 'Gudang::index');
 $routes->get('/', 'LandingPage::index');
+$routes->get('/detail', 'Gudang::detail_pesanan');
+// $routes->get('assets/js/config.js', function () {
+// 	return redirect()->to(base_url('admin'));
+// });
+
+
 
 
 
