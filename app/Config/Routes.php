@@ -48,6 +48,7 @@ $routes->get('/gudang/reject/(:any)', "Gudang::reject/$1");
 
 
 
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

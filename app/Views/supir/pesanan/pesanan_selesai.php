@@ -28,62 +28,35 @@ echo $this->section('content');
 							<tr class="table">
 								<th scope="col">No</th>
 								<th scope="col">Action</th>
-								<th scope="col">Id</th>
-								<th scope="col">Jumlah</th>
-								<th scope="col">Total</th>
+								<th scope="col">Id_Pesanan</th>
 								<th scope="col">Nama Toko</th>
-								<th scope="col">Status Pesanan</th>
 								<th scope="col">Nama Kurir</th>
+								<th scope="col">Status Pesanan</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td scope="row">1</td>
-								<td style="text-align: center;">
-									<!-- detail button -->
-									<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan') ?>" role="button">
-										<ion-icon name="search-outline"></ion-icon>
-									</a>
-								</td>
-								<td>
-									<?= $p->id_pesanan ?></td>
-								<td><?= $p->jumlah ?></td>
-								<td><?= $p->total ?></td>
-								<td><?= $p->nama_toko ?></td>
-								<td><?= $p->nama_status ?></td>
+							<?php
+							$i = 1;
+							foreach ($selesai as $p) {
+							?>
+								<tr>
+									<td scope="row"><?= $i++ ?></td>
+									<td style="text-align: center;">
+										<!-- detail button -->
+										<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan/' . $p->id_pesanan) ?>" role="button">
+											<ion-icon name="eye-outline"></ion-icon>
+										</a>
+									</td>
+									<td><?= $p->id_pesanan ?></td>
+									<td><?= $p->nama_toko ?></td>
+									<td><?= $p->nama_supir ?></td>
+									<td><?= $p->nama_status ?></td>
 
 
-							</tr>
-							<tr>
-								<td scope="row">2</td>
-								<td style="text-align: center;">
-									<!-- detail button -->
-									<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan') ?>" role="button">
-										<ion-icon name="search-outline"></ion-icon>
-									</a>
-								</td>
-								<td>ID8</td>
-								<td>5</td>
-								<td>Rp. 50000</td>
-								<td>Mas Toko</td>
-								<td>Selesai</td>
-								<td>Mas Adi</td>
-							</tr>
-							<tr>
-								<td scope="row">3</td>
-								<td style="text-align: center;">
-									<!-- detail button -->
-									<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan') ?>" role="button">
-										<ion-icon name="search-outline"></ion-icon>
-									</a>
-								</td>
-								<td>ID9</td>
-								<td>5</td>
-								<td>Rp. 50000</td>
-								<td>Mba Toko</td>
-								<td>Selesai</td>
-								<td>Mas Azka</td>
-							</tr>
+								</tr>
+							<?php
+							}
+							?>
 						</tbody>
 					</table>
 				</div>
