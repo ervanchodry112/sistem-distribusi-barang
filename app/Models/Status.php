@@ -11,7 +11,7 @@ class Status extends Model
     protected $primaryKey       = 'id_status';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
-    protected $returnType       = 'array';
+    protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ['nama_status'];
