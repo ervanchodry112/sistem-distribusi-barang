@@ -50,4 +50,11 @@ class Supir extends BaseController
         ];
         return view('/supir/pesanan/detail_pesanan', $data);
     }
+
+    public function take_pesanan($id){
+        $data = [
+            'id_pesanan' => 
+        ];
+        $this->pesanModel
+    }
 }
