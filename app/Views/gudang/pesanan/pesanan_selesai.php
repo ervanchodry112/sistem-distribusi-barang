@@ -20,60 +20,34 @@ echo $this->section('content');
 						<tr class="table" style="text-align: center;">
 							<th scope="col">No</th>
 							<th scope="col">Action</th>
-							<th scope="col">Id</th>
-							<th scope="col">Jumlah</th>
-							<th scope="col">Total</th>
+							<th scope="col">Id Pesanan</th>														
 							<th scope="col">Nama Toko</th>
+							<th scope="col">Nama Supir</th>
 							<th scope="col">Status Pesanan</th>
-							<th scope="col">Nama Kurir</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td scope="row">1</td>
-							<td style="text-align: center;">
-								<!-- detail button -->
-								<a class="btn btn-info btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
-									<ion-icon name="search-outline"></ion-icon>
-								</a>
-							</td>
-							<td>ID7</td>
-							<td>10</td>
-							<td>Rp. 100000</td>
-							<td>Bang Toko</td>
-							<td>Selesai</td>
-							<td>Mas Alip</td>
-						</tr>
-						<tr>
-							<td scope="row">2</td>
-							<td style="text-align: center;">
-								<!-- detail button -->
-								<a class="btn btn-info btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
-									<ion-icon name="search-outline"></ion-icon>
-								</a>
-							</td>
-							<td>ID8</td>
-							<td>5</td>
-							<td>Rp. 50000</td>
-							<td>Mas Toko</td>
-							<td>Selesai</td>
-							<td>Mas Adi</td>
-						</tr>
-						<tr>
-							<td scope="row">3</td>
-							<td style="text-align: center;">
-								<!-- detail button -->
-								<a class="btn btn-info btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
-									<ion-icon name="search-outline"></ion-icon>
-								</a>
-							</td>
-							<td>ID9</td>
-							<td>5</td>
-							<td>Rp. 50000</td>
-							<td>Mba Toko</td>
-							<td>Selesai</td>
-							<td>Mas Azka</td>
-						</tr>
+					<?php
+						$i = 1;
+						foreach ($pesanan as $p) {
+						?>
+
+							<tr style="text-align: center;">
+								<td scope="row"><?= $i++ ?></td>
+								<td>									
+									<!-- detail button -->
+									<a class="btn btn-secondary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
+										<ion-icon name="eye-outline"></ion-icon>
+									</a>																		
+								</td>
+								<td><?= $p->id_pesanan ?></td>
+								<td><?= $p->nama_toko ?></td>
+								<td><?= $p->nama_supir ?></td>
+								<td><?= $p->status_pesanan ?></td>
+							</tr>
+						<?php
+						}
+						?>
 					</tbody>
 				</table>
 			</div>

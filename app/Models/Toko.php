@@ -11,7 +11,7 @@ class Toko extends Model
     protected $primaryKey       = 'id_toko';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
-    protected $returnType       = 'array';
+    protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ['nama_toko', 'alamat', 'pemilik', 'slug'];

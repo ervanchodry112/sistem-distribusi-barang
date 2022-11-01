@@ -24,7 +24,7 @@ class TabelSupir extends Migration
                 'type'              => 'VARCHAR',
                 'constraint'        => 255,
             ],
-            'id_supir'      => [
+            'id_users'      => [
                 'type'              => 'INT',
                 'constraint'        => 11,
                 'null'              => false,
@@ -46,8 +46,8 @@ class TabelSupir extends Migration
         $this->forge->createTable('supir');
     }
 
-    public function down()
-    {
-        $this->forge->dropTable('supir');
-    }
+	public function down()
+	{
+		$this->forge->dropTable('supir');
+	}
 }
