@@ -45,12 +45,14 @@ echo $this->section('content');
 										<ion-icon name="search-outline"></ion-icon>
 									</a>
 								</td>
-								<td>ID7</td>
-								<td>10</td>
-								<td>Rp. 100000</td>
-								<td>Bang Toko</td>
-								<td>Selesai</td>
-								<td>Mas Alip</td>
+								<td>
+									<?= $p->id_pesanan ?></td>
+								<td><?= $p->jumlah ?></td>
+								<td><?= $p->total ?></td>
+								<td><?= $p->nama_toko ?></td>
+								<td><?= $p->nama_status ?></td>
+
+
 							</tr>
 							<tr>
 								<td scope="row">2</td>
