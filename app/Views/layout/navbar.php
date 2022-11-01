@@ -43,6 +43,11 @@
 						</a>
 					</li>
 					<li>
+						<a href="<?= base_url('gudang/dalam_pengiriman') ?>">
+							<i class="bi bi-circle"></i><span>Pesanan Dikirim</span>
+						</a>
+					</li>
+					<li>
 						<a href="<?= base_url('gudang/pesanan_selesai') ?>">
 							<i class="bi bi-circle"></i><span>Pesanan Selesai</span>
 						</a>

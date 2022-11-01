@@ -46,8 +46,8 @@ class TabelSupir extends Migration
         $this->forge->createTable('supir');
     }
 
-    public function down()
-    {
-        $this->forge->dropTable('supir');
-    }
+	public function down()
+	{
+		$this->forge->dropTable('supir');
+	}
 }
