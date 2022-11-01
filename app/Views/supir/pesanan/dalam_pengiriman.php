@@ -51,12 +51,11 @@ echo $this->section('content');
 									<a class="btn btn-success btn-sm" href="#" role="button">
 										<ion-icon name="checkmark-outline"></ion-icon>
 									</a>
-								</td>
-								<td>ID4</td>
-								<td>10</td>
-								<td>Bang Toko</td>
-								<td>Dikemas</td>
-								<td>Kemiling</td>
+								<td><?= $p->id_pesanan ?></td>
+								<td><?= $p->nama_toko ?></td>
+								<td><?= $p->alamat ?></td>
+								<td><?= $p->nama_toko ?></td>
+								<td><?= $p->nama_status ?></td>
 							</tr>
 							<tr>
 								<td scope="row">2</td>
