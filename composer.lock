@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9629cffb1542912529075a7661cbc6d5",
+    "content-hash": "b555f7eeb866a7a588df0c0fa9e99e67",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -2228,6 +2228,7 @@
         },
         {
             "name": "symfony/deprecation-contracts",
+
             "version": "v3.1.1",
             "source": {
                 "type": "git",
@@ -2246,6 +2247,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
+
                     "dev-main": "3.1-dev"
                 },
                 "thanks": {
@@ -2275,7 +2277,9 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
+
                 "source": "https://github.com/symfony/deprecation-contracts/tree/v3.1.1"
+
             },
             "funding": [
                 {
@@ -2291,6 +2295,7 @@
                     "type": "tidelift"
                 }
             ],
+
             "time": "2022-02-25T11:15:52+00:00"
         },
         {
@@ -2345,9 +2350,9 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": [],
-    "prefer-stable": true,
+    "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.4 || ^8.0"
