@@ -38,9 +38,10 @@ $routes->setAutoRoute(true);
 $routes->get('/admin', 'Gudang::index');
 $routes->get('/', 'LandingPage::index');
 $routes->get('/detail', 'Gudang::detail_pesanan');
-// $routes->get('assets/js/config.js', function () {
-// 	return redirect()->to(base_url('admin'));
-// });
+$routes->get('assets/js/config.js', function () {
+	return redirect()->to(base_url('admin'));
+});
+$routes->get('/gudang/proses/(:any)', "Gudang::proses/$1");
 
 
 
