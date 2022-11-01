@@ -42,6 +42,7 @@ $routes->get('assets/js/config.js', function () {
 	return redirect()->to(base_url('admin'));
 });
 $routes->get('/gudang/proses/(:any)', "Gudang::proses/$1");
+$routes->get('/gudang/reject/(:any)', "Gudang::reject/$1");
 
 
 

@@ -45,7 +45,7 @@ echo $this->section('content');
 										<ion-icon name="eye-outline"></ion-icon>
 									</a>
 									<!-- reject button -->
-									<a class="btn btn-danger btn-sm" href="#" role="button">
+									<a class="btn btn-danger btn-sm" href="<?= base_url('/gudang/reject/' . $p->id_pesanan) ?>" role="button" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')">
 										<i class="bi bi-trash3"></i>
 									</a>
 									<!-- print button -->
