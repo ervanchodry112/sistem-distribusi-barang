@@ -76,4 +76,11 @@ class Pesanan extends Model
 			->join('status', 'pesanan.id_status=status.id_status')
 			->where('pesanan.id_status', 4)->get()->getResultObject();
 	}
+
+    public function get_pesanan_toko()
+    {
+        return $this->db->table('pesanan')
+			->join('status', 'pesanan.id_status=status.id_status')
+            ->get()->getResultObject();
+    }
 }
