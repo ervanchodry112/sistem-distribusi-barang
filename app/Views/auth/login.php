@@ -6,7 +6,6 @@ echo $this->section('navbar');
 <!-- Content Wrapper. Contains page content -->
 <main class="d-flex flex-column align-items-center justify-content-center py-4" style="height: 100vh;">
     <div class="form-signin m-auto border rounded shadow p-5" style="width: 35%;">
-
         <form class="needs-validation text-center" action="<?= url_to('login') ?>" method="post">
             <img class="mb-4" src="<?= base_url('/assets/img/icon.png') ?>" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Sign In</h1>
@@ -25,6 +24,7 @@ echo $this->section('navbar');
                     <?= session('errors.password') ?>
                 </div>
             </div>
+            <?= view('Myth\Auth\Views\_message_block') ?>
             <button class="w-100 btn btn-primary mb-2" type="submit"><?= lang('Auth.loginAction') ?></button>
             <div class="col-12">
                 <p class="small mb-0">Don't have account? <a href="<?= base_url('register') ?>">Create an account</a></p>

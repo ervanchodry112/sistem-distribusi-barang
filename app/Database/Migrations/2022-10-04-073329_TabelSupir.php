@@ -24,7 +24,7 @@ class TabelSupir extends Migration
                 'type'              => 'VARCHAR',
                 'constraint'        => 255,
             ],
-            'id_supir'      => [
+            'id_users'      => [
                 'type'              => 'INT',
                 'constraint'        => 11,
                 'null'              => false,
