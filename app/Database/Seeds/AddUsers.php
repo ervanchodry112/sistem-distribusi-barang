@@ -48,13 +48,13 @@ class AddUsers extends Seeder
 			'id_users'  => 3,
 		];
 		$this->db->table('toko')->insert($toko);
+        $supir = [
+            'id_supir'   => 1,
+            'nama_supir' => 'Burhanudin',
+            'plat_nomor' => 'B 2562 XX',
+            'id_users'   => 4,
+        ];
+        $this->db->table('supir')->insert($supir);
+    }
 
-		$supir = [
-			'id_supir'   => 1,
-			'nama_supir' => 'Burhanudin',
-			'plat_nomor' => 'B 2562 XX',
-			'id_users'   => 4,
-		];
-		$this->db->table('supir')->insert($supir);
-	}
 }
