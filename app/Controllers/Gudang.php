@@ -22,8 +22,21 @@ class Gudang extends BaseController
 
 	public function dashboard()
 	{
+		$masuk = $this->pesanModel->where('id_status', 1)->countAllResults();
+		$proses = $this->pesanModel->where('id_status', 2)->countAllResults();
+		$selesai = $this->pesanModel->where('id_status', 3)->countAllResults();
+		$tanggalMasuk = $this->pesanModel->selectCount('id_pesanan')->select('tanggal')->where('id_status', 1)->groupBy('tanggal')->findAll();
+		$tanggalProses = $this->pesanModel->selectCount('id_pesanan')->select('tanggal')->where('id_status', 2)->groupBy('tanggal')->findAll();
+		$tanggalSelesai = $this->pesanModel->selectCount('id_pesanan')->select('tanggal')->where('id_status', 3)->groupBy('tanggal')->findAll();
+		// dd($tanggal);
 		$data = [
-			'title' => 'Dashboard'
+			'title' => 'Dashboard',
+			'pesanan_masuk' => $masuk,
+			'pesanan_diproses' => $proses,
+			'pesanan_selesai' => $selesai,
+			'tanggal_masuk' => $tanggalMasuk,
+			'tanggal_diproses' => $tanggalProses,
+			'tanggal_selesai' => $tanggalSelesai,
 		];
 		return view('gudang/dashboard', $data);
 	}
