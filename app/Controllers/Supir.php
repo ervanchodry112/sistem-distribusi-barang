@@ -58,6 +58,15 @@ class Supir extends BaseController
         return view('/supir/pesanan/pesanan_selesai', $data);
     }
 
+    public function cancel_pesanan($id)
+    {
+        $data = [
+            'id_pesanan' => $id,
+            'id_status' => 2,
+        ];
+        $this->pesanModel->save($data);
+    }
+
     public function detail_pesanan()
     {
         $data = [

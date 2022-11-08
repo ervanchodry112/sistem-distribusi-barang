@@ -39,6 +39,7 @@ echo $this->section('content');
 							$i = 1;
 							foreach ($pengiriman as $p) {
 							?>
+
 								<tr>
 									<td scope="row"><?= $i++ ?></td>
 									<td><?= $p->id_pesanan ?></td>
@@ -56,12 +57,15 @@ echo $this->section('content');
 										</a>
 										<!-- success button -->
 										<a class="btn btn-success btn-sm" href="<?= base_url('supir/finish_pesanan/' . $p->id_pesanan) ?>" role="button">
+
 											<ion-icon name="checkmark-outline"></ion-icon>
 										</a>
 								</tr>
+
 							<?php
 							}
 							?>
+
 						</tbody>
 					</table>
 				</div>
