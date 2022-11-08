@@ -36,71 +36,30 @@ echo $this->section('content');
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td scope="row">1</td>
-								<td style="text-align: center;">
-									<!-- detail button -->
-									<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan') ?>" role="button">
-										<ion-icon name="search-outline"></ion-icon>
-									</a>
-									<!-- reject button -->
-									<a class="btn btn-danger btn-sm" href="#" role="button">
-										<ion-icon name="close-outline"></ion-icon>
-									</a>
-									<!-- success button -->
-									<a class="btn btn-success btn-sm" href="#" role="button">
-										<ion-icon name="checkmark-outline"></ion-icon>
-									</a>
-								<td><?= $p->id_pesanan ?></td>
-								<td><?= $p->nama_toko ?></td>
-								<td><?= $p->alamat ?></td>
-								<td><?= $p->nama_toko ?></td>
-								<td><?= $p->nama_status ?></td>
-							</tr>
-							<tr>
-								<td scope="row">2</td>
-								<td style="text-align: center;">
-									<!-- detail button -->
-									<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan') ?>" role="button">
-										<ion-icon name="search-outline"></ion-icon>
-									</a>
-									<!-- reject button -->
-									<a class="btn btn-danger btn-sm" href="#" role="button">
-										<ion-icon name="close-outline"></ion-icon>
-									</a>
-									<!-- success button -->
-									<a class="btn btn-success btn-sm" href="#" role="button">
-										<ion-icon name="checkmark-outline"></ion-icon>
-									</a>
-								</td>
-								<td>ID2</td>
-								<td>5</td>
-								<td>Mas Toko</td>
-								<td>Dikirim</td>
-								<td>Tengah Trikora</td>
-							</tr>
-							<tr>
-								<td scope="row">3</td>
-								<td style="text-align: center;">
-									<!-- detail button -->
-									<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan') ?>" role="button">
-										<ion-icon name="search-outline"></ion-icon>
-									</a>
-									<!-- reject button -->
-									<a class="btn btn-danger btn-sm" href="#" role="button">
-										<ion-icon name="close-outline"></ion-icon>
-									</a>
-									<!-- success button -->
-									<a class="btn btn-success btn-sm" href="#" role="button">
-										<ion-icon name="checkmark-outline"></ion-icon>
-									</a>
-								</td>
-								<td>ID3</td>
-								<td>5</td>
-								<td>Mba Toko</td>
-								<td>Diterima</td>
-								<td>Sukasepi</td>
-							</tr>
+							<?php $i = 1;
+							foreach ($pengiriman as  $dalam_pengiriman => $pengiriman) : ?>
+								<tr>
+									<td scope="row"><?= $i++ ?></td>
+									<td style="text-align: center;">
+										<!-- detail button -->
+										<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan' . $pengiriman->id) ?>" role="button">
+											<ion-icon name="search-outline"></ion-icon>
+										</a>
+										<!-- reject button -->
+										<a class="btn btn-danger btn-sm" href="<?= base_url('supir/cancel_pesanan/' . $pengiriman->id) ?>" role="button">
+											<ion-icon name="close-outline"></ion-icon>
+										</a>
+										<!-- success button -->
+										<a class="btn btn-success btn-sm" href="#" role="button">
+											<ion-icon name="checkmark-outline"></ion-icon>
+										</a>
+									<td><?= $p->id_pesanan ?></td>
+									<td><?= $p->nama_toko ?></td>
+									<td><?= $p->alamat ?></td>
+									<td><?= $p->nama_toko ?></td>
+									<td><?= $p->nama_status ?></td>
+								</tr>
+							<?php endforeach; ?>
 						</tbody>
 					</table>
 				</div>
