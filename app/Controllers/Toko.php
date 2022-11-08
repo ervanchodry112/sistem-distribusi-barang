@@ -11,6 +11,7 @@ class Toko extends BaseController
     public function __construct()
 	{
 		$this->pesanModel = new \App\Models\Pesanan();
+		$this->produkModel = new \App\Models\Produk();
 	}
     
     public function index()
@@ -40,9 +41,17 @@ class Toko extends BaseController
 
     public function create_pesanan()
     {
+        $produk = $this->produkModel->findAll();
         $data = [
-            'title' => 'Tambah Pesanan'
+            'title' => 'Tambah Pesanan',
+            'produk' => $produk,
         ];
         return view('toko/tambah_pesanan',$data);
+    }
+
+    public function delete_pesanan($id)
+    {
+        $this->pesanModel->delete($id);
+        return redirect()->to(base_url('toko/pesanan'));
     }
 }
