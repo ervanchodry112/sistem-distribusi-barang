@@ -93,6 +93,7 @@ class Auth extends BaseController
     {
         $newUser = $this->user->join('auth_groups_users', 'auth_groups_users.user_id=users.id')
             ->join('auth_groups', 'auth_groups.id=auth_groups_users.group_id')
+            ->select('users.id, users.email, users.username, auth_groups.name,')
             ->where('users.active', 0)->findAll();
         $data = [
             'title' => 'Akun Baru',
@@ -124,5 +125,12 @@ class Auth extends BaseController
         ];
 
         return view('auth/account', $data);
+    }
+
+    public function delete($id)
+    {
+        $this->user->delete($id);
+
+        return redirect()->to(base_url('auth/account'))->with('message', 'Akun Berhasil Dihapus');
     }
 }

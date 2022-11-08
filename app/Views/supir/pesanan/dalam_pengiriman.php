@@ -27,11 +27,11 @@ echo $this->section('content');
 						<thead>
 							<tr class="table">
 								<th scope="col">No</th>
-								<th scope="col">Action</th>
 								<th scope="col">Id Pesanan</th>
 								<th scope="col">Nama Toko</th>
+								<th scope="col">Pemilik</th>
 								<th scope="col">Alamat</th>
-								<th scope="col">Status Pesanan</th>
+								<th scope="col">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -41,6 +41,10 @@ echo $this->section('content');
 							?>
 								<tr>
 									<td scope="row"><?= $i++ ?></td>
+									<td><?= $p->id_pesanan ?></td>
+									<td><?= $p->nama_toko ?></td>
+									<td><?= $p->pemilik ?></td>
+									<td><?= $p->alamat ?></td>
 									<td style="text-align: center;">
 										<!-- detail button -->
 										<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan') ?>" role="button">
@@ -54,11 +58,6 @@ echo $this->section('content');
 										<a class="btn btn-success btn-sm" href="<?= base_url('supir/finish_pesanan/' . $p->id_pesanan) ?>" role="button">
 											<ion-icon name="checkmark-outline"></ion-icon>
 										</a>
-									<td><?= $p->id_pesanan ?></td>
-									<td><?= $p->nama_toko ?></td>
-									<td><?= $p->alamat ?></td>
-									<td><?= $p->nama_toko ?></td>
-									<td><?= $p->nama_status ?></td>
 								</tr>
 							<?php
 							}

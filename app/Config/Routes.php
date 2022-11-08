@@ -45,6 +45,7 @@ $routes->get('/gudang/proses/(:any)', "Gudang::proses/$1");
 $routes->get('/gudang/reject/(:any)', "Gudang::reject/$1");
 $routes->get('/auth/supir', "Auth::supir");
 $routes->get('/auth/toko', "Auth::toko");
+$routes->get('/auth/activate/(:any)', "Auth::activate/$1");
 
 
 

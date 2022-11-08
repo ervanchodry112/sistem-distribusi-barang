@@ -87,6 +87,16 @@ class Supir extends BaseController
         return redirect()->to('supir/dalam_pengiriman');
     }
 
+    public function cancel_pesanan($id)
+    {
+        $data = [
+            'id_pesanan' => $id,
+            'id_status' => 2,
+        ];
+        $this->pesanModel->save($data);
+        return redirect()->to('supir/dalam_pengiriman');
+    }
+
     public function create()
     {
 
