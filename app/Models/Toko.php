@@ -14,7 +14,7 @@ class Toko extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_toko', 'alamat', 'pemilik', 'slug'];
+    protected $allowedFields    = ['nama_toko', 'alamat', 'pemilik', 'slug', 'id_users'];
 
     // Dates
     protected $useTimestamps = true;

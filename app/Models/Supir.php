@@ -14,7 +14,7 @@ class Supir extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_supir', 'plat_nomor'];
+    protected $allowedFields    = ['nama_supir', 'plat_nomor', 'id_users'];
 
     // Dates
     protected $useTimestamps = true;
