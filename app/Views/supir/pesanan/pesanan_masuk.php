@@ -11,7 +11,7 @@ echo $this->section('content');
 			<div class="row mb-2">
 				<div class="col-sm-6">
 					<h1>
-						<!-- Masukkan Judul Halaman disini -->
+						<?= ucwords($title) ?>
 					</h1>
 				</div>
 			</div>
@@ -31,7 +31,7 @@ echo $this->section('content');
 								<th scope="col">Id Pesanan</th>
 								<th scope="col">Nama Toko</th>
 								<th scope="col">Alamat</th>
-								<th scope="col">Nama Status</th>
+								<th scope="col">Status</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -41,7 +41,7 @@ echo $this->section('content');
 									<td scope="row"><?= $i++ ?></td>
 									<td>
 										<!-- prosses button -->
-										<a class="btn btn-success btn-sm" href="" role="button">
+										<a class="btn btn-success btn-sm" href="<?= base_url('supir/take_pesanan/' . $p->id_pesanan) ?>" role="button">
 											<ion-icon name="cube-outline"></ion-icon>
 										</a>
 										<!-- detail button -->
@@ -52,54 +52,11 @@ echo $this->section('content');
 									<td><?= $p->id_pesanan ?></td>
 									<td><?= $p->nama_toko ?></td>
 									<td><?= $p->alamat ?></td>
-									<td><?= $p->nama_toko ?></td>
 									<td><?= $p->nama_status ?></td>
-
 								</tr>
 							<?php
 							}
 							?>
-							<tr>
-								<td scope="row">2</td>
-								<td>
-									<!-- prosses button -->
-									<a class="btn btn-success btn-sm" href="" role="button">
-										<ion-icon name="cube-outline"></ion-icon>
-									</a>
-									<!-- detail button -->
-									<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan') ?>" role="button">
-										<ion-icon name="search-outline"></ion-icon>
-									</a>
-								</td>
-								<td>ID2</td>
-								<td>Pepsoden</td>
-								<td>5</td>
-								<td>Rp. 12.000</td>
-								<td>Rp. 60.000</td>
-								<td>Mas Toko</td>
-								<td>Tengah Trikora</td>
-
-							</tr>
-							<tr>
-								<td scope="row">3</td>
-								<td>
-									<!-- prosses button -->
-									<a class="btn btn-success btn-sm" href="" role="button">
-										<ion-icon name="cube-outline"></ion-icon>
-									</a>
-									<!-- detail button -->
-									<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan') ?>" role="button">
-										<ion-icon name="search-outline"></ion-icon>
-									</a>
-								</td>
-								<td>ID3</td>
-								<td>Ciptadent</td>
-								<td>5</td>
-								<td>Rp. 12.000</td>
-								<td>Rp. 60.000</td>
-								<td>Mba Toko</td>
-								<td>Sukasepi</td>
-							</tr>
 						</tbody>
 					</table>
 				</div>

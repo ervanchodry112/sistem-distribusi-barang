@@ -13,6 +13,7 @@ class Supir extends BaseController
     {
         $this->pesanModel = new Pesanan();
     }
+
     public function index()
     {
         return redirect()->to('/supir/dashboard');
@@ -28,7 +29,7 @@ class Supir extends BaseController
 
     public function pesanan_masuk()
     {
-        $pesanan = $this->pesanModel->where('id_status', 2)->findAll();
+        $pesanan = $this->pesanModel->get_dalam_proses();
         $data = [
             'title' => 'Pesanan Masuk',
             'pesanan' => $pesanan
@@ -38,7 +39,7 @@ class Supir extends BaseController
 
     public function dalam_pengiriman()
     {
-        $pengiriman = $this->pesanModel->where('id_status', 2)->findAll();
+        $pengiriman = $this->pesanModel->get_dalam_pengiriman();
         $data = [
             'title' => 'Pesanan Dalam Pengiriman',
             'pengiriman' => $pengiriman
@@ -48,7 +49,7 @@ class Supir extends BaseController
 
     public function pesanan_selesai()
     {
-        $selesai = $this->pesanModel->where('id_status', 2)->findAll();
+        $selesai = $this->pesanModel->get_pesanan_selesai();
         $data = [
             'title' => 'Pesanan Selesai',
             'selesai' => $selesai
@@ -73,6 +74,28 @@ class Supir extends BaseController
         ];
         return view('/supir/pesanan/detail_pesanan', $data);
     }
+
+    public function take_pesanan($id)
+    {
+        $data = [
+            'id_pesanan' => $id,
+            'id_status' => 3,
+            'id_supir' => user_id(),
+        ];
+        $this->pesanModel->save($data);
+        return redirect()->to('supir/pesanan_masuk');
+    }
+
+    public function finish_pesanan($id)
+    {
+        $data = [
+            'id_pesanan' => $id,
+            'id_status' => 4,
+        ];
+        $this->pesanModel->save($data);
+        return redirect()->to('supir/dalam_pengiriman');
+    }
+
     public function create()
     {
 
