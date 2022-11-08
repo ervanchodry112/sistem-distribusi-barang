@@ -1,47 +1,37 @@
 <?php
 echo $this->extend('layout/navbar');
-
 echo $this->section('content');
 ?>
 
-<main id="main" class="main">
-	<div class="pagetitle">
-		<h1><?= $title ?></h1>
-		<nav>
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item">User</li>
-				<li class="breadcrumb-item active">Create</li>
-			</ol>
-		</nav>
+<div class="p-2">
+	<div class="mb-3">
+		<button onclick="add_field()" class="btn btn-primary">Tambah</button>
 	</div>
-	<!-- End Page Title -->
-
-	<section class="section dashboard">
-		<div class="row">
-			<div class="card p-3">
-				<form action="<?= base_url('dashboard/add_user') ?>" method="POST">
-					<div class="p-4 row">
-						<div class="col-12">
-							<div class="form-gro    up">
-								<label for="nama">Nama</label>
-								<input type="text" name="nama" class="form-control" id="nama">
-							</div>
-							<div class="form-group">
-								<label for="email">Email</label>
-								<input type="text" name="email" class="form-control" id="email">
-							</div>
-							<div class="form-group">
-								<label for="balance">Balance</label>
-								<input type="text" name="balance" class="form-control" id="balance">
-							</div>
-							<button type="submit" class="btn btn-primary mt-3">Submit</button>
-						</div>
-					</div>
-				</form>
-			</div>
+	<form id="form" action="/store" method="post">
+		<div class="mb-3">
+			<label for="produk" class="form-label">Produk</label>
+			<input type="text" name="text_field[]" class="form-control">
 		</div>
-	</section>
-</main>
-<!-- End #main -->
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+
+	<script>
+		function add_field(){
+			var x = document.getElementById("form");
+			// create an input field to insert
+			var new_field = document.createElement("input");
+			// set input field data type to text
+			new_field.setAttribute("type", "text");
+			// set input field name 
+			new_field.setAttribute("name", "text_field[]");
+			// select last position to insert element before it
+			new_field.setAttribute("class", "form-control mb-3");
+			var pos = x.childElementCount;
+
+			// insert element
+			x.insertBefore(new_field, x.childNodes[pos]);
+		}
+	</script>
+</div>
 
 <?= $this->endSection() ?>

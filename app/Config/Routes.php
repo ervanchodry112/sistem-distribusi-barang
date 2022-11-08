@@ -38,6 +38,7 @@ $routes->setAutoRoute(true);
 $routes->get('/admin', 'Gudang::index');
 $routes->get('/', 'LandingPage::index');
 $routes->get('/detail', 'Gudang::detail_pesanan');
+$routes->delete('/delete/(:num)', 'Toko::delete_pesanan/$1');
 $routes->get('assets/js/config.js', function () {
 	return redirect()->to(base_url('admin'));
 });
