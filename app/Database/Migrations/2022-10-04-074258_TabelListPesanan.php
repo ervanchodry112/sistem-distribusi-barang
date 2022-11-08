@@ -50,7 +50,7 @@ class TabelListPesanan extends Migration
 
         $this->forge->addPrimaryKey('id_list_pesanan');
         $this->forge->addKey('id_produk', false, true);
-        $this->forge->addKey('id_pesanan', false, true);
+        $this->forge->addKey('id_pesanan', false, false);
         $this->forge->createTable('list_pesanan');
     }
 

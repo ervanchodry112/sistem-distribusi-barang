@@ -36,8 +36,8 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [
-            'honeypot',
-            'login',
+            // 'honeypot',
+            // 'login',
         ],
         'after' => [
             'toolbar',
@@ -70,5 +70,7 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [];
+    public $filters = [
+        'login' => ['before' => ['admin/*', 'gudang/*', 'supir/*', 'toko/*',],],
+    ];
 }
