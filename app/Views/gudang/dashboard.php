@@ -26,7 +26,7 @@ echo $this->section('content');
 								</div>
 								<div class="col-8 align-end">
 									<div class="text-end text-muted">Pesanan Masuk</div>
-									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong>100</strong></div>
+									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong><?= $pesanan_masuk ?></strong></div>
 								</div>
 							</div>
 						</div>
@@ -42,7 +42,7 @@ echo $this->section('content');
 								</div>
 								<div class="col-8 align-end">
 									<div class="text-end text-muted">Dalam Proses</div>
-									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong>58</strong></div>
+									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong><?= $pesanan_diproses ?></strong></div>
 								</div>
 							</div>
 						</div>
@@ -58,7 +58,7 @@ echo $this->section('content');
 								</div>
 								<div class="col-8 align-end">
 									<div class="text-end text-muted">Pesanan Selesai</div>
-									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong>12</strong></div>
+									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong><?= $pesanan_selesai ?></strong></div>
 								</div>
 							</div>
 						</div>
@@ -75,93 +75,77 @@ echo $this->section('content');
 							<div id="areaChart"></div>
 
 							<script>
+								console.log(
+									"<?php
+										foreach ($tanggal_masuk as $tg) {
+											echo "\'" . $tg->tanggal . "\'";
+											echo ',';
+										} ?>"
+								)
+							</script>
+
+							<script>
 								document.addEventListener("DOMContentLoaded", () => {
 									const series = {
 										"pesananMasuk": {
 											"jumlah": [
-												8,
-												9,
-												5,
-												15,
-												13,
-												2
+												<?php
+												foreach ($tanggal_masuk as $tg) {
+													echo "\'" . $tg->id_pesanan . "\'";
+													echo ',';
+												} ?>
 											],
 											"dates": [
-												"2021-01-01",
-												"2021-01-02",
-												"2021-01-03",
-												"2021-01-04",
-												"2021-01-05",
-												"2021-01-06"
+												"<?php
+													foreach ($tanggal_masuk as $tg) {
+														echo "\'" . $tg->tanggal . "\'";
+														echo ',';
+													} ?>"
 											]
 										},
 										"pesananDiproses": {
 											"jumlah": [
-												5,
-												7,
 												1,
-												3,
-												4,
-												2
+												<?php
+												foreach ($tanggal_diproses as $tg) {
+													echo "\'" . $tg->id_pesanan . "\'";
+													echo ',';
+												} ?>
 											],
 											"dates": [
-												"2021-01-01",
-												"2021-01-02",
-												"2021-01-03",
-												"2021-01-04",
-												"2021-01-05",
-												"2021-01-06"
+												'2022-10-01',
+												"<?php
+													foreach ($tanggal_diproses as $tg) {
+														echo "\'" . $tg->tanggal . "\'";
+														echo ',';
+													} ?>"
 											]
 										},
 										"pesananSelesai": {
 											"jumlah": [
-												10,
-												11,
-												15,
-												13,
-												17,
-												18
-
+												<?php
+												foreach ($tanggal_selesai as $tg) {
+													echo "\'" . $tg->id_pesanan . "\'";
+													echo ',';
+												} ?>
 											],
 											"dates": [
-												"2021-01-01",
-												"2021-01-02",
-												"2021-01-03",
-												"2021-01-04",
-												"2021-01-05",
-												"2021-01-06"
-
-											]
-										},
-										"produk": {
-											"jumlah": [
-												14,
-												16,
-												13,
-												12,
-												11,
-												17
-
-											],
-											"dates": [
-												"2021-01-01",
-												"2021-01-02",
-												"2021-01-03",
-												"2021-01-04",
-												"2021-01-05",
-												"2021-01-06"
-
+												"<?php
+													foreach ($tanggal_selesai as $tg) {
+														echo "\'" . $tg->tanggal . "\'";
+														echo ',';
+													} ?>"
 											]
 										},
 									}
 									new ApexCharts(document.querySelector("#areaChart"), {
 										series: [{
 												name: "Pesanan Masuk",
-												data: series.pesananDiproses.jumlah
+												data: series.pesananMasuk.jumlah
 											},
 											{
 												name: "Pesanan Diproses",
-												data: series.pesananMasuk.jumlah
+												data: series.pesananDiproses.jumlah
 											},
 											{
 												name: "Pesanan Selesai",
