@@ -3,10 +3,26 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Supir;
+use App\Models\Toko;
 use App\Models\User;
+use Config\View;
+
+// use Myth\Auth\Models\UserModel;
 
 class Auth extends BaseController
 {
+    protected $supir;
+    protected $toko;
+    protected $user;
+
+    public function __construct()
+    {
+        $this->supir = new Supir();
+        $this->toko = new Toko();
+        $this->user = new User();
+    }
+
     public function index()
     {
         //
@@ -20,40 +36,93 @@ class Auth extends BaseController
         return view('auth/data_toko', $data);
     }
 
-    public function attemptRegist()
+    public function supir()
     {
+        $user = new User();
+        $userData = $user->selectMax('id')->findAll();
+        // dd($userData);
+        if (!session('message')) {
+            return redirect()->to(base_url('login'));
+        }
 
-        $users = new User();
-
-        // Validate basics first since some password rules rely on these fields
-        $rules = config('Validation')->registrationRules ?? [
-            'username' => 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username]',
-            'email'    => 'required|valid_email|is_unique[users.email]',
+        $data = [
+            'title' => 'Registrasi Supir',
+            'id_user'   => $userData[0],
         ];
 
-        if (!$this->validate($rules)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        return view('auth/daftar_supir', $data);
+    }
+
+    public function attempt_supir()
+    {
+        $input = $this->request->getVar();
+        // dd($input);
+        $this->supir->insert($input);
+
+        return redirect()->to(base_url('login'))->with('message', 'Registrasi Berhasil');
+    }
+
+    public function toko()
+    {
+        $user = new User();
+        $userData = $user->selectMax('id')->findAll();
+        // dd($userData);
+        if (!session('message')) {
+            return redirect()->to(base_url('login'));
         }
 
-        // Validate passwords since they can only be validated properly here
-        $rules = [
-            'password'     => 'required',
-            'pass_confirm' => 'required|matches[password]',
+        $data = [
+            'title' => 'Registrasi Toko',
+            'id_user'   => $userData[0],
         ];
 
-        if (!$this->validate($rules)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-        }
+        return view('auth/daftar_toko', $data);
+    }
 
-        // Save the user
-        $allowedPostFields = array_merge(['password'], $this->config->validFields, $this->config->personalFields);
-        $user              = new User($this->request->getPost($allowedPostFields));
+    public function attempt_toko()
+    {
+        $input = $this->request->getVar();
+        $input['slug'] = url_title($this->request->getVar('nama_toko'), '-', true);
+        // dd($input);
+        $this->toko->insert($input);
 
-        if (!$users->save($user)) {
-            return redirect()->back()->withInput()->with('errors', $users->errors());
-        }
+        return redirect()->to(base_url('login'))->with('message', 'Registrasi Berhasil');
+    }
 
-        // Success!
-        return redirect()->route('auth/daftar')->with('message', lang('Auth.registerSuccess'));
+    public function new_account()
+    {
+        $newUser = $this->user->join('auth_groups_users', 'auth_groups_users.user_id=users.id')
+            ->join('auth_groups', 'auth_groups.id=auth_groups_users.group_id')
+            ->where('users.active', 0)->findAll();
+        $data = [
+            'title' => 'Akun Baru',
+            'new_user' => $newUser,
+        ];
+
+        return view('auth/new_account', $data);
+    }
+
+    public function activate($id)
+    {
+        $this->user->save([
+            'id' => $id,
+            'active' => 1,
+        ]);
+
+        return redirect()->to(base_url('auth/new_account'))->with('message', 'Akun Berhasil Diaktifkan');
+    }
+
+    public function account()
+    {
+        $akun = $this->user->join('auth_groups_users', 'auth_groups_users.user_id=users.id')
+            ->join('auth_groups', 'auth_groups.id=auth_groups_users.group_id')
+            ->where('users.active', 1)->findAll();
+
+        $data = [
+            'title' => 'Akun',
+            'akun' => $akun,
+        ];
+
+        return view('auth/account', $data);
     }
 }

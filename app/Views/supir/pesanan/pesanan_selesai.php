@@ -51,8 +51,6 @@ echo $this->section('content');
 									<td><?= $p->nama_toko ?></td>
 									<td><?= $p->nama_supir ?></td>
 									<td><?= $p->nama_status ?></td>
-
-
 								</tr>
 							<?php
 							}
