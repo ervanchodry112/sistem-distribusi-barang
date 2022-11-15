@@ -25,10 +25,10 @@ echo $this->section('content');
 					<thead>
 						<tr class="table" style="text-align: center;">
 							<th scope="col">No</th>
-							<th scope="col">Action</th>
 							<th scope="col">Id Pesanan</th>
 							<th scope="col">Tanggal</th>
 							<th scope="col">Status Pesanan</th>
+							<th scope="col">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -39,20 +39,23 @@ echo $this->section('content');
 
 							<tr style="text-align: center;">
 								<td scope="row"><?= $i++ ?></td>
-								<td>
-									<!-- detail button -->
-									<a class="btn btn-secondary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
-										<ion-icon name="eye-outline"></ion-icon>
-									</a>
-									<!-- reject button -->
-									<a class="btn btn-danger btn-sm" href="<?= base_url('toko/delete_pesanan/' . $p->id_pesanan) ?>" role="button" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')">
-										<i class="bi bi-trash3"></i>
-									</a>
-									<!-- edit button -->
-								</td>
 								<td><?= $p->id_pesanan ?></td>
 								<td><?= $p->tanggal ?></td>
 								<td><?= $p->nama_status ?></td>
+								<td>
+									<!-- detail button -->
+									<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
+										<i class="bi bi-file-text"></i>
+									</a>
+									<!-- edit button -->
+									<a class="btn btn-warning btn-sm" href="#" role="button">
+										<i class="bi bi-pen"></i>
+									</a>
+									<!-- reject button -->
+									<a class="btn btn-danger btn-sm" href="<?= base_url('toko/delete_pesanan/' . $p->id_pesanan) ?>" role="button" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')">
+										<i class="bi bi-clipboard-x"></i>
+									</a>
+								</td>
 							</tr>
 						<?php
 						}
