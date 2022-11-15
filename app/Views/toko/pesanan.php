@@ -32,7 +32,7 @@ echo $this->section('content');
 						</tr>
 					</thead>
 					<tbody>
-					<?php
+						<?php
 						$i = 1;
 						foreach ($pesanan as $p) {
 						?>
@@ -49,12 +49,9 @@ echo $this->section('content');
 										<i class="bi bi-trash3"></i>
 									</a>
 									<!-- edit button -->
-									<a class="btn btn-primary btn-sm" href="#" role="button">
-										<ion-icon name="print-outline"></ion-icon>
-									</a>
 								</td>
 								<td><?= $p->id_pesanan ?></td>
-								<td><?= $p->tanggal ?></td>							
+								<td><?= $p->tanggal ?></td>
 								<td><?= $p->nama_status ?></td>
 							</tr>
 						<?php
