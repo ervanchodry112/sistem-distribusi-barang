@@ -38,11 +38,15 @@ $routes->setAutoRoute(true);
 $routes->get('/admin', 'Gudang::index');
 $routes->get('/', 'LandingPage::index');
 $routes->get('/detail', 'Gudang::detail_pesanan');
+$routes->delete('/delete/(:num)', 'Toko::delete_pesanan/$1');
 $routes->get('assets/js/config.js', function () {
 	return redirect()->to(base_url('admin'));
 });
 $routes->get('/gudang/proses/(:any)', "Gudang::proses/$1");
 $routes->get('/gudang/reject/(:any)', "Gudang::reject/$1");
+$routes->get('/auth/supir', "Auth::supir");
+$routes->get('/auth/toko', "Auth::toko");
+
 
 
 

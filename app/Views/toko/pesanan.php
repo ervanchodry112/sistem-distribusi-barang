@@ -13,7 +13,7 @@ echo $this->section('content');
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-2">
-				<a href="" class="btn btn-primary btn-sm mb-3 d-flex align-items-center">
+				<a href="<?= base_url('/toko/create_pesanan') ?>" class="btn btn-primary btn-sm mb-3 d-flex align-items-center">
 					<ion-icon name="add" class="me-2"></ion-icon>
 					<span>Buat Pesanan</span>
 				</a>
@@ -25,89 +25,41 @@ echo $this->section('content');
 					<thead>
 						<tr class="table" style="text-align: center;">
 							<th scope="col">No</th>
-							<th scope="col">Action</th>
 							<th scope="col">Id Pesanan</th>
-							<th scope="col">Nama Produk</th>
-							<th scope="col">Jumlah</th>
-							<th scope="col">Harga Satuan</th>
-							<th scope="col">Total</th>
-
+							<th scope="col">Tanggal</th>
+							<th scope="col">Status Pesanan</th>
+							<th scope="col">Action</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td scope="row">1</td>
-							<td>
-								<!-- prosses button -->
-								<a class="btn btn-success btn-sm" href="" role="button">
-									<ion-icon name="create-outline"></ion-icon>
-								</a>
-								<!-- detail button -->
-								<a class="btn btn-info btn-sm" href="<?= base_url('detail') ?>" role="button">
-									<ion-icon name="search-outline"></ion-icon>
-								</a>
-								<!-- reject button -->
-								<a class="btn btn-danger btn-sm" href="#" role="button">
-									<ion-icon name="trash-outline"></ion-icon>
-								</a>
-								<!-- print button -->
+						<?php
+						$i = 1;
+						foreach ($pesanan as $p) {
+						?>
 
-							</td>
-							<td>ID1</td>
-							<td>Odol</td>
-							<td>10</td>
-							<td>Rp. 10.000</td>
-							<td>Rp. 100.000</td>
-						</tr>
-						<tr>
-							<td scope="row">2</td>
-							<td>
-								<!-- prosses button -->
-								<a class="btn btn-success btn-sm" href="#" role="button">
-									<ion-icon name="create-outline"></ion-icon>
-								</a>
-								<!-- detail button -->
-								<a class="btn btn-info btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
-									<ion-icon name="search-outline"></ion-icon>
-								</a>
-								<!-- reject button -->
-								<a class="btn btn-danger btn-sm" href="#" role="button">
-									<ion-icon name="trash-outline"></ion-icon>
-								</a>
-								<!-- print button -->
-
-							</td>
-							<td>ID2</td>
-							<td>Pepsoden</td>
-							<td>5</td>
-							<td>Rp. 12.000</td>
-							<td>Rp. 60.000</td>
-
-						</tr>
-						<tr>
-							<td scope="row">3</td>
-							<td>
-								<!-- prosses button -->
-								<a class="btn btn-success btn-sm" href="#" role="button">
-									<ion-icon name="create-outline"></ion-icon>
-								</a>
-								<!-- detail button -->
-								<a class="btn btn-info btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
-									<ion-icon name="search-outline"></ion-icon>
-								</a>
-								<!-- reject button -->
-								<a class="btn btn-danger btn-sm" href="#" role="button">
-									<ion-icon name="trash-outline"></ion-icon>
-								</a>
-								<!-- print button -->
-
-							</td>
-							<td>ID3</td>
-							<td>Ciptadent</td>
-							<td>5</td>
-							<td>Rp. 12.000</td>
-							<td>Rp. 60.000</td>
-						</tr>
+							<tr style="text-align: center;">
+								<td scope="row"><?= $i++ ?></td>
+								<td><?= $p->id_pesanan ?></td>
+								<td><?= $p->tanggal ?></td>
+								<td><?= $p->nama_status ?></td>
+								<td>
+									<!-- detail button -->
+									<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
+										<i class="bi bi-file-text"></i>
+									</a>
+									<!-- edit button -->
+									<a class="btn btn-warning btn-sm" href="#" role="button">
+										<i class="bi bi-pen"></i>
+									</a>
+									<!-- reject button -->
+									<a class="btn btn-danger btn-sm" href="<?= base_url('toko/delete_pesanan/' . $p->id_pesanan) ?>" role="button" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')">
+										<i class="bi bi-clipboard-x"></i>
+									</a>
+								</td>
+							</tr>
+						<?php
+						}
+						?>
 					</tbody>
 				</table>
 			</div>
