@@ -713,12 +713,12 @@ h6 {
 	color: #4154f1;
 }
 
-.sidebar-nav .nav-link.collapsed {
+.sidebar-nav .nav-link .collapsed {
 	color: #012970;
 	background: #fff;
 }
 
-.sidebar-nav .nav-link.collapsed i {
+.sidebar-nav .nav-link .collapsed i {
 	color: #899bbd;
 }
 

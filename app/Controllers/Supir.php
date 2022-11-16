@@ -8,10 +8,12 @@ use App\Models\Pesanan;
 class Supir extends BaseController
 {
     protected $pesanModel;
+    protected $supirModel;
 
     public function __construct()
     {
         $this->pesanModel = new Pesanan();
+        $this->supirModel = new \App\Models\Supir();
     }
 
     public function index()
@@ -58,15 +60,6 @@ class Supir extends BaseController
         return view('/supir/pesanan/pesanan_selesai', $data);
     }
 
-    public function cancel_pesanan($id)
-    {
-        $data = [
-            'id_pesanan' => $id,
-            'id_status' => 2,
-        ];
-        $this->pesanModel->save($data);
-    }
-
     public function detail_pesanan()
     {
         $data = [
@@ -77,10 +70,11 @@ class Supir extends BaseController
 
     public function take_pesanan($id)
     {
+        $idSupir = $this->supirModel->select('id_supir')->where('id_users', user_id())->first();
         $data = [
             'id_pesanan' => $id,
             'id_status' => 3,
-            'id_supir' => user_id(),
+            'id_supir' => $idSupir,
         ];
         $this->pesanModel->save($data);
         return redirect()->to('supir/pesanan_masuk');
