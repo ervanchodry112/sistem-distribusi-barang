@@ -64,6 +64,7 @@ echo $this->section('content');
 
 							<tr style="text-align: center;">
 								<td scope="row"><?= $i++ ?></td>
+
 								<td><?= $p->receipt ?></td>
 								<td><?= $p->tanggal ?></td>
 								<td class="text-<?= ($p->id_status == 5 ? 'danger' : ($p->id_status == 4 ? 'success' : 'warning')) ?>"><strong><?= $p->nama_status ?></strong></td>
@@ -88,6 +89,7 @@ echo $this->section('content');
 											?>
 										</div>
 									</div>
+
 
 								</td>
 							</tr>
