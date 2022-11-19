@@ -11,56 +11,78 @@ echo $this->section('content');
 <!-- Main content -->
 <section class="content mt-3">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-2">
-                <a href="<?= base_url('/toko/produk') ?>" class="btn btn-primary btn-sm mb-3 d-flex align-items-center">
-                    <ion-icon name="add" class="me-2"></ion-icon>
-                    <span>Tambah</span>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <table class="table table-striped table-bordered border shadow text-center">
-                    <thead>
-                        <tr class="table" style="text-align: center;">
-                            <th scope="col">No</th>
-                            <th scope="col">Nama Produk</th>
-                            <th scope="col">Harga</th>
-                            <th scope="col">Jumlah</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
                         <?php
-                        $i = 1;
-                        foreach ($keranjang as $p) {
+                        if (session()->getFlashdata('error')) {
                         ?>
-
-                            <tr style="text-align: center;">
-                                <td scope="row"><?= $i++ ?></td>
-                                <td><?= $p->nama_produk ?></td>
-                                <td>Rp<?= number_format($p->harga) ?></td>
-                                <td><?= $p->jumlah ?></td>
-                                <td>Rp<?= number_format($p->jumlah * $p->harga) ?></td>
-                                <td>
-                                    <!-- detail button -->
-                                    <a class="btn btn-secondary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </a>
-                                    <!-- reject button -->
-                                    <a class="btn btn-danger btn-sm" href="<?= base_url('toko/delete_pesanan/' . $p->id_pesanan) ?>" role="button" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')">
-                                        <i class="bi bi-trash3"></i>
-                                    </a>
-                                    <!-- edit button -->
-                                </td>
-                            </tr>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <?= session()->getFlashdata('error'); ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
                         <?php
                         }
                         ?>
-                    </tbody>
-                </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <a href="<?= base_url('/toko/produk') ?>" class="btn btn-primary btn-sm mb-3 ">
+                            <i class="bi bi-plus"></i>
+                            <span>Tambah</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <form action="<?= base_url('toko/cekout') ?>" method="post">
+                            <table class="table table-striped table-bordered border text-center">
+                                <thead>
+                                    <tr class="table" style="text-align: center;">
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nama Produk</th>
+                                        <th scope="col">Harga</th>
+                                        <th scope="col">Jumlah</th>
+                                        <th scope="col">Total</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $i = 1;
+                                    foreach ($keranjang as $p) {
+                                    ?>
+
+                                        <tr style="text-align: center;">
+                                            <td><input type="checkbox" name="produk[]" value="<?= $p->id_keranjang ?>"></td>
+                                            <td><?= $p->nama_produk ?></td>
+                                            <td>Rp<?= number_format($p->harga) ?></td>
+                                            <td><?= $p->jumlah ?></td>
+                                            <td>Rp<?= number_format($p->jumlah * $p->harga) ?></td>
+                                            <td>
+                                                <!-- reject button -->
+                                                <a class="btn btn-danger btn-sm" href="<?= base_url('toko/delete_pesanan/' . $p->id_pesanan) ?>" role="button" onclick="return confirm('Yakin Ingin Menghapu Pesanan?')">
+                                                    <i class="bi bi-trash3"></i>
+                                                </a>
+                                                <!-- edit button -->
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col d-flex flex-row-reverse">
+                        <button type="submit" class="btn btn-primary btn-sm shadow mx-2">Checkout</button>
+                        <a href="<?= base_url('toko/clear_cart') ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus seluruh isi keranjang?')">Clear</a>
+                    </div>
+                </div>
+                </form>
             </div>
         </div>
     </div>

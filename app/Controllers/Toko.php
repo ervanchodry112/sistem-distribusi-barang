@@ -4,6 +4,9 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Cart;
+use App\Models\ListPesanan;
+use App\Models\Toko as ModelsToko;
+
 // use CodeIgniterCart\Cart;
 
 class Toko extends BaseController
@@ -11,12 +14,16 @@ class Toko extends BaseController
     protected $pesanModel;
     protected $produkModel;
     protected $cart;
+    protected $tokoModel;
+    protected $listPesananModel;
 
     public function __construct()
     {
         $this->pesanModel = new \App\Models\Pesanan();
         $this->produkModel = new \App\Models\Produk();
         $this->cart = new Cart();
+        $this->tokoModel = new ModelsToko();
+        $this->listPesananModel = new ListPesanan();
     }
 
     public function index()
@@ -44,19 +51,14 @@ class Toko extends BaseController
         return view('toko/pesanan', $data);
     }
 
-    public function create_pesanan()
-    {
-        $produk = $this->produkModel->findAll();
-        $data = [
-            'title' => 'Tambah Pesanan',
-            'produk' => $produk,
-        ];
-        return view('toko/tambah_pesanan', $data);
-    }
-
     public function delete_pesanan($id)
     {
-        $this->pesanModel->delete($id);
+        $this->listPesananModel->where('id_pesanan', $id)->delete();
+        if (!$this->pesanModel->delete($id)) {
+            session()->setFlashdata('error', 'Gagal menghapus pesanan');
+            return redirect()->to('/toko/pesanan');
+        }
+        session()->setFlashdata('success', 'Berhasil menghapus pesanan');
         return redirect()->to(base_url('toko/pesanan'));
     }
 
@@ -113,5 +115,41 @@ class Toko extends BaseController
             'keranjang' => $isi,
         ];
         return view('toko/keranjang', $data);
+    }
+
+    public function cekout()
+    {
+        $keranjang = $this->request->getVar('produk');
+
+        $id_toko = $this->tokoModel->select('id_toko')->where('id_users', user_id())->first();
+        $pesanan = [
+            
+            'id_toko'   => $id_toko->id_toko,
+            'id_status' => 1,
+            'tanggal'   => date('Y-m-d'),
+        ];
+        $this->pesanModel->insert($pesanan);
+        $pesanan = $this->pesanModel->selectMax('id_pesanan', 'id_pesanan')->where('id_toko', $id_toko->id_toko)->first();
+        // dd($pesanan);
+        foreach ($keranjang as $k) {
+            $list = $this->cart->where('id_keranjang', $k)->first();
+            $produk = $this->produkModel->select('harga')->where('id_produk', $list->id_produk)->first();
+
+            $data = [
+                'id_pesanan' => $pesanan->id_pesanan,
+                'id_produk' => $list->id_produk,
+                'jumlah_produk' => $list->jumlah,
+                'total_harga' => ($produk->harga * $list->jumlah),
+            ];
+            if ($this->listPesananModel->insert($data)) {
+                $this->cart->delete($k);
+            } else {
+                $this->session->setFlashdata('error', 'Gagal membuat pesanan');
+                return redirect()->to(base_url('toko/keranjang'));
+            }
+        }
+
+        $this->session->setFlashdata('success', 'Berhasil membuat pesanan');
+        return redirect()->to(base_url('toko/pesanan'));
     }
 }
