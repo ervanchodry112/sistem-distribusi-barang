@@ -29,6 +29,11 @@ class TabelProduk extends Migration
                 'null'              => true,
                 'constraint'        => 11,
             ],
+            'gambar'          => [
+                'type'              => 'VARCHAR',
+                'null'              => true,
+                'constraint'        => 255,
+            ],
             'slug'          => [
                 'type'              => 'VARCHAR',
                 'null'              => false,

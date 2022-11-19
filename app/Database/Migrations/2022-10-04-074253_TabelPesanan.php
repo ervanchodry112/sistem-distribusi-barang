@@ -16,6 +16,11 @@ class TabelPesanan extends Migration
                 'unsigned'          => true,
                 'auto_increment'    => true,
             ],
+            'receipt'    => [
+                'type'              => 'VARCHAR',
+                'constraint'        => 255,
+                'null'              => false
+            ],
             'id_toko'       => [
                 'type'              => 'INT',
                 'constraint'        => 11,
