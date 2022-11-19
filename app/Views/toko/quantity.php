@@ -20,7 +20,7 @@ echo $this->section('content');
                     <form action="<?= base_url('toko/add_to_cart') ?>" method="post">
                         <div class="row">
                             <div class="col-4 d-flex justify-content-center align-items-center">
-                                <img src="/assets/img/<?= ($produk->gambar == null ? "default_product.png" : $produk->gambar) ?>" width="200rem" alt="<?= $produk->nama_produk ?>">
+                                <img src="/assets/img/produk/<?= ($produk->gambar == null ? "default_product.png" : $produk->gambar) ?>" width="200rem" alt="<?= $produk->nama_produk ?>">
 
                             </div>
                             <div class="col-8">
@@ -35,7 +35,7 @@ echo $this->section('content');
                                 <div class="mb-3 row">
                                     <label for="harga_produk" class="col-sm-2 col-form-label">Harga</label>
                                     <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="harga_produk" value="<?= $produk->harga ?>">
+                                        <input type="text" readonly class="form-control-plaintext" id="harga_produk" value="Rp<?= number_format($produk->harga) ?>">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">

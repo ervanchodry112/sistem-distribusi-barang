@@ -14,6 +14,27 @@ echo $this->section('content');
 <section class="section">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-12">
+                <?php
+                if (session()->getFlashdata('success')) {
+                ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?= session()->getFlashdata('success'); ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php
+                } elseif (session()->getFlashdata('error')) {
+                ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?= session()->getFlashdata('error'); ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>
+        </div>
+        <div class="row">
 
             <!-- Masukkan content utama disini -->
 

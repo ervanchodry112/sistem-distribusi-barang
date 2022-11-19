@@ -15,16 +15,27 @@ echo $this->section('content');
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <?php
-                        if (session()->getFlashdata('error')) {
-                        ?>
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <?= session()->getFlashdata('error'); ?>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <div class="row">
+                            <div class="col-12">
+                                <?php
+                                if (session()->getFlashdata('success')) {
+                                ?>
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <?= session()->getFlashdata('success'); ?>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                <?php
+                                } elseif (session()->getFlashdata('error')) {
+                                ?>
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <?= session()->getFlashdata('error'); ?>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                <?php
+                                }
+                                ?>
                             </div>
-                        <?php
-                        }
-                        ?>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -51,25 +62,33 @@ echo $this->section('content');
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $i = 1;
-                                    foreach ($keranjang as $p) {
+                                    if ($keranjang == null) {
                                     ?>
-
-                                        <tr style="text-align: center;">
-                                            <td><input type="checkbox" name="produk[]" value="<?= $p->id_keranjang ?>"></td>
-                                            <td><?= $p->nama_produk ?></td>
-                                            <td>Rp<?= number_format($p->harga) ?></td>
-                                            <td><?= $p->jumlah ?></td>
-                                            <td>Rp<?= number_format($p->jumlah * $p->harga) ?></td>
-                                            <td>
-                                                <!-- reject button -->
-                                                <a class="btn btn-danger btn-sm" href="<?= base_url('toko/delete_pesanan/' . $p->id_pesanan) ?>" role="button" onclick="return confirm('Yakin Ingin Menghapu Pesanan?')">
-                                                    <i class="bi bi-trash3"></i>
-                                                </a>
-                                                <!-- edit button -->
-                                            </td>
+                                        <tr>
+                                            <td colspan="6">Keranjang Kosong</td>
                                         </tr>
+                                        <?php
+                                    } else {
+                                        $i = 1;
+                                        foreach ($keranjang as $p) {
+                                        ?>
+
+                                            <tr style="text-align: center;">
+                                                <td><input type="checkbox" name="produk[]" value="<?= $p->id_keranjang ?>"></td>
+                                                <td><?= $p->nama_produk ?></td>
+                                                <td>Rp<?= number_format($p->harga) ?></td>
+                                                <td><?= $p->jumlah ?></td>
+                                                <td>Rp<?= number_format($p->jumlah * $p->harga) ?></td>
+                                                <td>
+                                                    <!-- reject button -->
+                                                    <a class="btn btn-danger btn-sm" href="<?= base_url('toko/delete_keranjang/' . $p->id_keranjang) ?>" role="button" onclick="return confirm('Yakin Ingin Menghapus Produk dari keranjang?')">
+                                                        <i class="bi bi-trash3"></i>
+                                                    </a>
+                                                    <!-- edit button -->
+                                                </td>
+                                            </tr>
                                     <?php
+                                        }
                                     }
                                     ?>
                                 </tbody>

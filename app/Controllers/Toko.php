@@ -89,19 +89,49 @@ class Toko extends BaseController
         // $harga = $this->request->getVar('harga_produk');
         $jumlah = $this->request->getVar('jumlah_produk');
         $id_produk = $this->request->getVar('id_produk');
-        $data = [
-            'id_produk'    => $id_produk,
-            'id_user'   => user_id(),
-            'jumlah'   => $jumlah,
-        ];
+        $cek = $this->cart->select('id_keranjang')->select('jumlah')->where('id_produk', $id_produk)->where('id_user', user_id())->first();
+        if ($cek == null) {
+            $data = [
+                'id_produk'    => $id_produk,
+                'id_user'   => user_id(),
+                'jumlah'   => $jumlah,
+            ];
+        } else {
+            $data = [
+                'id_keranjang'  => $cek->id_keranjang,
+                'id_produk'     => $id_produk,
+                'id_user'       => user_id(),
+                'jumlah'        => $cek->jumlah + $jumlah,
+            ];
+        }
         // dd($data);
 
-        if ($this->cart->insert($data)) {
+        if ($this->cart->save($data)) {
             $this->session->setFlashdata('success', 'Berhasil menambahkan produk ke keranjang');
         } else {
             $this->session->setFlashdata('error', 'Gagal menambahkan produk ke keranjang');
         }
         return redirect()->to(base_url('toko/produk'));
+    }
+
+    public function delete_keranjang($id)
+    {
+        if ($this->cart->delete($id)) {
+            $this->session->setFlashdata('success', 'Berhasil menghapus produk dari keranjang');
+        } else {
+            $this->session->setFlashdata('error', 'Gagal menghapus produk dari keranjang');
+        }
+        return redirect()->to(base_url('toko/keranjang'));
+    }
+
+    public function clear_cart()
+    {
+        if ($this->cart->where('id_user', user_id())->delete()) {
+            $this->session->setFlashdata('success', 'Berhasil menghapus produk dari keranjang');
+        } else {
+            $this->session->setFlashdata('error', 'Gagal menghapus produk dari keranjang');
+        }
+        return redirect()->to(base_url('toko/keranjang'));
     }
 
     public function keranjang()
@@ -123,7 +153,7 @@ class Toko extends BaseController
 
         $id_toko = $this->tokoModel->select('id_toko')->where('id_users', user_id())->first();
         $pesanan = [
-            
+            'receipt'   => uniqid(),
             'id_toko'   => $id_toko->id_toko,
             'id_status' => 1,
             'tanggal'   => date('Y-m-d'),

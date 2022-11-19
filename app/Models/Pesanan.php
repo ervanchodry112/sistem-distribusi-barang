@@ -14,7 +14,7 @@ class Pesanan extends Model
 	protected $returnType       = 'object';
 	protected $useSoftDeletes   = false;
 	protected $protectFields    = true;
-	protected $allowedFields    = ['id_toko', 'id_supir', 'id_status', 'tanggal'];
+	protected $allowedFields    = ['receipt', 'id_toko', 'id_supir', 'id_status', 'tanggal'];
 
 	// Dates
 	protected $useTimestamps = true;

@@ -17,7 +17,7 @@
 		<div class="header-nav ms-auto">
 			<ul class="d-flex align-items-center">
 				<li class="nav-item">
-					<a href="<?= base_url('toko/keranjang') ?>" class="me-4 nav-link nav-icon px-2">
+					<a href="<?= base_url('toko/keranjang') ?>" class="me-4 nav-link collapsed nav-icon px-2">
 						<i class="bi bi-cart"></i>
 						<div style="background-color: #4154f1; height: 13px; width: 13px;" class="rounded-circle text-light position-absolute d-flex align-items-center justify-content-center top-0 end-0 start-50"></div>
 					</a>
@@ -40,7 +40,7 @@
 			<li class="nav-heading">Gudang</li>
 
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('gudang/dashboard') ?>">
+				<a class="nav-link collapsed" href="<?= base_url('gudang/dashboard') ?>">
 					<i class="bi bi-grid"></i>
 					<span>Dashboard</span>
 				</a>
@@ -88,20 +88,20 @@
 			<li class="nav-heading">Toko</li>
 
 			<li class="nav-item">
-				<a class="nav-link " href="<?= base_url('toko/dashboard') ?>">
+				<a class="nav-link collapsed" href="<?= base_url('toko/dashboard') ?>">
 					<i class="bi bi-grid"></i>
 					<span>Dashboard</span>
 				</a>
 			</li><!-- End Dashboard Nav -->
 
 			<li class="nav-item">
-				<a class="nav-link " href="<?= base_url('toko/pesanan') ?>">
+				<a class="nav-link collapsed" href="<?= base_url('toko/pesanan') ?>">
 					<i class="bi bi-grid"></i>
 					<span>Pesanan</span>
 				</a>
 			</li><!-- End Components Nav -->
 			<li class="nav-item">
-				<a class="nav-link " href="<?= base_url('toko/produk') ?>">
+				<a class="nav-link collapsed" href="<?= base_url('toko/produk') ?>">
 					<i class="bi bi-grid"></i>
 					<span>Produk</span>
 				</a>
@@ -114,7 +114,7 @@
 			<li class="nav-heading">Supir</li>
 
 			<li class="nav-item">
-				<a class="nav-link " href="<?= base_url('supir/dashboard') ?>">
+				<a class="nav-link collapsed" href="<?= base_url('supir/dashboard') ?>">
 					<i class="bi bi-grid"></i>
 					<span>Dashboard</span>
 				</a>
@@ -150,13 +150,13 @@
 			<li class="nav-heading">Admin</li>
 
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('auth/new_account') ?>">
+				<a class="nav-link collapsed" href="<?= base_url('auth/new_account') ?>">
 					<i class="bi bi-person-fill"></i>
 					<span>New Account</span>
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('auth/account') ?>">
+				<a class="nav-link collapsed" href="<?= base_url('auth/account') ?>">
 					<i class="bi bi-person-fill"></i>
 					<span>Account</span>
 				</a>
@@ -168,19 +168,19 @@
 		<li class="nav-heading">Account</li>
 
 		<li class="nav-item">
-			<a class="nav-link" href="<?= base_url('auth/profile') ?>">
+			<a class="nav-link collapsed" href="<?= base_url('auth/profile') ?>">
 				<i class="bi bi-person-fill"></i>
 				<span>Profile</span>
 			</a>
 		</li>
 		<!-- <li class="nav-item">
-			<a class="nav-link" href="<?= base_url('auth/profile') ?>">
+			<a class="nav-link collapsed" href="<?= base_url('auth/profile') ?>">
 				<i class="bi bi-person-fill"></i>
 				<span>Profile</span>
 			</a>
 		</li> -->
 		<li class="nav-item">
-			<a class="nav-link " href="<?= base_url('logout') ?>">
+			<a class="nav-link collapsed " href="<?= base_url('logout') ?>">
 				<i class="bi bi-box-arrow-right"></i>
 				<span>Logout</span>
 			</a>
@@ -202,7 +202,7 @@
 
 <script>
 	$(document).ready(function() {
-		$(".nav-link").removeClass("active");
+		$(".nav-link collapsed").removeClass("active");
 	});
 </script>
 <!-- End Sidebar-->
