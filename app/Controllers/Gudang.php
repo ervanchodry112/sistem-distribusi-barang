@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Produk;
 
 class Gudang extends BaseController
 {
@@ -100,11 +101,12 @@ class Gudang extends BaseController
 	public function produk()
 	{
 		$produk = $this->produkModel->findAll();
+
 		$data = [
 			'title' => 'Produk',
 			'produk' => $produk,
 		];
-		return view('gudang/produk', $data);
+		return view('gudang/produk/produk', $data);
 	}
 
 	public function proses($id)
@@ -114,7 +116,7 @@ class Gudang extends BaseController
 			'id_status'	=> 2,
 		];
 		$this->pesanModel->save($data);
-		return redirect()->to(base_url('gudang/pesanan_masuk'));
+		return redirect()->to(base_url('gudang/pesanan/pesanan_masuk'));
 	}
 
 	public function reject($id)
@@ -125,5 +127,58 @@ class Gudang extends BaseController
 		];
 		$this->pesanModel->save($data);
 		return redirect()->to(base_url('gudang/pesanan_masuk'));
+	}
+
+	public function tambah_produk()
+	{
+		$data = [
+			'title' => 'Tambah Produk'
+		];
+
+		return view('gudang/produk/tambah_produk', $data);
+	}
+
+	public function add_produk()
+	{
+		$input = $this->request->getVar();
+		$fileUpload = $this->request->getFile('foto');
+		dd($fileUpload);
+		//$fileUpload->move('img');
+		$produk = [
+			'nama_produk' => $input['nama_produk'],
+			'harga' => $input['harga'],
+			'stok' => $input['stok'],
+			'slug' => url_title($input['nama_produk'], '-', true)
+		];
+
+		$this->produkModel->insert($produk);
+
+		if ($this->produkModel->affectedRows() > 0) {
+			session()->setFlashdata('pesan', 'Produk Sukses Ditambahkan');
+			return redirect()->to('gudang/produk/produk');
+		}
+	}
+
+	public function edit($id)
+	{
+		$produk = $this->produkModel->where('id_produk', $id)->first();
+		$data = [
+			'title' => 'Edit Mahasiswa',
+			'produk' => $produk,
+		];
+
+		return view('gudang/produk/restock_produk', $data);
+	}
+
+	public function restock_produk()
+	{
+		$produk = $this->produkModel->where('id_produk', $this->request->getVar('id_produk'))->first();
+		$data = [
+			'stok' => $produk->stok + $this->request->getVar('stok'),
+			'id_produk' => $this->request->getVar('id_produk'),
+		];
+
+		$this->produkModel->save($data);
+		return redirect()->to('/gudang/produk/produk');
 	}
 }
