@@ -27,8 +27,8 @@ echo $this->section('content');
 							<input type="number" name="stok" class="form-control" id="stok">
 						</div>
 						<div class="mb-3">
-							<label for="foto" class="form-label">Upload Foto Produk..</label>
-							<input class="form-control" type="file" id="foto">
+							<label for="gambar" class="form-label">Upload Gambar Produk..</label>
+							<input class="form-control" type="file" id="gambar" name="gambar">
 						</div>
 						<button type="submit" class="btn btn-primary mt-3">Submit</button>
 					</div>

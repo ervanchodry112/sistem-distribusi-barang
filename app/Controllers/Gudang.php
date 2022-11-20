@@ -141,21 +141,21 @@ class Gudang extends BaseController
 	public function add_produk()
 	{
 		$input = $this->request->getVar();
-		$fileUpload = $this->request->getFile('foto');
-		dd($fileUpload);
-		//$fileUpload->move('img');
+		$fileUpload = $this->request->getFile('gambar');
+		$fileUpload->move('assets/img/produk', $fileUpload->getName());
 		$produk = [
 			'nama_produk' => $input['nama_produk'],
 			'harga' => $input['harga'],
 			'stok' => $input['stok'],
-			'slug' => url_title($input['nama_produk'], '-', true)
+			'slug' => url_title($input['nama_produk'], '-', true),
+			'gambar' => $fileUpload->getName(),
 		];
 
 		$this->produkModel->insert($produk);
 
 		if ($this->produkModel->affectedRows() > 0) {
 			session()->setFlashdata('pesan', 'Produk Sukses Ditambahkan');
-			return redirect()->to('gudang/produk/produk');
+			return redirect()->to('gudang/produk');
 		}
 	}
 
