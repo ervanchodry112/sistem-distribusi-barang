@@ -25,7 +25,37 @@ class Auth extends BaseController
 
     public function index()
     {
-        //
+        $user = $this->user->get_user_toko(user_id());
+
+        $data = [
+            'title' => 'Profile',
+            'user' => $user
+        ];
+
+        return view('auth/profile', $data);
+    }
+
+    public function update_password($id)
+    {
+        if(!$this->validate([
+            'current_password' => 'required',
+            'new_password' => 'required',
+            'renew_password' => 'required'
+        ])) {
+            return redirect()->to('auth/profile');
+        }
+
+        $data = [
+            // 'password_hash' => $this->request->getVar('new_password'),
+            'password_hash' => password_hash($this->request->getVar('new_password'), PASSWORD_DEFAULT),
+        ];
+
+        // d($data);
+        // exit();
+
+        $this->user->update($id, $data);
+
+        return redirect()->to(base_url('logout'));
     }
 
     public function registrasi()
