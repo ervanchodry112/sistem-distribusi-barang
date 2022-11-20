@@ -4,22 +4,28 @@ echo $this->section('content');
 ?>
 
 <div class="pagetitle">
-	<h1>Pesanan Dalam Proses</h1>
+	<h1>Produk</h1>
 </div>
 
 <section class="content p-5">
 	<div class="container-fluid">
+		<div class="col d-flex">
+			<a href="<?= base_url('/gudang/tambah_produk') ?>" class="btn btn-primary mb-3 d-flex align-items-center">
+				<ion-icon name="add" class="me-2"></ion-icon>
+				<span>Add Produk</span>
+			</a>
+		</div>
 		<div class="row">
 			<div class="col-12">
 				<table class="table table-striped table-bordered border shadow">
 					<thead>
 						<tr class="table" style="text-align: center;">
 							<th scope="col">No</th>
-							<th scope="col">Action</th>
 							<th scope="col">ID Produk</th>
 							<th scope="col">Nama</th>
-							<th scope="col">Stock</th>
 							<th scope="col">Harga</th>
+							<th scope="col">Stock</th>
+							<th scope="col">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -30,20 +36,21 @@ echo $this->section('content');
 
 							<tr style="text-align: center;">
 								<td scope="row"><?= $i++ ?></td>
+								<td><?= $p->id_produk ?></td>
+								<td><?= $p->nama_produk ?></td>
+								<td><?= $p->harga ?></td>
+								<td><?= $p->stok ?></td>
 								<td>
 									<!-- detail button -->
-									<a class="btn btn-info btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
-										<ion-icon name="eye-outline"></ion-icon>
+									<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
+										<i class="bi bi-file-text"></i>
 									</a>
 
 									<!-- restock button -->
-									<a class="btn btn-success btn-sm" href="" role="button">
-										<ion-icon name="add-circle-outline"></ion-icon>
+									<a class="btn btn-success btn-sm" href="<?= base_url('/gudang/edit/' . $p->id_produk) ?>" role="button">
+										<i class="bi bi-clipboard-plus"></i>
 									</a>
-								<td><?= $p->id_produk ?></td>
-								<td><?= $p->nama_produk ?></td>
-								<td><?= $p->stok ?></td>
-								<td><?= $p->harga ?></td>
+								</td>
 							</tr>
 						<?php
 						}
