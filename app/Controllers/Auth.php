@@ -7,6 +7,7 @@ use App\Models\Supir;
 use App\Models\Toko;
 use App\Models\User;
 use Config\View;
+use Myth\Auth\Password;
 
 // use Myth\Auth\Models\UserModel;
 
@@ -40,19 +41,14 @@ class Auth extends BaseController
         if(!$this->validate([
             'current_password' => 'required',
             'new_password' => 'required',
-            'renew_password' => 'required'
+            'renew_password' => 'required|matches[new_password]'
         ])) {
             return redirect()->to('auth/profile');
         }
 
         $data = [
-            // 'password_hash' => $this->request->getVar('new_password'),
-            'password_hash' => password_hash($this->request->getVar('new_password'), PASSWORD_DEFAULT),
+            'password_hash' => Password::hash($this->request->getVar('new_password')),
         ];
-
-        // d($data);
-        // exit();
-
         $this->user->update($id, $data);
 
         return redirect()->to(base_url('logout'));
