@@ -72,11 +72,12 @@
 						</a>
 					</li>
 				</ul>
-			</li><!-- End Pesanan Nav -->
+			</li>
+			<!-- End Pesanan Nav -->
 
 			<li class="nav-item">
 				<a class="nav-link " href="<?= base_url('gudang/produk') ?>">
-					<i class="bi bi-grid"></i>
+					<i class="bi bi-boxes"></i>
 					<span>Produk</span>
 				</a>
 			</li> <!-- End Produk Nav -->
@@ -96,13 +97,13 @@
 
 			<li class="nav-item">
 				<a class="nav-link collapsed" href="<?= base_url('toko/pesanan') ?>">
-					<i class="bi bi-grid"></i>
+					<i class="bi bi-box-seam"></i>
 					<span>Pesanan</span>
 				</a>
 			</li><!-- End Components Nav -->
 			<li class="nav-item">
 				<a class="nav-link collapsed" href="<?= base_url('toko/produk') ?>">
-					<i class="bi bi-grid"></i>
+					<i class="bi bi-boxes"></i>
 					<span>Produk</span>
 				</a>
 			</li>

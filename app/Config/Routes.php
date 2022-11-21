@@ -44,6 +44,9 @@ $routes->get('assets/js/config.js', function () {
 });
 $routes->get('/gudang/proses/(:any)', "Gudang::proses/$1");
 $routes->get('/gudang/reject/(:any)', "Gudang::reject/$1");
+$routes->get('/auth/profile', "Auth::index");
+$routes->post('/update_password/(:any)', "Auth::update_password/$1");
+$routes->get('/gudang/restok/(:any)', "Gudang::restok_produk/$1");
 $routes->get('/auth/supir', "Auth::supir");
 $routes->get('/auth/toko', "Auth::toko");
 $routes->get('/auth/activate/(:any)', "Auth::activate/$1");

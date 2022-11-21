@@ -14,7 +14,7 @@ class Produk extends Model
 	protected $returnType       = 'object';
 	protected $useSoftDeletes   = false;
 	protected $protectFields    = true;
-	protected $allowedFields    = ['nama_produk', 'harga', 'stok', 'slug'];
+	protected $allowedFields    = ['nama_produk', 'harga', 'stok', 'gambar', 'slug'];
 
 	// Dates
 	protected $useTimestamps = true;
