@@ -69,26 +69,20 @@ echo $this->section('content');
 								<td><?= $p->tanggal ?></td>
 								<td class="text-<?= ($p->id_status == 5 ? 'danger' : ($p->id_status == 4 ? 'success' : 'warning')) ?>"><strong><?= $p->nama_status ?></strong></td>
 								<td>
-									<div class="row">
-										<div class="col">
-											<!-- detail button -->
-											<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
-												<i class="bi bi-file-text"></i>
-											</a>
-										</div>
-										<div class="col">
-											<!-- reject button -->
-											<?php
-											if (!($p->id_status == 4 || $p->id_status == 5)) {
-											?>
-												<a class="btn btn-danger btn-sm" href="<?= base_url('toko/delete_pesanan/' . $p->id_pesanan) ?>" role="button" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')">
-													<i class="bi bi-trash3"></i>
-												</a>
-											<?php
-											}
-											?>
-										</div>
-									</div>
+									<!-- detail button -->
+									<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
+										<i class="bi bi-file-text"></i>
+									</a>
+									<!-- reject button -->
+									<?php
+									if (!($p->id_status == 4 || $p->id_status == 5)) {
+									?>
+										<a class="btn btn-danger btn-sm" href="<?= base_url('toko/delete_pesanan/' . $p->id_pesanan) ?>" role="button" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')">
+											<i class="bi bi-trash3"></i>
+										</a>
+									<?php
+									}
+									?>
 
 
 								</td>
