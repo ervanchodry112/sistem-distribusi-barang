@@ -7,14 +7,14 @@ use CodeIgniter\Model;
 class ListPesanan extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'listpesanan';
+    protected $table            = 'list_pesanan';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_produk', 'jumlah_produk', 'total_harga'];
+    protected $allowedFields    = ['id_pesanan', 'id_produk', 'jumlah_produk', 'total_harga'];
 
     // Dates
     protected $useTimestamps = true;

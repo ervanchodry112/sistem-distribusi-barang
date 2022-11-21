@@ -48,13 +48,33 @@ class AddUsers extends Seeder
 			'id_users'  => 3,
 		];
 		$this->db->table('toko')->insert($toko);
-        $supir = [
-            'id_supir'   => 1,
-            'nama_supir' => 'Burhanudin',
-            'plat_nomor' => 'B 2562 XX',
-            'id_users'   => 4,
-        ];
-        $this->db->table('supir')->insert($supir);
-    }
+		$supir = [
+			'id_supir'   => 1,
+			'nama_supir' => 'Burhanudin',
+			'plat_nomor' => 'B 2562 XX',
+			'id_users'   => 4,
+		];
+		$this->db->table('supir')->insert($supir);
 
+		$groups = [
+			[
+				'group_id'	=> 1,
+				'user_id'	=> 1,
+			],
+			[
+				'group_id'	=> 2,
+				'user_id'	=> 2,
+			],
+			[
+				'group_id'	=> 3,
+				'user_id'	=> 3,
+			],
+			[
+				'group_id'	=> 4,
+				'user_id'	=> 4,
+			],
+
+		];
+		$this->db->table('auth_groups_users')->insertBatch($groups);
+	}
 }

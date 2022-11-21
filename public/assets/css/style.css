@@ -837,16 +837,16 @@ h6 {
 }
 
 .dashboard .sales-card .card-icon {
-	color: #4154f1;
+	color: #2eca6a;
 	background: #f6f6fe;
 }
 
 .dashboard .revenue-card .card-icon {
-	color: #2eca6a;
+	color: #1058f5;
 	background: #e0f8e9;
 }
 
-.dashboard .customers-card .card-icon {
+.dashboard .outcome-card .card-icon {
 	color: #ff771d;
 	background: #ffecdf;
 }
