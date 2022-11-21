@@ -66,133 +66,97 @@ echo $this->section('content');
 					<!-- Card Pesanan selesai -->
 				</div>
 
-				<div class="row">
-					<div class="col-12">
-						<div class="card p-4">
-							<h5 class="card-title">Area Chart</h5>
+				<div class="card">
+					<div class="card-body pt-3">
+						<!-- Bordered Tabs -->
+						<ul class="nav nav-tabs nav-tabs-bordered d-flex justify-content-evenly">
 
-							<!-- Area Chart -->
-							<div id="areaChart"></div>
+							<li class="nav-item">
+								<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#dashboard-masuk">Pesanan Masuk</button>
+							</li>
 
-							<script>
-								console.log(
-									"<?php
-										foreach ($tanggal_masuk as $tg) {
-											echo "\'" . $tg->tanggal . "\'";
-											echo ',';
-										} ?>"
-								)
-							</script>
+							<li class="nav-item">
+								<button class="nav-link" data-bs-toggle="tab" data-bs-target="#dashboard-selesai">Pesanan Selesai</button>
+							</li>
 
-							<script>
-								document.addEventListener("DOMContentLoaded", () => {
-									const series = {
-										"pesananMasuk": {
-											"jumlah": [
-												<?php
-												foreach ($tanggal_masuk as $tg) {
-													echo "\'" . $tg->id_pesanan . "\'";
-													echo ',';
-												} ?>
-											],
-											"dates": [
-												"<?php
-													foreach ($tanggal_masuk as $tg) {
-														echo "\'" . $tg->tanggal . "\'";
-														echo ',';
-													} ?>"
-											]
-										},
-										"pesananDiproses": {
-											"jumlah": [
-												1,
-												<?php
-												foreach ($tanggal_diproses as $tg) {
-													echo "\'" . $tg->id_pesanan . "\'";
-													echo ',';
-												} ?>
-											],
-											"dates": [
-												'2022-10-01',
-												"<?php
-													foreach ($tanggal_diproses as $tg) {
-														echo "\'" . $tg->tanggal . "\'";
-														echo ',';
-													} ?>"
-											]
-										},
-										"pesananSelesai": {
-											"jumlah": [
-												<?php
-												foreach ($tanggal_selesai as $tg) {
-													echo "\'" . $tg->id_pesanan . "\'";
-													echo ',';
-												} ?>
-											],
-											"dates": [
-												"<?php
-													foreach ($tanggal_selesai as $tg) {
-														echo "\'" . $tg->tanggal . "\'";
-														echo ',';
-													} ?>"
-											]
-										},
-									}
-									new ApexCharts(document.querySelector("#areaChart"), {
-										series: [{
-												name: "Pesanan Masuk",
-												data: series.pesananMasuk.jumlah
-											},
-											{
-												name: "Pesanan Diproses",
-												data: series.pesananDiproses.jumlah
-											},
-											{
-												name: "Pesanan Selesai",
-												data: series.pesananSelesai.jumlah
-											},
-											{
-												name: "Jumlah Produk",
-												data: series.produk.jumlah
-											}
-										],
-										chart: {
-											type: 'area',
-											height: 350,
-											zoom: {
-												enabled: false
-											}
-										},
-										dataLabels: {
-											enabled: false
-										},
-										stroke: {
-											curve: 'straight'
-										},
-										subtitle: {
-											text: 'Transaksi Pesanan',
-											align: 'left'
-										},
-										labels: series.pesananDiproses.dates,
-										xaxis: {
-											type: 'datetime',
-										},
-										yaxis: {
-											opposite: true
-										},
-										legend: {
-											horizontalAlign: 'left'
+						</ul>
+						<div class="tab-content pt-2">
+
+							<div class="tab-pane fade show active dashboard-masuk" id="dashboard-masuk">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th scope="col">No</th>
+											<th scope="col">Id Pesanan</th>
+											<th scope="col">Nama Toko</th>
+											<th scope="col">Tanggal</th>
+											<th scope="col">Alamat</th>
+											<th scope="col">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+										$i = 1;
+										foreach ($pesanan_masuk_list as $p) {
+										?>
+											<tr>
+												<td scope="row"><?= $i++ ?></td>
+												<td><?= $p->id_pesanan ?></td>
+												<td><?= $p->nama_toko ?></td>
+												<td><?= $p->tanggal ?></td>
+												<td><?= $p->alamat ?></td>
+											</tr>
+										<?php
 										}
-									}).render();
-								});
-							</script>
-							<!-- End Area Chart -->
+										?>
+									</tbody>
+								</table>
+							</div>
+
+
+							<div class="tab-pane fade show dashboard-selesai" id="dashboard-selesai">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th scope="col">No</th>
+											<th scope="col">Id Pesanan</th>
+											<th scope="col">Nama Toko</th>
+											<th scope="col">Nama Supir</th>
+											<th scope="col">Status Pesanan</th>
+											<th scope="col">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+										$i = 1;
+										foreach ($pesanan_selesai_list as $p) {
+										?>
+
+											<tr style="text-align: center;">
+												<td scope="row"><?= $i++ ?></td>
+												<td><?= $p->id_pesanan ?></td>
+												<td><?= $p->nama_toko ?></td>
+												<td><?= $p->nama_supir ?></td>
+												<td><?= $p->status_pesanan ?></td>
+												<td>
+													<!-- detail button -->
+													<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
+														<i class="bi bi-file-text"></i>
+													</a>
+												</td>
+											</tr>
+										<?php
+										}
+										?>
+									</tbody>
+								</table>
+							</div>
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </section>
 <!-- /.content -->
 <!-- /.content-wrapper -->

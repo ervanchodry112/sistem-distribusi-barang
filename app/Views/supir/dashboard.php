@@ -26,7 +26,7 @@ echo $this->section('content');
 								</div>
 								<div class="col-8 align-end">
 									<div class="text-end text-muted">Siap Kirim</div>
-									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong>30</strong></div>
+									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong><?= $siap ?></strong></div>
 								</div>
 							</div>
 						</div>
@@ -42,7 +42,7 @@ echo $this->section('content');
 								</div>
 								<div class="col-8 align-end">
 									<div class="text-end text-muted">Dalam Pengiriman</div>
-									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong>23</strong></div>
+									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong><?= $kirim ?></strong></div>
 								</div>
 							</div>
 						</div>
@@ -58,7 +58,7 @@ echo $this->section('content');
 								</div>
 								<div class="col-8 align-end">
 									<div class="text-end text-muted">Pesanan Selesai</div>
-									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong>12</strong></div>
+									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong><?= $selesai ?></strong></div>
 								</div>
 							</div>
 						</div>
@@ -97,6 +97,7 @@ echo $this->section('content');
 									</div>
 								</div>
 							</div>
+
 							<div class="row">
 								<div class="col-3">
 									<div class="card p-4">
