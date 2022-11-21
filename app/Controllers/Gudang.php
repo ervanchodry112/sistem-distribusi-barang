@@ -29,7 +29,10 @@ class Gudang extends BaseController
 		$tanggalMasuk = $this->pesanModel->selectCount('id_pesanan')->select('tanggal')->where('id_status', 1)->groupBy('tanggal')->findAll();
 		$tanggalProses = $this->pesanModel->selectCount('id_pesanan')->select('tanggal')->where('id_status', 2)->groupBy('tanggal')->findAll();
 		$tanggalSelesai = $this->pesanModel->selectCount('id_pesanan')->select('tanggal')->where('id_status', 3)->groupBy('tanggal')->findAll();
-		// dd($tanggal);
+		$pesananMasuk = $this->pesanModel->get_pesanan();
+		$pesananSelesai = $this->pesanModel->get_pesanan_selesai();
+
+
 		$data = [
 			'title' => 'Dashboard',
 			'pesanan_masuk' => $masuk,
@@ -38,6 +41,8 @@ class Gudang extends BaseController
 			'tanggal_masuk' => $tanggalMasuk,
 			'tanggal_diproses' => $tanggalProses,
 			'tanggal_selesai' => $tanggalSelesai,
+			'pesanan_masuk_list' => $pesananMasuk,
+			'pesanan_selesai_list' => $pesananSelesai,
 		];
 		return view('gudang/dashboard', $data);
 	}
