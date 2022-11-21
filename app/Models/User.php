@@ -104,4 +104,15 @@ class User extends Model
         return $data;
     }
 
+    public function get_user_toko($id)
+	{
+        $builder = $this->db->table('users');
+        $builder->select('users.id, username, email, name');
+        $builder->join('auth_groups_users', 'auth_groups_users.user_id=users.id');
+        $builder->join('auth_groups', 'auth_groups.id=auth_groups_users.group_id');
+        $builder->where('users.id', $id);
+        $query = $builder->get()->getRow();
+		
+        return $query;
+	}
 }

@@ -37,7 +37,7 @@ echo $this->section('content');
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-2">
+			<div class="col d-flex">
 				<a href="<?= base_url('/toko/produk') ?>" class="btn btn-primary btn-sm mb-3 d-flex align-items-center">
 					<ion-icon name="add" class="me-2"></ion-icon>
 					<span>Buat Pesanan</span>
