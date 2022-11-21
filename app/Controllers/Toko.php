@@ -163,7 +163,7 @@ class Toko extends BaseController
         // dd($pesanan);
         foreach ($keranjang as $k) {
             $list = $this->cart->where('id_keranjang', $k)->first();
-            $produk = $this->produkModel->select('harga')->where('id_produk', $list->id_produk)->first();
+            $produk = $this->produkModel->select('harga')->select('stok')->where('id_produk', $list->id_produk)->first();
 
             $data = [
                 'id_pesanan' => $pesanan->id_pesanan,
@@ -173,6 +173,11 @@ class Toko extends BaseController
             ];
             if ($this->listPesananModel->insert($data)) {
                 $this->cart->delete($k);
+                $stok = [
+                    'id_produk' => $list->id_produk,
+                    'stok' =>  $produk->stok - $list->jumlah,
+                ];
+                $this->produkModel->save($stok);
             } else {
                 $this->session->setFlashdata('error', 'Gagal membuat pesanan');
                 return redirect()->to(base_url('toko/keranjang'));
