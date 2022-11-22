@@ -3,17 +3,20 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ListPesanan;
 use App\Models\Produk;
 
 class Gudang extends BaseController
 {
 	protected $pesanModel;
 	protected $produkModel;
+	protected $listPesananModel;
 
 	public function __construct()
 	{
 		$this->pesanModel = new \App\Models\Pesanan();
 		$this->produkModel = new \App\Models\Produk();
+		$this->listPesananModel = new \App\Models\ListPesanan();
 	}
 
 	public function index()
@@ -91,15 +94,25 @@ class Gudang extends BaseController
 
 	public function proses_pesanan()
 	{
-		return view('gudang/pesanan/proses_pesanan');
+		return view('gudang/pesanaproses_pesanan');
 	}
 
 
-	public function detail_pesanan()
+	public function detail_pesanan($id)
 	{
+		$pesanan = $this->pesanModel
+		->join('toko', 'pesanan.id_toko=toko.id_toko')
+		->join('status', 'pesanan.id_status=status.id_status')
+		->where('id_pesanan', $id)->first();
+
+		$produk = $this->listPesananModel->join('produk', 'list_pesanan.id_produk = produk.id_produk')->where('id_pesanan', $id)->findAll();
+
 		$data = [
-			'title' => 'Detail Pesanan'
+			'title' => 'Detail Pesanan',
+			'pesanan' => $pesanan,
+			'produk' => $produk,
 		];
+		
 		return view('gudang/pesanan/detail_pesanan', $data);
 	}
 
@@ -121,7 +134,7 @@ class Gudang extends BaseController
 			'id_status'	=> 2,
 		];
 		$this->pesanModel->save($data);
-		return redirect()->to(base_url('gudang/pesanan/pesanan_masuk'));
+		return redirect()->to(base_url('gudang/pesanan_masuk'));
 	}
 
 	public function reject($id)
@@ -185,5 +198,16 @@ class Gudang extends BaseController
 
 		$this->produkModel->save($data);
 		return redirect()->to('/gudang/produk/produk');
+	}
+
+	public function detail_produk($id)
+	{
+		$produk = $this->produkModel->where('id_produk', $id)->first();
+
+		$data = [
+			'title' => 'Detail Produk',
+			'produk' => $produk,
+		];
+		return view('gudang/produk/detail_produk', $data);
 	}
 }
