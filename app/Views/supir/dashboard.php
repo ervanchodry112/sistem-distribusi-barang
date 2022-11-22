@@ -73,6 +73,7 @@ echo $this->section('content');
 							<?php
 							foreach ($pesanan as $p) {
 							?>
+
 								<div class="row">
 									<div class="col-3">
 
@@ -86,6 +87,7 @@ echo $this->section('content');
 												<div class="text-center  mb-2"><?= $p->receipt ?></div>
 												<div class="text-center">Alamat : <strong><?= $p->alamat ?></strong></div>
 											</div>
+
 										</div>
 									</div>
 								</div>

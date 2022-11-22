@@ -76,7 +76,7 @@ echo $this->section('content');
 							</li>
 
 							<li class="nav-item">
-								<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#dashboard-masuk">Pesanan Masuk</button>
+								<button class="nav-link" data-bs-toggle="tab" data-bs-target="#dashboard-masuk">Pesanan Masuk</button>
 							</li>
 
 							<li class="nav-item">

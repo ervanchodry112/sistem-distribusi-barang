@@ -59,6 +59,7 @@ echo $this->section('content');
 												<td style="text-align: center;">
 													<!-- detail button -->
 													<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan') ?>" role="button">
+
 														<i class="bi bi-clipboard-x"></i>
 													</a>
 													<!-- reject button -->
