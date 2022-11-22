@@ -3,17 +3,20 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ListPesanan;
 use App\Models\Produk;
 
 class Gudang extends BaseController
 {
 	protected $pesanModel;
 	protected $produkModel;
+	protected $listPesananModel;
 
 	public function __construct()
 	{
 		$this->pesanModel = new \App\Models\Pesanan();
 		$this->produkModel = new \App\Models\Produk();
+		$this->listPesananModel = new \App\Models\ListPesanan();
 	}
 
 	public function index()
@@ -23,21 +26,27 @@ class Gudang extends BaseController
 
 	public function dashboard()
 	{
+		$semua = $this->pesanModel->join('toko', 'pesanan.id_toko=toko.id_toko')->join('status', 'status.id_status = pesanan.id_status')->findAll();
 		$masuk = $this->pesanModel->where('id_status', 1)->countAllResults();
 		$proses = $this->pesanModel->where('id_status', 2)->countAllResults();
 		$selesai = $this->pesanModel->where('id_status', 3)->countAllResults();
 		$tanggalMasuk = $this->pesanModel->selectCount('id_pesanan')->select('tanggal')->where('id_status', 1)->groupBy('tanggal')->findAll();
 		$tanggalProses = $this->pesanModel->selectCount('id_pesanan')->select('tanggal')->where('id_status', 2)->groupBy('tanggal')->findAll();
 		$tanggalSelesai = $this->pesanModel->selectCount('id_pesanan')->select('tanggal')->where('id_status', 3)->groupBy('tanggal')->findAll();
-		// dd($tanggal);
+		$pesananMasuk = $this->pesanModel->get_pesanan();
+		$pesananSelesai = $this->pesanModel->get_pesanan_selesai();
+
 		$data = [
 			'title' => 'Dashboard',
+			'semua' => $semua,
 			'pesanan_masuk' => $masuk,
 			'pesanan_diproses' => $proses,
 			'pesanan_selesai' => $selesai,
 			'tanggal_masuk' => $tanggalMasuk,
 			'tanggal_diproses' => $tanggalProses,
 			'tanggal_selesai' => $tanggalSelesai,
+			'pesanan_masuk_list' => $pesananMasuk,
+			'pesanan_selesai_list' => $pesananSelesai,
 		];
 		return view('gudang/dashboard', $data);
 	}
@@ -86,15 +95,25 @@ class Gudang extends BaseController
 
 	public function proses_pesanan()
 	{
-		return view('gudang/pesanan/proses_pesanan');
+		return view('gudang/pesanaproses_pesanan');
 	}
 
 
-	public function detail_pesanan()
+	public function detail_pesanan($id)
 	{
+		$pesanan = $this->pesanModel
+			->join('toko', 'pesanan.id_toko=toko.id_toko')
+			->join('status', 'pesanan.id_status=status.id_status')
+			->where('id_pesanan', $id)->first();
+
+		$produk = $this->listPesananModel->join('produk', 'list_pesanan.id_produk = produk.id_produk')->where('id_pesanan', $id)->findAll();
+
 		$data = [
-			'title' => 'Detail Pesanan'
+			'title' => 'Detail Pesanan',
+			'pesanan' => $pesanan,
+			'produk' => $produk,
 		];
+
 		return view('gudang/pesanan/detail_pesanan', $data);
 	}
 
@@ -117,6 +136,7 @@ class Gudang extends BaseController
 		];
 		$this->pesanModel->save($data);
 		return redirect()->to('/gudang/pesanan_masuk');
+
 	}
 
 	public function reject($id)
@@ -180,5 +200,16 @@ class Gudang extends BaseController
 
 		$this->produkModel->save($data);
 		return redirect()->to('/gudang/produk/produk');
+	}
+
+	public function detail_produk($id)
+	{
+		$produk = $this->produkModel->where('id_produk', $id)->first();
+
+		$data = [
+			'title' => 'Detail Produk',
+			'produk' => $produk,
+		];
+		return view('gudang/produk/detail_produk', $data);
 	}
 }

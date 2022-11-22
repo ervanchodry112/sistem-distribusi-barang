@@ -10,62 +10,67 @@ echo $this->section('content');
 <div class="card px-2">
 	<div class="card-body pt-2">
 		<div class="tab-pane fade show active profile-overview" id="profile-overview">
-			<h5 class="card-title">Mas Toko</h5>
-			<div class="bg-info rounded border px-3 pt-2">
+			<h5 class="card-title"><?= $pesanan->receipt ?></h5>
+			<div class="bg-info rounded border px-3 pt-2 shadow">
 				<table class="table table-borderless w-50 text-white">
 					<tbody>
-						<tr>
-							<td>Id Pesanan</td>
-							<td>: PS1</td>
-						</tr>
-						<tr>
-							<td>Total Tagihan</td>
-							<td>: Rp12000</td>
-						</tr>
-						<tr>
-							<td>Status</td>
-							<td>: Dikirim</td>
-						</tr>
+						<div class="row">
+							<div class="col-6">
+								<tr>
+									<td>Nama Toko</td>
+									<td>: <?= $pesanan->nama_toko ?></td>
+								</tr>
+								<tr>
+									<td>Tanggal</td>
+									<td>: <?= $pesanan->tanggal ?></td>
+								</tr>
+								<tr>
+									<td>Status</td>
+									<td>: <?= $pesanan->nama_status ?></td>
+								</tr>
+								<tr>
+									<td>Alamat</td>
+									<td>: <?= $pesanan->alamat ?></td>
+								</tr>
+							</div>
+
+						</div>
 					</tbody>
 				</table>
 			</div>
 
-			<h5 class="card-title">Profile Details</h5>
+			<h5 class="card-title">Produk Detail</h5>
 
-			<div class="row">
-				<div class="col-lg-3 col-md-4 label ">Full Name</div>
-				<div class="col-lg-9 col-md-8">Kevin Anderson</div>
-			</div>
+			<table class="table table-striped table-bordered border shadow">
+				<thead>
+					<tr class="table" style="text-align: center;">
+						<th scope="col">No</th>
+						<th scope="col">Gambar</th>
+						<th scope="col">Id Produk</th>
+						<th scope="col">Nama Produk</th>
+						<th scope="col">Harga Satuan</th>
+						<th scope="col">Jumlah barang</th>
 
-			<div class="row">
-				<div class="col-lg-3 col-md-4 label">Company</div>
-				<div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
-			</div>
+					</tr>
+				</thead>
+				<tbody>
 
-			<div class="row">
-				<div class="col-lg-3 col-md-4 label">Job</div>
-				<div class="col-lg-9 col-md-8">Web Designer</div>
-			</div>
+					<?php
+					$i = 1;
+					foreach ($produk as $p) {
+					?>
+						<tr class="align-middle" style="text-align: center;">
+							<td scope="row"><?= $i++ ?></td>
+							<td><img src="/assets/img/produk/<?= ($p->gambar == null ? "default_product.png" : $p->gambar) ?>" height="200rem" class="" alt="..." di></td>
+							<td><?= $p->id_produk ?></td>
+							<td><?= $p->nama_produk ?></td>
+							<td>Rp.<?= number_format($p->harga) ?></td>
+							<td><?= $p->jumlah_produk ?></td>
+						</tr>
 
-			<div class="row">
-				<div class="col-lg-3 col-md-4 label">Country</div>
-				<div class="col-lg-9 col-md-8">USA</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-3 col-md-4 label">Address</div>
-				<div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-3 col-md-4 label">Phone</div>
-				<div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-3 col-md-4 label">Email</div>
-				<div class="col-lg-9 col-md-8">k.anderson@example.com</div>
-			</div>
+					<?php
+					}
+					?>
 
 		</div>
 	</div>

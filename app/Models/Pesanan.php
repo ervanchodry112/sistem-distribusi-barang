@@ -86,4 +86,27 @@ class Pesanan extends Model
 			->join('status', 'pesanan.id_status=status.id_status')
 			->get()->getResultObject();
 	}
+
+	public function get_semua_pesanan_toko()
+	{
+		$id_toko = $this->db->table('toko')->select('id_toko')->where('id_users', user_id())->get()->getResultObject();
+		return $this->db->table('pesanan')->where('id_toko', $id_toko[0]->id_toko)
+			->join('status', 'pesanan.id_status=status.id_status');
+	}
+
+	public function get_pesanan_diproses_toko()
+	{
+		$id_toko = $this->db->table('toko')->select('id_toko')->where('id_users', user_id())->get()->getResultObject();
+		return $this->db->table('pesanan')->where('id_toko', $id_toko[0]->id_toko)
+			->join('status', 'pesanan.id_status=status.id_status')
+			->where('pesanan.id_status', 2);
+	}
+
+	public function get_pesanan_selesai_toko()
+	{
+		$id_toko = $this->db->table('toko')->select('id_toko')->where('id_users', user_id())->get()->getResultObject();
+		return $this->db->table('pesanan')->where('id_toko', $id_toko[0]->id_toko)
+			->join('status', 'pesanan.id_status=status.id_status')
+			->where('pesanan.id_status', 4);
+	}
 }

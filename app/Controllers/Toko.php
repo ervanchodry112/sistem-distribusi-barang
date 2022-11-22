@@ -32,13 +32,28 @@ class Toko extends BaseController
     }
 
     public function dashboard()
-    {
-        $data = [
-            'title' => 'Dashboard',
-            'active' => 'dashboard',
-        ];
-        return view('toko/dashboard', $data);
-    }
+	{
+        $semua_pesanan_card = $this->pesanModel->get_semua_pesanan_toko()->countAllResults();
+        $semua_pesanan = $this->pesanModel->get_semua_pesanan_toko()->get()->getResultObject();
+        $pesanan_diproses_card = $this->pesanModel->get_pesanan_diproses_toko()->countAllResults();
+        $pesanan_diproses = $this->pesanModel->get_pesanan_diproses_toko()->get()->getResultObject();
+        $pesanan_selesai_card = $this->pesanModel->get_pesanan_selesai_toko()->countAllResults();
+        $pesanan_selesai = $this->pesanModel->get_pesanan_selesai_toko()->get()->getResultObject();
+
+        // d($semua_pesanan_card, $semua_pesanan, $pesanan_diproses_card, $pesanan_diproses);
+        // exit();
+
+		$data = [
+			'title' => 'Dashboard',
+            'semua_pesanan_card' => $semua_pesanan_card,
+            'semua_pesanan' => $semua_pesanan,
+            'pesanan_diproses_card' => $pesanan_diproses_card,
+            'pesanan_diproses' => $pesanan_diproses,
+            'pesanan_selesai_card' => $pesanan_selesai_card,
+            'pesanan_selesai' => $pesanan_selesai,
+		];
+		return view('toko/dashboard', $data);
+	}
 
     public function pesanan()
     {

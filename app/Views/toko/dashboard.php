@@ -22,11 +22,11 @@ echo $this->section('content');
 						<div class="card p-4">
 							<div class="row d-flex align-items-center">
 								<div class="col-4">
-									<ion-icon class="text-primary" name="log-in" style="font-size: 4rem;"></ion-icon>
+									<ion-icon class="text-primary" name="cube" style="font-size: 4rem;"></ion-icon>
 								</div>
 								<div class="col-8 align-end">
-									<div class="text-end text-muted">Pesanan Masuk</div>
-									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong>100</strong></div>
+									<div class="text-end text-muted">Semua Pesanan</div>
+									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong><?= $semua_pesanan_card ?></strong></div>
 								</div>
 							</div>
 						</div>
@@ -42,7 +42,7 @@ echo $this->section('content');
 								</div>
 								<div class="col-8 align-end">
 									<div class="text-end text-muted">Dalam Proses</div>
-									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong>58</strong></div>
+									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong><?= $pesanan_diproses_card ?></strong></div>
 								</div>
 							</div>
 						</div>
@@ -58,7 +58,7 @@ echo $this->section('content');
 								</div>
 								<div class="col-8 align-end">
 									<div class="text-end text-muted">Pesanan Selesai</div>
-									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong>12</strong></div>
+									<div class="text-primary text-end h1" style="font-size: 3rem;"><strong><?= $pesanan_selesai_card ?></strong></div>
 								</div>
 							</div>
 						</div>
@@ -66,157 +66,142 @@ echo $this->section('content');
 					<!-- Card Pesanan selesai -->
 				</div>
 
-				<div class="row">
-					<div class="col-8">
-						<div class="card p-4">
-							<h5 class="card-title">Area Chart</h5>
+				<div class="card">
+					<div class="card-body pt-3">
+						<!-- Bordered Tabs -->
+						<ul class="nav nav-tabs nav-tabs-bordered d-flex justify-content-evenly">
 
-							<!-- Area Chart -->
-							<div id="areaChart"></div>
+							<li class="nav-item">
+								<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#dashboard-semua">Semua Pesanan</button>
+							</li>
 
-							<script>
-								document.addEventListener("DOMContentLoaded", () => {
-									const series = {
-										"pesananMasuk": {
-											"jumlah": [
-												8,
-												9,
-												5,
-												15,
-												13,
-												2
-											],
-											"dates": [
-												'2021-01-01',
-												'2021-01-02',
-												'2021-01-03',
-												'2021-01-04',
-												'2021-01-05',
-												'2021-01-06'
-											]
-										},
-										"pesananDiproses": {
-											"jumlah": [
-												5,
-												7,
-												1,
-												3,
-												4,
-												2
-											],
-											"dates": [
-												'2021-01-01',
-												'2021-01-02',
-												'2021-01-03',
-												'2021-01-04',
-												'2021-01-05',
-												'2021-01-06'
-											]
-										},
-										"pesananSelesai": {
-											"jumlah": [
-												10,
-												11,
-												15,
-												13,
-												17,
-												18
+							<li class="nav-item">
+								<button class="nav-link" data-bs-toggle="tab" data-bs-target="#dashboard-diproses">Pesanan Diproses</button>
+							</li>
 
-											],
-											"dates": [
-												'2021-01-01',
-												'2021-01-02',
-												'2021-01-03',
-												'2021-01-04',
-												'2021-01-05',
-												'2021-01-06'
+							<li class="nav-item">
+								<button class="nav-link" data-bs-toggle="tab" data-bs-target="#dashboard-selesai">Pesanan Selesai</button>
+							</li>
 
-											]
+						</ul>
+						<div class="tab-content pt-2">
+
+							<div class="tab-pane fade show active dashboard-semua" id="dashboard-semua">
+								<table class="table table-hover">
+									<thead>
+										<tr class="table" style="text-align: center;">
+											<th scope="col">No</th>
+											<th scope="col">Id Pesanan</th>
+											<th scope="col">Tanggal</th>
+											<th scope="col">Status Pesanan</th>
+											<th scope="col">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+										$i = 1;
+										foreach ($semua_pesanan as $p) {
+										?>
+											<tr style="text-align: center;">
+												<td scope="row"><?= $i++ ?></td>
+												<td><?= $p->receipt ?></td>
+												<td><?= $p->tanggal ?></td>
+												<td class="text-<?= ($p->id_status == 5 ? 'danger' : ($p->id_status == 4 ? 'success' : 'warning')) ?>"><strong><?= $p->nama_status ?></strong></td>
+												<td>
+													<!-- detail button -->
+													<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
+														<i class="bi bi-file-text"></i>
+													</a>
+													<!-- reject button -->
+													<?php
+													if (!($p->id_status == 4 || $p->id_status == 5)) {
+													?>
+														<a class="btn btn-danger btn-sm" href="<?= base_url('toko/delete_pesanan/' . $p->id_pesanan) ?>" role="button" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')">
+															<i class="bi bi-trash3"></i>
+														</a>
+													<?php
+													}
+													?>
+												</td>
+											</tr>
+										<?php
 										}
-									}
-									new ApexCharts(document.querySelector("#areaChart"), {
-										series: [{
-												name: "Pesanan Masuk",
-												data: series.pesananDiproses.jumlah
-											},
-											{
-												name: "Pesanan Diproses",
-												data: series.pesananMasuk.jumlah
-											},
-											{
-												name: "Pesanan Selesai",
-												data: series.pesananSelesai.jumlah
-											}
-										],
-										chart: {
-											type: 'area',
-											height: 350,
-											zoom: {
-												enabled: false
-											}
-										},
-										dataLabels: {
-											enabled: false
-										},
-										stroke: {
-											curve: 'straight'
-										},
-										subtitle: {
-											text: 'Transaksi Pesanan',
-											align: 'left'
-										},
-										labels: series.pesananDiproses.dates,
-										xaxis: {
-											type: 'datetime',
-										},
-										yaxis: {
-											opposite: true
-										},
-										legend: {
-											horizontalAlign: 'left'
+										?>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="tab-pane fade show active dashboard-diproses" id="dashboard-diproses">
+								<table class="table table-hover">
+									<thead>
+										<tr style="text-align: center;">
+											<th scope="col">No</th>
+											<th scope="col">Id Pesanan</th>
+											<th scope="col">Tanggal</th>
+											<th scope="col">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+										$i = 1;
+										foreach ($pesanan_diproses as $p) {
+										?>
+											<tr style="text-align: center;">
+												<td scope="row"><?= $i++ ?></td>
+												<td><?= $p->receipt ?></td>
+												<td><?= $p->tanggal ?></td>
+												<td>
+													<!-- detail button -->
+													<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
+														<i class="bi bi-file-text"></i>
+													</a>
+													<!-- reject button -->
+													<a class="btn btn-danger btn-sm" href="<?= base_url('toko/delete_pesanan/' . $p->id_pesanan) ?>" role="button" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')">
+														<i class="bi bi-trash3"></i>
+													</a>
+												</td>
+											</tr>
+										<?php
 										}
-									}).render();
-								});
-							</script>
-							<!-- End Area Chart -->
-						</div>
-					</div>
-					<div class="col-4">
-						<div class="card p-4">
-							<h5 class="card-title">Status Pesanan Terkini</h5>
-							<div class="row">
-								<div class="col-5">
-									<p>1 Januari 2022 13:35</p>
-								</div>
-								<div class="col-1">
-									<p>:</p>
-								</div>
-								<div class="col-6">
-									<p>Pesanan diterima dan siap di kirim</p>
-								</div>
+										?>
+									</tbody>
+								</table>
 							</div>
-							<div class="row">
-								<div class="col-5">
-									<p>1 Januari 2022 14:23</p>
-								</div>
-								<div class="col-1">
-									<p>:</p>
-								</div>
-								<div class="col-6">
-									<p>Pesanan diterima hub daerah</p>
-								</div>
+
+							<div class="tab-pane fade show dashboard-selesai" id="dashboard-selesai">
+								<table class="table table-hover">
+									<thead>
+										<tr style="text-align: center;">
+											<th scope="col">No</th>
+											<th scope="col">Id Pesanan</th>
+											<th scope="col">Tanggal</th>
+											<th scope="col">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+										$i = 1;
+										foreach ($pesanan_selesai as $p) {
+										?>
+
+											<tr style="text-align: center;">
+												<td scope="row"><?= $i++ ?></td>
+												<td><?= $p->receipt ?></td>
+												<td><?= $p->tanggal ?></td>
+												<td>
+													<!-- detail button -->
+													<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
+														<i class="bi bi-file-text"></i>
+													</a>
+												</td>
+											</tr>
+										<?php
+										}
+										?>
+									</tbody>
+								</table>
 							</div>
-							<div class="row">
-								<div class="col-5">
-									<p>1 Januari 2022 17:03</p>
-								</div>
-								<div class="col-1">
-									<p>:</p>
-								</div>
-								<div class="col-6">
-									<p>Pesanan diterima Pelanggan</p>
-								</div>
-							</div>
+
 						</div>
 					</div>
 				</div>
