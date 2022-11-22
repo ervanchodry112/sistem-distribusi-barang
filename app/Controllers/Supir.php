@@ -26,6 +26,7 @@ class Supir extends BaseController
 		$siap = $this->pesanModel->where('id_status', 2)->countAllResults();
 		$kirim = $this->pesanModel->where('id_status', 3)->countAllResults();
 		$selesai = $this->pesanModel->where('id_status', 4)->countAllResults();
+		$pesanan = $this->pesanModel->get_dalam_pengiriman();
 
 
 		$data = [
@@ -33,6 +34,7 @@ class Supir extends BaseController
 			'siap' => $siap,
 			'kirim' => $kirim,
 			'selesai' => $selesai,
+			'pesanan' => $pesanan,
 		];
 
 		return view('/supir/dashboard', $data);

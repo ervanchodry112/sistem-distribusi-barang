@@ -72,6 +72,10 @@ echo $this->section('content');
 						<ul class="nav nav-tabs nav-tabs-bordered d-flex justify-content-evenly">
 
 							<li class="nav-item">
+								<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#dashboard-semua">Semua Pesanan</button>
+							</li>
+
+							<li class="nav-item">
 								<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#dashboard-masuk">Pesanan Masuk</button>
 							</li>
 
@@ -82,7 +86,39 @@ echo $this->section('content');
 						</ul>
 						<div class="tab-content pt-2">
 
-							<div class="tab-pane fade show active dashboard-masuk" id="dashboard-masuk">
+							<div class="tab-pane fade show active dashboard-semua" id="dashboard-semua">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th scope="col">No</th>
+											<th scope="col">Id Pesanan</th>
+											<th scope="col">Nama Toko</th>
+											<th scope="col">Tanggal</th>
+											<th scope="col">Alamat</th>
+											<th scope="col">Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+										$i = 1;
+										foreach ($semua as $p) {
+										?>
+											<tr>
+												<td scope="row"><?= $i++ ?></td>
+												<td><?= $p->receipt ?></td>
+												<td><?= $p->nama_toko ?></td>
+												<td><?= $p->tanggal ?></td>
+												<td><?= $p->alamat ?></td>
+												<td><?= $p->nama_status ?></td>
+											</tr>
+										<?php
+										}
+										?>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="tab-pane fade show dashboard-masuk" id="dashboard-masuk">
 								<table class="table table-hover">
 									<thead>
 										<tr>

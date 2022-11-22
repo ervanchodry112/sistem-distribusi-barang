@@ -41,7 +41,7 @@ echo $this->section('content');
 
 								<tr style="text-align: center;">
 									<td scope="row"><?= $i++ ?></td>
-									<td><?= $p->id_pesanan ?></td>
+									<td><?= $p->receipt ?></td>
 									<td><?= $p->nama_toko ?></td>
 									<td><?= $p->alamat ?></td>
 									<td><?= $p->nama_supir ?></td>
