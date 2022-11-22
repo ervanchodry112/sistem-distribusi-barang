@@ -23,6 +23,10 @@ echo $this->section('content');
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
+
+					<div class="card">
+						<div class="card-body">
+							
 					<table class="table table-striped table-bordered border shadow">
 						<thead>
 							<tr class="table" style="text-align: center;">

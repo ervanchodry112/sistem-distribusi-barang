@@ -149,6 +149,33 @@ class Toko extends BaseController
         return redirect()->to(base_url('toko/keranjang'));
     }
 
+    public function edit_keranjang($id)
+    {
+        $produk = $this->cart->where('id_keranjang', $id)->join('produk', 'keranjang.id_produk=produk.id_produk')->first();
+        $data = [
+            'title' => 'Edit Keranjang',
+            'produk' => $produk,
+        ];
+        return view('toko/edit_keranjang', $data);
+    }
+
+    public function update_keranjang()
+    {
+        $input = $this->request->getVar();
+
+        $data = [
+            'id_keranjang' => $input['id_keranjang'],
+            'jumlah' => $input['jumlah_produk'],
+        ];
+
+        if (!$this->cart->save($data)) {
+            $this->session->setFlashdata('error', 'Gagal mengubah jumlah produk');
+            return redirect()->to(base_url('toko/keranjang'));
+        }
+        $this->session->setFlashdata('success', 'Berhasil mengubah jumlah produk');
+        return redirect()->to(base_url('toko/keranjang'));
+    }
+
     public function keranjang()
     {
         $isi = $this->cart->join('produk', 'produk.id_produk=keranjang.id_produk')

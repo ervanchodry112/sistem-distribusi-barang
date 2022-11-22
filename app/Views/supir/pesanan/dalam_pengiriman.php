@@ -23,6 +23,10 @@ echo $this->section('content');
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
+
+					<div class="card">
+						<div class="card-body">
+							
 					<table class="table table-striped table-bordered border shadow">
 						<thead>
 							<tr class="table">
@@ -73,8 +77,18 @@ echo $this->section('content');
 							}
 							?>
 
-						</tbody>
-					</table>
+													<ion-icon name="checkmark-outline"></ion-icon>
+												</a>
+										</tr>
+
+									<?php
+									}
+									?>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

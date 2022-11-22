@@ -53,6 +53,7 @@ echo $this->section('content');
                                 <thead>
                                     <tr class="table" style="text-align: center;">
                                         <th scope="col">#</th>
+                                        <th scope="col">Foto Produk</th>
                                         <th scope="col">Nama Produk</th>
                                         <th scope="col">Harga</th>
                                         <th scope="col">Jumlah</th>
@@ -72,14 +73,19 @@ echo $this->section('content');
                                         $i = 1;
                                         foreach ($keranjang as $p) {
                                         ?>
-
-                                            <tr style="text-align: center;">
+                                            <tr style="text-align: center;" class="align-middle">
                                                 <td><input type="checkbox" name="produk[]" value="<?= $p->id_keranjang ?>"></td>
+                                                <td><img src="/assets/img/produk/<?= ($p->gambar == null ? "default_product.png" : $p->gambar) ?>" height="190rem" class="card-img-top" alt="..."></td>
                                                 <td><?= $p->nama_produk ?></td>
                                                 <td>Rp<?= number_format($p->harga) ?></td>
                                                 <td><?= $p->jumlah ?></td>
                                                 <td>Rp<?= number_format($p->jumlah * $p->harga) ?></td>
                                                 <td>
+                                                    <!-- reject button -->
+                                                    <a class="btn btn-primary btn-sm" href="<?= base_url('toko/edit_keranjang/' . $p->id_keranjang) ?>" role="button">
+                                                        <i class="bi bi-pencil"></i>
+                                                    </a>
+                                                    <!-- edit button -->
                                                     <!-- reject button -->
                                                     <a class="btn btn-danger btn-sm" href="<?= base_url('toko/delete_keranjang/' . $p->id_keranjang) ?>" role="button" onclick="return confirm('Yakin Ingin Menghapus Produk dari keranjang?')">
                                                         <i class="bi bi-trash3"></i>

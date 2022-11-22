@@ -7,6 +7,7 @@ use App\Models\Pesanan;
 
 class Supir extends BaseController
 {
+
 	protected $pesanModel;
 	protected $supirModel;
 
@@ -140,4 +141,5 @@ class Supir extends BaseController
 			return redirect()->to('/dashboard/supir');
 		}
 	}
+
 }

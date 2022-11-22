@@ -135,7 +135,8 @@ class Gudang extends BaseController
 			'id_status'	=> 2,
 		];
 		$this->pesanModel->save($data);
-		return redirect()->to(base_url('gudang/pesanan_masuk'));
+		return redirect()->to('/gudang/pesanan_masuk');
+
 	}
 
 	public function reject($id)
