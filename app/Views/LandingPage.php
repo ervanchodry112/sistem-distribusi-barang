@@ -249,7 +249,7 @@
                 <div class="col-lg-5">
                     <div class="section-title text-center pb-30">
                         <div class="line m-auto"></div>
-                        <h3 class="title"><span>Meet Our</span>Team Members</h3>
+                        <h3 class="title"><span>Meet Our </span>Team Members</h3>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
@@ -295,7 +295,7 @@
                 <div class="col-lg-3 col-md-7 col-sm-8">
                     <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
                         <div class="team-image">
-                            <img src="/assets/img/team-3.png" alt="Team">
+                            <img src="/assets/img/irvandra.jpg" alt="Team">
                             <div class="social">
                                 <ul>
                                     <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
@@ -369,10 +369,7 @@
                             <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu.</p>
                         </div>
                         <div class="testimonial-author d-flex align-items-center">
-                            <div class="author-image">
-                                <img class="shape" src="/assets/img/textimonial-shape.svg" alt="shape">
-                                <img class="author" src="/assets/img/author-1.png" alt="author">
-                            </div>
+
                             <div class="author-content media-body">
                                 <h6 class="holder-name">Jenny Deo</h6>
                                 <p class="text">CEO, SpaceX</p>
@@ -400,10 +397,7 @@
                             <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu.</p>
                         </div>
                         <div class="testimonial-author d-flex align-items-center">
-                            <div class="author-image">
-                                <img class="shape" src="/assets/img/textimonial-shape.svg" alt="shape">
-                                <img class="author" src="/assets/img/author-2.png" alt="author">
-                            </div>
+
                             <div class="author-content media-body">
                                 <h6 class="holder-name">Marjin Otte</h6>
                                 <p class="text">UX Specialist, Yoast</p>
@@ -431,10 +425,7 @@
                             <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu.</p>
                         </div>
                         <div class="testimonial-author d-flex align-items-center">
-                            <div class="author-image">
-                                <img class="shape" src="/assets/img/textimonial-shape.svg" alt="shape">
-                                <img class="author" src="/assets/img/author-3.png" alt="author">
-                            </div>
+
                             <div class="author-content media-body">
                                 <h6 class="holder-name">David Smith</h6>
                                 <p class="text">CTO, Alphabet</p>
@@ -462,10 +453,7 @@
                             <p class="text">Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu eirmod tempor invidunt labore.Lorem ipsum dolor sit amet,consetetur sadipscing elitr, seddiam nonu.</p>
                         </div>
                         <div class="testimonial-author d-flex align-items-center">
-                            <div class="author-image">
-                                <img class="shape" src="/assets/img/textimonial-shape.svg" alt="shape">
-                                <img class="author" src="/assets/img/author-2.png" alt="author">
-                            </div>
+
                             <div class="author-content media-body">
                                 <h6 class="holder-name">Fajar Siddiq</h6>
                                 <p class="text">COO, MakerFlix</p>
@@ -505,15 +493,9 @@
                     <div class="col-lg-4 col-md-6 col-sm-8">
                         <div class="footer-about mt-50 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
                             <a class="logo" href="#">
-                                <img src="/assets/img/logo.svg" alt="logo">
+                                <img width="50px" src="/assets/img/icon.png" alt="logo">
                             </a>
                             <p class="text">Lorem ipsum dolor sit amet consetetur sadipscing elitr, sederfs diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>
-                            <ul class="social">
-                                <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                                <li><a href="#"><i class="lni-twitter-filled"></i></a></li>
-                                <li><a href="#"><i class="lni-instagram-filled"></i></a></li>
-                                <li><a href="#"><i class="lni-linkedin-original"></i></a></li>
-                            </ul>
                         </div> <!-- footer about -->
                     </div>
                     <div class="col-lg-5 col-md-7 col-sm-7">
@@ -559,17 +541,6 @@
                     </div>
                 </div> <!-- row -->
             </div> <!-- footer widget -->
-            <div class="footer-copyright">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="copyright d-sm-flex justify-content-between">
-                            <div class="copyright-content">
-                                <p class="text">Designed and Developed by <a href="https://uideck.com" rel="nofollow">UIdeck</a></p>
-                            </div> <!-- copyright content -->
-                        </div> <!-- copyright -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- footer copyright -->
         </div> <!-- container -->
         <div id="particles-2"></div>
     </footer>
