@@ -36,23 +36,31 @@ echo $this->section('content');
 						</thead>
 						<tbody>
 							<?php
-							$i = 1;
-							foreach ($selesai as $p) {
+							if ($pesanan == null) {
 							?>
-								<tr>
-									<td scope="row"><?= $i++ ?></td>
-									<td style="text-align: center;">
-										<!-- detail button -->
-										<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan/' . $p->id_pesanan) ?>" role="button">
-											<ion-icon name="eye-outline"></ion-icon>
-										</a>
-									</td>
-									<td><?= $p->id_pesanan ?></td>
-									<td><?= $p->nama_toko ?></td>
-									<td><?= $p->nama_supir ?></td>
-									<td><?= $p->nama_status ?></td>
+								<tr class="text-center">
+									<td colspan="7">Tidak ada pesanan yang sedang dikirim</td>
 								</tr>
+								<?php
+							} else {
+								$i = 1;
+								foreach ($pesanan as $p) {
+								?>
+									<tr>
+										<td scope="row"><?= $i++ ?></td>
+										<td style="text-align: center;">
+											<!-- detail button -->
+											<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan/' . $p->id_pesanan) ?>" role="button">
+												<ion-icon name="eye-outline"></ion-icon>
+											</a>
+										</td>
+										<td><?= $p->id_pesanan ?></td>
+										<td><?= $p->nama_toko ?></td>
+										<td><?= $p->nama_supir ?></td>
+										<td><?= $p->nama_status ?></td>
+									</tr>
 							<?php
+								}
 							}
 							?>
 						</tbody>

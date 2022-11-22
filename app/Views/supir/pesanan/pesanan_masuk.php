@@ -35,26 +35,36 @@ echo $this->section('content');
 							</tr>
 						</thead>
 						<tbody>
-							<?php $i = 1;
-							foreach ($pesanan as $p) { ?>
-								<tr>
-									<td scope="row"><?= $i++ ?></td>
-									<td>
-										<!-- prosses button -->
-										<a class="btn btn-success btn-sm" href="<?= base_url('supir/take_pesanan/' . $p->id_pesanan) ?>" role="button">
-											<ion-icon name="cube-outline"></ion-icon>
-										</a>
-										<!-- detail button -->
-										<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan') ?>" role="button">
-											<ion-icon name="search-outline"></ion-icon>
-										</a>
-									</td>
-									<td><?= $p->id_pesanan ?></td>
-									<td><?= $p->nama_toko ?></td>
-									<td><?= $p->alamat ?></td>
-									<td><?= $p->nama_status ?></td>
-								</tr>
 							<?php
+							if ($pesanan == null) {
+							?>
+								<tr class="text-center">
+									<td colspan="7">Tidak ada pesanan yang sedang dikirim</td>
+								</tr>
+								<?php
+							} else {
+								$i = 1;
+								foreach ($pesanan as $p) {
+								?>
+									<tr>
+										<td scope="row"><?= $i++ ?></td>
+										<td>
+											<!-- prosses button -->
+											<a class="btn btn-success btn-sm" href="<?= base_url('supir/take_pesanan/' . $p->id_pesanan) ?>" role="button">
+												<ion-icon name="cube-outline"></ion-icon>
+											</a>
+											<!-- detail button -->
+											<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan') ?>" role="button">
+												<ion-icon name="search-outline"></ion-icon>
+											</a>
+										</td>
+										<td><?= $p->id_pesanan ?></td>
+										<td><?= $p->nama_toko ?></td>
+										<td><?= $p->alamat ?></td>
+										<td><?= $p->nama_status ?></td>
+									</tr>
+							<?php
+								}
 							}
 							?>
 						</tbody>

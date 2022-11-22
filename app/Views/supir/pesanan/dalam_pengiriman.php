@@ -36,33 +36,40 @@ echo $this->section('content');
 						</thead>
 						<tbody>
 							<?php
-							$i = 1;
-							foreach ($pengiriman as $p) {
+							if ($pesanan == null) {
 							?>
-
-								<tr>
-									<td scope="row"><?= $i++ ?></td>
-									<td><?= $p->id_pesanan ?></td>
-									<td><?= $p->nama_toko ?></td>
-									<td><?= $p->pemilik ?></td>
-									<td><?= $p->alamat ?></td>
-									<td style="text-align: center;">
-										<!-- detail button -->
-										<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan') ?>" role="button">
-											<ion-icon name="search-outline"></ion-icon>
-										</a>
-										<!-- reject button -->
-										<a class="btn btn-danger btn-sm" href="<?= base_url('supir/cancel_pesanan/' . $p->id_pesanan) ?>" role="button">
-											<ion-icon name="close-outline"></ion-icon>
-										</a>
-										<!-- success button -->
-										<a class="btn btn-success btn-sm" href="<?= base_url('supir/finish_pesanan/' . $p->id_pesanan) ?>" role="button">
-
-											<ion-icon name="checkmark-outline"></ion-icon>
-										</a>
+								<tr class="text-center">
+									<td colspan="7">Tidak ada pesanan yang sedang dikirim</td>
 								</tr>
+								<?php
+							} else {
+								$i = 1;
+								foreach ($pesanan as $p) {
+								?>
+									<tr>
+										<td scope="row"><?= $i++ ?></td>
+										<td><?= $p->id_pesanan ?></td>
+										<td><?= $p->nama_toko ?></td>
+										<td><?= $p->pemilik ?></td>
+										<td><?= $p->alamat ?></td>
+										<td style="text-align: center;">
+											<!-- detail button -->
+											<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan') ?>" role="button">
+												<ion-icon name="search-outline"></ion-icon>
+											</a>
+											<!-- reject button -->
+											<a class="btn btn-danger btn-sm" href="<?= base_url('supir/cancel_pesanan/' . $p->id_pesanan) ?>" role="button">
+												<ion-icon name="close-outline"></ion-icon>
+											</a>
+											<!-- success button -->
+											<a class="btn btn-success btn-sm" href="<?= base_url('supir/finish_pesanan/' . $p->id_pesanan) ?>" role="button">
+
+												<ion-icon name="checkmark-outline"></ion-icon>
+											</a>
+									</tr>
 
 							<?php
+								}
 							}
 							?>
 
