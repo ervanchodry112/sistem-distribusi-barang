@@ -108,6 +108,12 @@
                                     <a class="main-btn" data-scroll-nav="0" href="<?= base_url('login') ?>">Login</a>
                                 </div>
                             <?php
+                            } else {
+                            ?>
+                                <div class="navbar-btn d-none d-sm-inline-block">
+                                    <a class="main-btn" data-scroll-nav="0" href="<?= base_url('admin') ?>">Panel</a>
+                                </div>
+                            <?php
                             }
                             ?>
                         </nav> <!-- navbar -->
@@ -308,7 +314,7 @@
                 <div class="col-lg-3 col-md-7 col-sm-8">
                     <div class="single-team text-center mt-30 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
                         <div class="team-image">
-                            <img src="/assets/img/team-3.png" alt="Team">
+                            <img src="/assets/img/tambat.jpg" alt="Team">
                             <div class="social">
                                 <ul>
                                     <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
@@ -320,7 +326,7 @@
                         </div>
                         <div class="team-content">
                             <h5 class="holder-name"><a href="#">Tambat Ramdani</a></h5>
-                            <p class="text">17170510</p>
+                            <p class="text">1717051034</p>
                         </div>
                     </div> <!-- single team -->
                 </div>

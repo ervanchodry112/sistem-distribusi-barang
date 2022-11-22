@@ -77,7 +77,7 @@ echo $this->section('content');
 									<div class="card" style="width: 18rem; height: 20rem;">
 										<div class="card-body" style="margin-top: -20px">
 											<h5 class="card-title" style="margin-bottom: -10px;">Pesanan <?= $p->id_pesanan ?></h5>
-											<p class="card-text" style="margin-bottom: -10px;">Pengirim : <?= $p->nama_pengirim ?></p>
+											<!-- <p class="card-text" style="margin-bottom: -10px;">Pengirim : </p> -->
 										</div>
 									</div>
 								</div>
