@@ -26,6 +26,7 @@ class Gudang extends BaseController
 
 	public function dashboard()
 	{
+		$semua = $this->pesanModel->join('toko', 'pesanan.id_toko=toko.id_toko')->join('status', 'status.id_status = pesanan.id_status')->findAll();
 		$masuk = $this->pesanModel->where('id_status', 1)->countAllResults();
 		$proses = $this->pesanModel->where('id_status', 2)->countAllResults();
 		$selesai = $this->pesanModel->where('id_status', 3)->countAllResults();
@@ -35,9 +36,9 @@ class Gudang extends BaseController
 		$pesananMasuk = $this->pesanModel->get_pesanan();
 		$pesananSelesai = $this->pesanModel->get_pesanan_selesai();
 
-
 		$data = [
 			'title' => 'Dashboard',
+			'semua' => $semua,
 			'pesanan_masuk' => $masuk,
 			'pesanan_diproses' => $proses,
 			'pesanan_selesai' => $selesai,
@@ -101,9 +102,9 @@ class Gudang extends BaseController
 	public function detail_pesanan($id)
 	{
 		$pesanan = $this->pesanModel
-		->join('toko', 'pesanan.id_toko=toko.id_toko')
-		->join('status', 'pesanan.id_status=status.id_status')
-		->where('id_pesanan', $id)->first();
+			->join('toko', 'pesanan.id_toko=toko.id_toko')
+			->join('status', 'pesanan.id_status=status.id_status')
+			->where('id_pesanan', $id)->first();
 
 		$produk = $this->listPesananModel->join('produk', 'list_pesanan.id_produk = produk.id_produk')->where('id_pesanan', $id)->findAll();
 
@@ -112,7 +113,7 @@ class Gudang extends BaseController
 			'pesanan' => $pesanan,
 			'produk' => $produk,
 		];
-		
+
 		return view('gudang/pesanan/detail_pesanan', $data);
 	}
 

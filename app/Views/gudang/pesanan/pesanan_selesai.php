@@ -41,13 +41,13 @@ echo $this->section('content');
 
 								<tr style="text-align: center;">
 									<td scope="row"><?= $i++ ?></td>
-									<td><?= $p->id_pesanan ?></td>
+									<td><?= $p->receipt ?></td>
 									<td><?= $p->nama_toko ?></td>
 									<td><?= $p->nama_supir ?></td>
 									<td><?= $p->status_pesanan ?></td>
 									<td>
 										<!-- detail button -->
-										<a class="btn btn-primary btn-sm" href="<?= base_url('gudang/detail_pesanan/'.$p->id_pesanan) ?>" role="button">
+										<a class="btn btn-primary btn-sm" href="<?= base_url('gudang/detail_pesanan/' . $p->id_pesanan) ?>" role="button">
 											<i class="bi bi-file-text"></i>
 										</a>
 									</td>

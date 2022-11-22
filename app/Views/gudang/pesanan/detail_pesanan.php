@@ -10,8 +10,8 @@ echo $this->section('content');
 <div class="card px-2">
 	<div class="card-body pt-2">
 		<div class="tab-pane fade show active profile-overview" id="profile-overview">
-			<h5 class="card-title"><?= $pesanan->id_pesanan ?></h5>
-			<div class="bg-info rounded border px-3 pt-2">
+			<h5 class="card-title"><?= $pesanan->receipt ?></h5>
+			<div class="bg-info rounded border px-3 pt-2 shadow">
 				<table class="table table-borderless w-50 text-white">
 					<tbody>
 						<div class="row">
@@ -28,6 +28,10 @@ echo $this->section('content');
 									<td>Status</td>
 									<td>: <?= $pesanan->nama_status ?></td>
 								</tr>
+								<tr>
+									<td>Alamat</td>
+									<td>: <?= $pesanan->alamat ?></td>
+								</tr>
 							</div>
 
 						</div>
@@ -42,10 +46,10 @@ echo $this->section('content');
 					<tr class="table" style="text-align: center;">
 						<th scope="col">No</th>
 						<th scope="col">Gambar</th>
-						<th scope="col">Id Pesanan</th>
-						<th scope="col">Nama Toko</th>
-						<th scope="col">Tanggal</th>
-						<th scope="col">Alamat</th>
+						<th scope="col">Id Produk</th>
+						<th scope="col">Nama Produk</th>
+						<th scope="col">Harga Satuan</th>
+						<th scope="col">Jumlah barang</th>
 
 					</tr>
 				</thead>
@@ -60,8 +64,8 @@ echo $this->section('content');
 							<td><img src="/assets/img/produk/<?= ($p->gambar == null ? "default_product.png" : $p->gambar) ?>" height="200rem" class="" alt="..." di></td>
 							<td><?= $p->id_produk ?></td>
 							<td><?= $p->nama_produk ?></td>
-							<td><?= $p->harga ?></td>
-							<td><?= $p->stok ?></td>
+							<td>Rp.<?= number_format($p->harga) ?></td>
+							<td><?= $p->jumlah_produk ?></td>
 						</tr>
 
 					<?php

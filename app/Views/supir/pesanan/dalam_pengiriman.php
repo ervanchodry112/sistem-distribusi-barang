@@ -36,7 +36,7 @@ echo $this->section('content');
 						</thead>
 						<tbody>
 							<?php
-							if ($pesanan == null) {
+							if ($pengiriman == null) {
 							?>
 								<tr class="text-center">
 									<td colspan="7">Tidak ada pesanan yang sedang dikirim</td>
@@ -44,7 +44,7 @@ echo $this->section('content');
 								<?php
 							} else {
 								$i = 1;
-								foreach ($pesanan as $p) {
+								foreach ($pengiriman as $p) {
 								?>
 									<tr>
 										<td scope="row"><?= $i++ ?></td>
