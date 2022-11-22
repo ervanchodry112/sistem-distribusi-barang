@@ -91,7 +91,6 @@ echo $this->section('content');
 											<th scope="col">Nama Toko</th>
 											<th scope="col">Tanggal</th>
 											<th scope="col">Alamat</th>
-											<th scope="col">Action</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -123,7 +122,6 @@ echo $this->section('content');
 											<th scope="col">Nama Toko</th>
 											<th scope="col">Nama Supir</th>
 											<th scope="col">Status Pesanan</th>
-											<th scope="col">Action</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -138,12 +136,6 @@ echo $this->section('content');
 												<td><?= $p->nama_toko ?></td>
 												<td><?= $p->nama_supir ?></td>
 												<td><?= $p->status_pesanan ?></td>
-												<td>
-													<!-- detail button -->
-													<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
-														<i class="bi bi-file-text"></i>
-													</a>
-												</td>
 											</tr>
 										<?php
 										}

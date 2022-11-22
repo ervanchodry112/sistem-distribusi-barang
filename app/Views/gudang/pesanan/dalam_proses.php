@@ -45,7 +45,7 @@ echo $this->section('content');
 									<td><?= $p->nama_status ?></td>
 									<td>
 										<!-- detail button -->
-										<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
+										<a class="btn btn-primary btn-sm" href="<?= base_url('gudang/detail_pesanan/' . $p->id_pesanan) ?>" role="button">
 											<i class="bi bi-file-text"></i>
 										</a>
 									</td>
