@@ -29,6 +29,8 @@ class Supir extends BaseController
 		$selesai = $this->pesanModel->where('id_status', 4)->countAllResults();
 		$pesanan = $this->pesanModel->get_dalam_pengiriman();
 
+		// dd($pesanan);
+
 
 		$data = [
 			'title' => 'Dashboard',
@@ -86,7 +88,7 @@ class Supir extends BaseController
 		$data = [
 			'id_pesanan' => $id,
 			'id_status' => 3,
-			'id_supir' => $idSupir,
+			'id_supir' => $idSupir->id_supir,
 		];
 		$this->pesanModel->save($data);
 		return redirect()->to('supir/pesanan_masuk');
@@ -141,5 +143,4 @@ class Supir extends BaseController
 			return redirect()->to('/dashboard/supir');
 		}
 	}
-
 }

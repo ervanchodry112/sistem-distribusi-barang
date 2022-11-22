@@ -59,16 +59,16 @@ echo $this->section('content');
 												<td style="text-align: center;">
 													<!-- detail button -->
 													<a class="btn btn-info btn-sm" href="<?= base_url('/supir/detail_pesanan') ?>" role="button">
-														<ion-icon name="search-outline"></ion-icon>
+
+														<i class="bi bi-clipboard-x"></i>
 													</a>
 													<!-- reject button -->
 													<a class="btn btn-danger btn-sm" href="<?= base_url('supir/cancel_pesanan/' . $p->id_pesanan) ?>" role="button">
-														<ion-icon name="close-outline"></ion-icon>
+														<i class="bi bi-file-text"></i>
 													</a>
 													<!-- success button -->
 													<a class="btn btn-success btn-sm" href="<?= base_url('supir/finish_pesanan/' . $p->id_pesanan) ?>" role="button">
-
-														<ion-icon name="checkmark-outline"></ion-icon>
+														<i class="bi bi-clipboard-check"></i>
 													</a>
 											</tr>
 
@@ -76,7 +76,6 @@ echo $this->section('content');
 										}
 									}
 									?>
-
 								</tbody>
 							</table>
 						</div>
