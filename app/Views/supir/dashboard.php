@@ -73,11 +73,19 @@ echo $this->section('content');
 							<?php
 							foreach ($pesanan as $p) {
 							?>
-								<div class="col-4">
-									<div class="card" style="width: 18rem; height: 20rem;">
-										<div class="card-body" style="margin-top: -20px">
-											<h5 class="card-title" style="margin-bottom: -10px;">Pesanan <?= $p->id_pesanan ?></h5>
-											<p class="card-text" style="margin-bottom: -10px;">Pengirim : <?= $p->nama_pengirim ?></p>
+								<div class="row">
+									<div class="col-3">
+
+										<div class="card">
+											<div class="card-header d-flex align-items-center justify-content-center">
+
+												<div class="text-primary h3" style="font-size: 1.5rem;"><strong>Pesanan <?= $p->id_pesanan ?></strong></div>
+											</div>
+											<div class="card-body">
+
+												<div class="text-center  mb-2"><?= $p->receipt ?></div>
+												<div class="text-center">Alamat : <strong><?= $p->alamat ?></strong></div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -89,6 +97,7 @@ echo $this->section('content');
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </section>
 <!-- /.content -->
