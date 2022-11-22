@@ -60,8 +60,10 @@ class Pesanan extends Model
 
 	public function get_dalam_pengiriman()
 	{
+		$idSupir = $this->db->table('supir')->where('id_users', user_id())->get()->getFirstRow();
 		return $this->db->table('pesanan')
 			->where('pesanan.id_status', 3)
+			->where('pesanan.id_supir', $idSupir->id_supir)
 			->join('toko', 'pesanan.id_toko=toko.id_toko')
 			->join('supir', 'pesanan.id_supir=supir.id_supir')
 			->join('status', 'pesanan.id_status=status.id_status')

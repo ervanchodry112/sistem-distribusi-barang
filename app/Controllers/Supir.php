@@ -43,7 +43,7 @@ class Supir extends BaseController
     {
         $pengiriman = $this->pesanModel->get_dalam_pengiriman();
         $data = [
-            'title' => 'Pesanan Dalam Pengiriman',
+            'title' => 'Dalam Pengiriman',
             'pengiriman' => $pengiriman
         ];
         return view('/supir/pesanan/dalam_pengiriman', $data);
@@ -74,7 +74,7 @@ class Supir extends BaseController
         $data = [
             'id_pesanan' => $id,
             'id_status' => 3,
-            'id_supir' => $idSupir,
+            'id_supir' => $idSupir->id_supir,
         ];
         $this->pesanModel->save($data);
         return redirect()->to('supir/pesanan_masuk');

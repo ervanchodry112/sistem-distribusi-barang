@@ -47,7 +47,7 @@ if (session()->getFlashdata('pesan')) {
                                     <a class="btn btn-success btn-sm" href="<?= base_url('/auth/activate/' . $p->id) ?>" role="button">
                                         <ion-icon name="checkmark"></ion-icon>
                                     </a>
-                                    <a class="btn btn-danger btn-sm" href="<?= base_url('/auth/activate/' . $p->id) ?>" role="button">
+                                    <a class="btn btn-danger btn-sm" href="<?= base_url('/auth/delete/' . $p->id) ?>" role="button">
                                         <ion-icon name="trash"></ion-icon>
                                     </a>
                                 </td>
