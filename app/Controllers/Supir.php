@@ -85,8 +85,9 @@ class Supir extends BaseController
 	public function take_pesanan($id)
 	{
 		$idSupir = $this->supirModel->select('id_supir')->where('id_users', user_id())->first();
+		$idPesanan = $this->pesanModel->select('id_pesanan')->where('receipt', $id)->first();
 		$data = [
-			'id_pesanan' => $id,
+			'id_pesanan' => $idPesanan->id_pesanan,
 			'id_status' => 3,
 			'id_supir' => $idSupir->id_supir,
 		];

@@ -13,7 +13,6 @@ class TabelProduk extends Migration
                 'type'              => 'INT',
                 'primary_key'       => true,
                 'constraint'        => 11,
-                'auto_increment'    => true,
             ],
             'nama_produk'  => [
                 'type'              => 'VARCHAR',

@@ -41,7 +41,7 @@ echo $this->section('content');
                                 <div class="mb-3 row">
                                     <label for="jumlah_produk" class="col-sm-2 col-form-label">Jumlah</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" name="jumlah_produk" id="jumlah_produk" value="<?= $produk->jumlah ?>">
+                                        <input type="number" min="1" max="<?= $produk->stok ?>" class="form-control" name="jumlah_produk" id="jumlah_produk" value="<?= $produk->jumlah ?>">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>

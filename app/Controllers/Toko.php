@@ -32,7 +32,7 @@ class Toko extends BaseController
     }
 
     public function dashboard()
-	{
+    {
         $semua_pesanan_card = $this->pesanModel->get_semua_pesanan_toko()->countAllResults();
         $semua_pesanan = $this->pesanModel->get_semua_pesanan_toko()->get()->getResultObject();
         $pesanan_diproses_card = $this->pesanModel->get_pesanan_diproses_toko()->countAllResults();
@@ -43,17 +43,17 @@ class Toko extends BaseController
         // d($semua_pesanan_card, $semua_pesanan, $pesanan_diproses_card, $pesanan_diproses);
         // exit();
 
-		$data = [
-			'title' => 'Dashboard',
+        $data = [
+            'title' => 'Dashboard',
             'semua_pesanan_card' => $semua_pesanan_card,
             'semua_pesanan' => $semua_pesanan,
             'pesanan_diproses_card' => $pesanan_diproses_card,
             'pesanan_diproses' => $pesanan_diproses,
             'pesanan_selesai_card' => $pesanan_selesai_card,
             'pesanan_selesai' => $pesanan_selesai,
-		];
-		return view('toko/dashboard', $data);
-	}
+        ];
+        return view('toko/dashboard', $data);
+    }
 
     public function pesanan()
     {
@@ -102,8 +102,23 @@ class Toko extends BaseController
     public function add_to_cart()
     {
         // $harga = $this->request->getVar('harga_produk');
+        // dd($this->request->getVar());
         $jumlah = $this->request->getVar('jumlah_produk');
         $id_produk = $this->request->getVar('id_produk');
+        $validation = $this->validate([
+            'jumlah_produk' => [
+                'rules' => 'required|numeric|greater_than[0]',
+                'errors' => [
+                    'required' => 'Jumlah produk harus diisi',
+                    'numeric' => 'Jumlah produk harus berupa angka',
+                    'greater_than' => 'Jumlah produk harus lebih dari 0',
+                ]
+            ],
+        ]);
+        if (!$validation) {
+            return redirect()->to('/toko/quantity/' . $this->request->getVar('slug'))->withInput();
+        }
+
         $cek = $this->cart->select('id_keranjang')->select('jumlah')->where('id_produk', $id_produk)->where('id_user', user_id())->first();
         if ($cek == null) {
             $data = [
@@ -179,7 +194,7 @@ class Toko extends BaseController
     public function keranjang()
     {
         $isi = $this->cart->join('produk', 'produk.id_produk=keranjang.id_produk')
-            ->where('id_user', user_id())->findAll();
+            ->where('keranjang.id_user', user_id())->findAll();
 
         // dd($isi);
         $data = [

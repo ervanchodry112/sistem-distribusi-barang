@@ -17,7 +17,7 @@ echo $this->section('content');
 				<div class="card">
 					<div class="card-body">
 
-						<table class="table table-striped table-bordered border shadow">
+						<table class="table table-striped">
 							<thead>
 								<tr class="table" style="text-align: center;">
 									<th scope="col">No</th>
@@ -48,7 +48,7 @@ echo $this->section('content');
 											<td><?= $p->nama_status ?></td>
 											<td>
 												<!-- detail button -->
-												<a class="btn btn-primary btn-sm" href="<?= base_url('gudang/detail_pesanan/' . $p->id_pesanan) ?>" role="button">
+												<a class="btn btn-primary btn-sm" href="<?= base_url('detail_pesanan/' . $p->receipt) ?>" role="button">
 													<i class="bi bi-file-text"></i>
 												</a>
 											</td>

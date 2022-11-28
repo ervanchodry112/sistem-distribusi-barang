@@ -35,9 +35,10 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/admin', 'Gudang::index');
+// $routes->get('/admin', 'Gudang::index');
 $routes->get('/', 'LandingPage::index');
-$routes->get('/detail', 'Gudang::detail_pesanan');
+$routes->get('/admin', 'Gudang::index');
+$routes->get('/detail_pesanan/(:any)', 'Gudang::detail_pesanan/$1');
 $routes->delete('/delete/(:num)', 'Toko::delete_pesanan/$1');
 $routes->get('assets/js/config.js', function () {
 	return redirect()->to(base_url('admin'));
@@ -50,6 +51,7 @@ $routes->get('/gudang/restok/(:any)', "Gudang::restok_produk/$1");
 $routes->get('/auth/supir', "Auth::supir");
 $routes->get('/auth/toko', "Auth::toko");
 $routes->get('/auth/activate/(:any)', "Auth::activate/$1");
+
 
 
 

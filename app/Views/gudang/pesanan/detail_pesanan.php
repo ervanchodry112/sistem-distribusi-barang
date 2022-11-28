@@ -17,19 +17,19 @@ echo $this->section('content');
 						<div class="row">
 							<div class="col-6">
 								<tr>
-									<td>Nama Toko</td>
+									<th scope="row">Nama Toko</th>
 									<td>: <?= $pesanan->nama_toko ?></td>
 								</tr>
 								<tr>
-									<td>Tanggal</td>
+									<th scope="row">Tanggal</th>
 									<td>: <?= $pesanan->tanggal ?></td>
 								</tr>
 								<tr>
-									<td>Status</td>
-									<td>: <?= $pesanan->nama_status ?></td>
+									<th scope="row">Status</th>
+									<td>: <b><?= $pesanan->nama_status ?></b></td>
 								</tr>
 								<tr>
-									<td>Alamat</td>
+									<th scope="row">Alamat</th>
 									<td>: <?= $pesanan->alamat ?></td>
 								</tr>
 							</div>
