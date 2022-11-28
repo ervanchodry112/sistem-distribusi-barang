@@ -1,6 +1,8 @@
 <?php
 echo $this->extend('layout/navbar');
 echo $this->section('content');
+
+$validation = \Config\Services::validation();
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -41,7 +43,11 @@ echo $this->section('content');
                                 <div class="mb-3 row">
                                     <label for="jumlah_produk" class="col-sm-2 col-form-label">Jumlah</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" name="jumlah_produk" id="jumlah_produk">
+                                        <!-- Create Validation -->
+                                        <input type="number" min="1" max="<?= $produk->stok ?>" class="form-control <?= ($validation->hasError('jumlah_produk') ? 'is_invalid' : '') ?>" name="jumlah_produk" id="jumlah_produk" value="<?= old('jumlah_produk') ?>">
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('jumlah_produk') ?>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>

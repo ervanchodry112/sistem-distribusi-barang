@@ -71,6 +71,16 @@ class Pesanan extends Model
 			->get()->getResultObject();
 	}
 
+	public function get_dalam_pengiriman_gudang()
+	{
+		return $this->db->table('pesanan')
+			->where('pesanan.id_status', 3)
+			->join('toko', 'pesanan.id_toko=toko.id_toko')
+			->join('supir', 'pesanan.id_supir=supir.id_supir')
+			->join('status', 'pesanan.id_status=status.id_status')
+			->get()->getResultObject();
+	}
+
 	public function get_pesanan_selesai()
 	{
 		return $this->db->table('pesanan')

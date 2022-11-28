@@ -6,19 +6,19 @@ echo $this->section('content');
 <!-- Content Wrapper. Contains page content -->
 
 <!-- Content Header (Page header) -->
-<div class="pagetitle">
-	<h1>Pesanan Masuk</h1>
+<div class="pagetitle ps-2">
+	<h1><?= ucwords($title) ?></h1>
 </div>
 
 <!-- Main content -->
-<section class="content p-5">
+<section class="content pt-3">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12">
 				<div class="card">
 					<div class="card-body">
 
-						<table class="table table-striped table-bordered border shadow">
+						<table class="table table-striped">
 							<thead>
 								<tr class="table" style="text-align: center;">
 									<th scope="col">No</th>
@@ -55,7 +55,7 @@ echo $this->section('content');
 													<i class="bi bi-clipboard-check"></i>
 												</a>
 												<!-- detail button -->
-												<a class="btn btn-primary btn-sm" href="<?= base_url('gudang/detail_pesanan/' . $p->id_pesanan) ?>" role="button">
+												<a class="btn btn-primary btn-sm" href="<?= base_url('detail_pesanan/' . $p->receipt) ?>" role="button">
 													<i class="bi bi-file-text"></i>
 												</a>
 												<!-- reject button -->

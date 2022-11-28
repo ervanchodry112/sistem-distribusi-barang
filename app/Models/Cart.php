@@ -14,7 +14,7 @@ class Cart extends Model
     protected $returnType       = Cart::class;
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_produk', 'id_user', 'jumlah'];
+    protected $allowedFields    = ['id_keranjang', 'id_produk', 'id_user', 'jumlah'];
 
     // Dates
     protected $useTimestamps = true;

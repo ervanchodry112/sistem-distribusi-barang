@@ -27,7 +27,10 @@ echo $this->section('content');
 							<label for="stok">Jumlah Restock</label>
 							<input type="number" name="stok" class="form-control" id="stok" value="" placeholder="<?= $produk->stok ?>">
 						</div>
-						<button type="submit" class="btn btn-primary mt-3">Submit</button>
+						<div class="row ms-1">
+							<button type="submit" class="btn btn-primary mt-3 col-2">Submit</button>
+							<a href="<?= base_url('gudang/produk') ?>" class="btn btn-secondary col-2 mt-3 ms-2">Cancel</a>
+						</div>
 					</div>
 				</div>
 			</form>

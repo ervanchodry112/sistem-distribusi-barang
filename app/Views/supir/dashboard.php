@@ -70,11 +70,11 @@ echo $this->section('content');
 					<div class="col-12">
 						<div class="card p-4">
 							<h5 class="card-title">Pesanan</h5>
-							<?php
-							foreach ($pesanan as $p) {
-							?>
+							<div class="row">
+								<?php
+								foreach ($pesanan as $p) {
+								?>
 
-								<div class="row">
 									<div class="col-3">
 
 										<div class="card">
@@ -90,10 +90,10 @@ echo $this->section('content');
 
 										</div>
 									</div>
-								</div>
-							<?php
-							}
-							?>
+								<?php
+								}
+								?>
+							</div>
 						</div>
 					</div>
 				</div>

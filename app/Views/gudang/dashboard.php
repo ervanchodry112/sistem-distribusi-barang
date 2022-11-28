@@ -109,7 +109,7 @@ echo $this->section('content');
 												<td><?= $p->nama_toko ?></td>
 												<td><?= $p->tanggal ?></td>
 												<td><?= $p->alamat ?></td>
-												<td><?= $p->nama_status ?></td>
+												<td class="text-<?= ($p->id_status == 5 ? 'danger' : ($p->id_status == 4 ? 'success' : 'warning')) ?>"><b><?= $p->nama_status ?></b></td>
 											</tr>
 										<?php
 										}
@@ -171,7 +171,7 @@ echo $this->section('content');
 												<td><?= $p->id_pesanan ?></td>
 												<td><?= $p->nama_toko ?></td>
 												<td><?= $p->nama_supir ?></td>
-												<td><?= $p->status_pesanan ?></td>
+												<td class="text-success"><?= $p->nama_status ?></td>
 											</tr>
 										<?php
 										}

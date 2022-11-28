@@ -38,7 +38,7 @@ class Auth extends BaseController
 
     public function update_password($id)
     {
-        if(!$this->validate([
+        if (!$this->validate([
             'current_password' => 'required',
             'new_password' => 'required',
             'renew_password' => 'required|matches[new_password]'
@@ -143,7 +143,8 @@ class Auth extends BaseController
     {
         $akun = $this->user->join('auth_groups_users', 'auth_groups_users.user_id=users.id')
             ->join('auth_groups', 'auth_groups.id=auth_groups_users.group_id')
-            ->where('users.active', 1)->findAll();
+            ->where('users.active', 1)->groupBy('users.id')->findAll();
+        // dd($akun);
 
         $data = [
             'title' => 'Akun',
@@ -155,6 +156,8 @@ class Auth extends BaseController
 
     public function delete($id)
     {
+        $toko = new Toko();
+        $toko->where('id_users', $id)->delete();
         $this->user->delete($id);
 
         return redirect()->to(base_url('auth/account'))->with('message', 'Akun Berhasil Dihapus');

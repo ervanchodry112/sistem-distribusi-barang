@@ -21,15 +21,26 @@ class Gudang extends BaseController
 
 	public function index()
 	{
-		return redirect()->to('/gudang/dashboard');
+		if (in_groups('toko')) {
+			return redirect()->to(base_url('toko/dashboard'));
+		} else if (in_groups('supir')) {
+			return redirect()->to(base_url('supir/dashboard'));
+		} else {
+			return redirect()->to(base_url('gudang/dashboard'));
+		}
 	}
 
 	public function dashboard()
 	{
+		if (in_groups('toko')) {
+			return redirect()->to(base_url('toko/dashboard'));
+		} else if (in_groups('supir')) {
+			return redirect()->to(base_url('supir/dashboard'));
+		}
 		$semua = $this->pesanModel->join('toko', 'pesanan.id_toko=toko.id_toko')->join('status', 'status.id_status = pesanan.id_status')->findAll();
 		$masuk = $this->pesanModel->where('id_status', 1)->countAllResults();
 		$proses = $this->pesanModel->where('id_status', 2)->countAllResults();
-		$selesai = $this->pesanModel->where('id_status', 3)->countAllResults();
+		$selesai = $this->pesanModel->where('id_status', 4)->countAllResults();
 		$tanggalMasuk = $this->pesanModel->selectCount('id_pesanan')->select('tanggal')->where('id_status', 1)->groupBy('tanggal')->findAll();
 		$tanggalProses = $this->pesanModel->selectCount('id_pesanan')->select('tanggal')->where('id_status', 2)->groupBy('tanggal')->findAll();
 		$tanggalSelesai = $this->pesanModel->selectCount('id_pesanan')->select('tanggal')->where('id_status', 3)->groupBy('tanggal')->findAll();
@@ -74,7 +85,7 @@ class Gudang extends BaseController
 
 	public function dalam_pengiriman()
 	{
-		$pesanan = $this->pesanModel->get_dalam_pengiriman();
+		$pesanan = $this->pesanModel->get_dalam_pengiriman_gudang();
 		$data = [
 			'title' => 'Pesanan Dalam Proses',
 			'pesanan' => $pesanan,
@@ -104,10 +115,11 @@ class Gudang extends BaseController
 		$pesanan = $this->pesanModel
 			->join('toko', 'pesanan.id_toko=toko.id_toko')
 			->join('status', 'pesanan.id_status=status.id_status')
-			->where('id_pesanan', $id)->first();
+			->where('pesanan.receipt', $id)->first();
 
-		$produk = $this->listPesananModel->join('produk', 'list_pesanan.id_produk = produk.id_produk')->where('id_pesanan', $id)->findAll();
 
+		$produk = $this->listPesananModel->join('produk', 'list_pesanan.id_produk = produk.id_produk')->where('list_pesanan.id_pesanan', $pesanan->id_pesanan)->findAll();
+		// dd($produk);
 		$data = [
 			'title' => 'Detail Pesanan',
 			'pesanan' => $pesanan,
@@ -136,7 +148,6 @@ class Gudang extends BaseController
 		];
 		$this->pesanModel->save($data);
 		return redirect()->to('/gudang/pesanan_masuk');
-
 	}
 
 	public function reject($id)
@@ -163,7 +174,13 @@ class Gudang extends BaseController
 		$input = $this->request->getVar();
 		$fileUpload = $this->request->getFile('gambar');
 		$fileUpload->move('assets/img/produk', $fileUpload->getName());
+		$TEMP = 'GS-P';
+		$id = $this->produkModel->selectMax('id_produk')->first();
+		$id = substr($id->id_produk, 4);
+		$id++;
+		$id = $TEMP . sprintf('%03s', $id);
 		$produk = [
+			'id_produk'		=> $id,
 			'nama_produk' => $input['nama_produk'],
 			'harga' => $input['harga'],
 			'stok' => $input['stok'],
@@ -181,9 +198,9 @@ class Gudang extends BaseController
 
 	public function edit($id)
 	{
-		$produk = $this->produkModel->where('id_produk', $id)->first();
+		$produk = $this->produkModel->where('slug', $id)->first();
 		$data = [
-			'title' => 'Edit Mahasiswa',
+			'title' => 'Restok Produk',
 			'produk' => $produk,
 		];
 
@@ -204,7 +221,7 @@ class Gudang extends BaseController
 
 	public function detail_produk($id)
 	{
-		$produk = $this->produkModel->where('id_produk', $id)->first();
+		$produk = $this->produkModel->where('slug', $id)->first();
 
 		$data = [
 			'title' => 'Detail Produk',
