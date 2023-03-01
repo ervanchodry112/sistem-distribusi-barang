@@ -21,6 +21,7 @@ echo $this->section('content');
 					<thead>
 						<tr class="table" style="text-align: center;">
 							<th scope="col">No</th>
+							<th scope="col">Gambar</th>
 							<th scope="col">ID Produk</th>
 							<th scope="col">Nama</th>
 							<th scope="col">Harga</th>
@@ -36,18 +37,21 @@ echo $this->section('content');
 
 							<tr style="text-align: center;">
 								<td scope="row"><?= $i++ ?></td>
+								<td>
+									<img src="/assets/img/produk/<?= ($p->gambar == null ? 'default_product.png' : $p->gambar) ?>" width="150rem" height="100rem" alt="<?= $p->nama_produk ?>">
+								</td>
 								<td><?= $p->id_produk ?></td>
 								<td><?= $p->nama_produk ?></td>
-								<td><?= $p->harga ?></td>
+								<td>Rp<?= number_format($p->harga)  ?></td>
 								<td><?= $p->stok ?></td>
 								<td>
 									<!-- detail button -->
-									<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
+									<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_produk/' . $p->slug) ?>" role="button">
 										<i class="bi bi-file-text"></i>
 									</a>
 
 									<!-- restock button -->
-									<a class="btn btn-success btn-sm" href="<?= base_url('/gudang/edit/' . $p->id_produk) ?>" role="button">
+									<a class="btn btn-success btn-sm" href="<?= base_url('/gudang/edit/' . $p->slug) ?>" role="button">
 										<i class="bi bi-clipboard-plus"></i>
 									</a>
 								</td>

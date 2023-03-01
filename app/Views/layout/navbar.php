@@ -11,24 +11,28 @@
 		<i class="bi bi-list toggle-sidebar-btn"></i>
 	</div><!-- End Logo -->
 
-	<?php
-	if (in_groups('toko')) {
-	?>
-		<div class="header-nav ms-auto">
-			<ul class="d-flex align-items-center">
+	<div class="header-nav ms-auto me-3">
+		<ul class="d-flex align-items-center">
+			<li class="nav-item">
+				<span>
+					<?= ucwords(user()->username) ?>
+				</span>
+			</li>
+			<?php
+			if (in_groups('toko')) {
+			?>
 				<li class="nav-item">
 					<a href="<?= base_url('toko/keranjang') ?>" class="me-4 nav-link collapsed nav-icon px-2">
 						<i class="bi bi-cart"></i>
 						<div style="background-color: #4154f1; height: 13px; width: 13px;" class="rounded-circle text-light position-absolute d-flex align-items-center justify-content-center top-0 end-0 start-50"></div>
 					</a>
 				</li>
-			</ul>
-			<!-- Button to Shooping Cart -->
-
-		</div>
-	<?php
-	}
-	?>
+			<?php
+			}
+			?>
+		</ul>
+		<!-- Button to Shooping Cart -->
+	</div>
 </header><!-- End Header -->
 
 <!-- ======= Sidebar ======= -->
@@ -76,7 +80,7 @@
 			<!-- End Pesanan Nav -->
 
 			<li class="nav-item">
-				<a class="nav-link " href="<?= base_url('gudang/produk') ?>">
+				<a class="nav-link collapsed" href="<?= base_url('gudang/produk') ?>">
 					<i class="bi bi-boxes"></i>
 					<span>Produk</span>
 				</a>

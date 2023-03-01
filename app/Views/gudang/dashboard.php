@@ -72,7 +72,11 @@ echo $this->section('content');
 						<ul class="nav nav-tabs nav-tabs-bordered d-flex justify-content-evenly">
 
 							<li class="nav-item">
-								<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#dashboard-masuk">Pesanan Masuk</button>
+								<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#dashboard-semua">Semua Pesanan</button>
+							</li>
+
+							<li class="nav-item">
+								<button class="nav-link" data-bs-toggle="tab" data-bs-target="#dashboard-masuk">Pesanan Masuk</button>
 							</li>
 
 							<li class="nav-item">
@@ -82,7 +86,7 @@ echo $this->section('content');
 						</ul>
 						<div class="tab-content pt-2">
 
-							<div class="tab-pane fade show active dashboard-masuk" id="dashboard-masuk">
+							<div class="tab-pane fade show active dashboard-semua" id="dashboard-semua">
 								<table class="table table-hover">
 									<thead>
 										<tr>
@@ -91,7 +95,38 @@ echo $this->section('content');
 											<th scope="col">Nama Toko</th>
 											<th scope="col">Tanggal</th>
 											<th scope="col">Alamat</th>
-											<th scope="col">Action</th>
+											<th scope="col">Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+										$i = 1;
+										foreach ($semua as $p) {
+										?>
+											<tr>
+												<td scope="row"><?= $i++ ?></td>
+												<td><?= $p->receipt ?></td>
+												<td><?= $p->nama_toko ?></td>
+												<td><?= $p->tanggal ?></td>
+												<td><?= $p->alamat ?></td>
+												<td class="text-<?= ($p->id_status == 5 ? 'danger' : ($p->id_status == 4 ? 'success' : 'warning')) ?>"><b><?= $p->nama_status ?></b></td>
+											</tr>
+										<?php
+										}
+										?>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="tab-pane fade show dashboard-masuk" id="dashboard-masuk">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th scope="col">No</th>
+											<th scope="col">Id Pesanan</th>
+											<th scope="col">Nama Toko</th>
+											<th scope="col">Tanggal</th>
+											<th scope="col">Alamat</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -123,7 +158,6 @@ echo $this->section('content');
 											<th scope="col">Nama Toko</th>
 											<th scope="col">Nama Supir</th>
 											<th scope="col">Status Pesanan</th>
-											<th scope="col">Action</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -137,13 +171,7 @@ echo $this->section('content');
 												<td><?= $p->id_pesanan ?></td>
 												<td><?= $p->nama_toko ?></td>
 												<td><?= $p->nama_supir ?></td>
-												<td><?= $p->status_pesanan ?></td>
-												<td>
-													<!-- detail button -->
-													<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
-														<i class="bi bi-file-text"></i>
-													</a>
-												</td>
+												<td class="text-success"><?= $p->nama_status ?></td>
 											</tr>
 										<?php
 										}

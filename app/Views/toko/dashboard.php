@@ -109,12 +109,12 @@ echo $this->section('content');
 												<td class="text-<?= ($p->id_status == 5 ? 'danger' : ($p->id_status == 4 ? 'success' : 'warning')) ?>"><strong><?= $p->nama_status ?></strong></td>
 												<td>
 													<!-- detail button -->
-													<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
+													<a class="btn btn-primary btn-sm" href="<?= base_url('/detail_pesanan/' . $p->receipt) ?>" role="button">
 														<i class="bi bi-file-text"></i>
 													</a>
 													<!-- reject button -->
 													<?php
-													if (!($p->id_status == 4 || $p->id_status == 5)) {
+													if ($p->id_status == 1) {
 													?>
 														<a class="btn btn-danger btn-sm" href="<?= base_url('toko/delete_pesanan/' . $p->id_pesanan) ?>" role="button" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')">
 															<i class="bi bi-trash3"></i>
@@ -131,7 +131,7 @@ echo $this->section('content');
 								</table>
 							</div>
 
-							<div class="tab-pane fade show active dashboard-diproses" id="dashboard-diproses">
+							<div class="tab-pane fade show dashboard-diproses" id="dashboard-diproses">
 								<table class="table table-hover">
 									<thead>
 										<tr style="text-align: center;">
@@ -152,12 +152,8 @@ echo $this->section('content');
 												<td><?= $p->tanggal ?></td>
 												<td>
 													<!-- detail button -->
-													<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
+													<a class="btn btn-primary btn-sm" href="<?= base_url('/detail_pesanan/' . $p->id_pesanan) ?>" role="button">
 														<i class="bi bi-file-text"></i>
-													</a>
-													<!-- reject button -->
-													<a class="btn btn-danger btn-sm" href="<?= base_url('toko/delete_pesanan/' . $p->id_pesanan) ?>" role="button" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')">
-														<i class="bi bi-trash3"></i>
 													</a>
 												</td>
 											</tr>
@@ -190,7 +186,7 @@ echo $this->section('content');
 												<td><?= $p->tanggal ?></td>
 												<td>
 													<!-- detail button -->
-													<a class="btn btn-primary btn-sm" href="<?= base_url('/gudang/detail_pesanan') ?>" role="button">
+													<a class="btn btn-primary btn-sm" href="<?= base_url('/detail_pesanan/' . $p->id_pesanan) ?>" role="button">
 														<i class="bi bi-file-text"></i>
 													</a>
 												</td>

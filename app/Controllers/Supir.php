@@ -7,6 +7,7 @@ use App\Models\Pesanan;
 
 class Supir extends BaseController
 {
+
 	protected $pesanModel;
 	protected $supirModel;
 
@@ -26,6 +27,9 @@ class Supir extends BaseController
 		$siap = $this->pesanModel->where('id_status', 2)->countAllResults();
 		$kirim = $this->pesanModel->where('id_status', 3)->countAllResults();
 		$selesai = $this->pesanModel->where('id_status', 4)->countAllResults();
+		$pesanan = $this->pesanModel->get_dalam_pengiriman();
+
+		// dd($pesanan);
 
 
 		$data = [
@@ -33,6 +37,7 @@ class Supir extends BaseController
 			'siap' => $siap,
 			'kirim' => $kirim,
 			'selesai' => $selesai,
+			'pesanan' => $pesanan,
 		];
 
 		return view('/supir/dashboard', $data);
@@ -80,10 +85,11 @@ class Supir extends BaseController
 	public function take_pesanan($id)
 	{
 		$idSupir = $this->supirModel->select('id_supir')->where('id_users', user_id())->first();
+		$idPesanan = $this->pesanModel->select('id_pesanan')->where('receipt', $id)->first();
 		$data = [
-			'id_pesanan' => $id,
+			'id_pesanan' => $idPesanan->id_pesanan,
 			'id_status' => 3,
-			'id_supir' => $idSupir,
+			'id_supir' => $idSupir->id_supir,
 		];
 		$this->pesanModel->save($data);
 		return redirect()->to('supir/pesanan_masuk');
